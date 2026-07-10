@@ -8,8 +8,8 @@
   <style>
     [x-cloak] { display: none !important; }
   </style>
-<style>#back-link { display: inline-flex; } .in-iframe #back-link { display: none; }</style>
-<script>if (window !== window.top) { document.documentElement.classList.add("in-iframe"); document.addEventListener("DOMContentLoaded", function() { var el = document.getElementById("back-link"); if (el) el.remove(); }); }</script>
+<style>#back-link { display: inline-flex; } .in-iframe #back-link { display: none; } .in-iframe body { padding: 0 !important; } .in-iframe.demo-only body { background: #f8f8fa !important; padding: 36px 32px 32px !important; }</style>
+<script>if (window !== window.top) { document.documentElement.classList.add("in-iframe"); var view = new URLSearchParams(location.search).get("view"); if (view === "demo") document.documentElement.classList.add("demo-only"); document.addEventListener("DOMContentLoaded", function() { var el = document.getElementById("back-link"); if (el) el.remove(); var demo = document.getElementById("demo-section"); if (view === "demo" && demo) { document.body.appendChild(demo); Array.from(document.body.children).forEach(function(c) { if (c === demo || c.tagName === "SCRIPT" || c.hasAttribute("data-demo-keep")) return; c.remove(); }); } else if (view === "preview" && demo) { demo.remove(); } }); }</script>
 </head>
 <body class="bg-white p-6 space-y-10">
   <a href="../" class="inline-flex items-center gap-1 text-sm text-gray-400 hover:text-gray-600 mb-4" id="back-link">
@@ -23,7 +23,7 @@
 
   <!-- Radio Sizes -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Radio — Sizes</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Radio — Sizes</h3>
     <div class="flex flex-wrap items-end gap-6">
       <!-- sm: radio 12px, text 14px, gap 8px -->
       <label class="inline-flex items-center gap-2 cursor-pointer">
@@ -45,7 +45,7 @@
 
   <!-- Radio States -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Radio — States</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Radio — States</h3>
     <div class="flex flex-wrap items-center gap-6">
       <!-- Default -->
       <div class="text-center space-y-1.5">
@@ -84,7 +84,7 @@
 
   <!-- Radio Container (vertical) -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Radio — Container (vertical)</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Radio — Container (vertical)</h3>
     <div class="flex flex-col gap-2" x-data="{ selected: 'option1' }" x-cloak>
       <label class="inline-flex items-center gap-2 cursor-pointer" @click="selected = 'option1'">
         <span class="w-4 h-4 rounded-full transition-all" :class="selected === 'option1' ? 'border-[4px] border-indigo-500 bg-white' : 'border border-gray-200 bg-white'"></span>
@@ -112,7 +112,7 @@
   <!-- Button — Inactive with count: counter bg=red-50 text=red-500 rounded-full -->
   <!-- Button — Without counter: py-1.5, with counter: py-1 -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Button — Example</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Button — Example</h3>
     <div class="flex gap-1">
       <!-- Active (no counter) -->
       <button class="flex items-center gap-1 text-sm font-semibold px-2 py-1.5 rounded-md bg-indigo-100 text-indigo-700">
@@ -160,11 +160,11 @@
 
   <!-- Button States -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Button — States</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Button — States</h3>
     <div class="flex items-end gap-6">
       <!-- Active with count -->
       <div class="flex flex-col items-start gap-1">
-        <span class="text-[10px] text-gray-400 uppercase">active + count</span>
+        <span class="text-[10px] text-gray-400">active + count</span>
         <button class="flex items-center gap-1 text-sm font-semibold px-2 py-1 rounded-md bg-indigo-100 text-indigo-700">
           Tab
           <span class="text-sm font-normal px-2 py-0.5 rounded-sm bg-indigo-100 text-indigo-700">999</span>
@@ -172,14 +172,14 @@
       </div>
       <!-- Active without count -->
       <div class="flex flex-col items-start gap-1">
-        <span class="text-[10px] text-gray-400 uppercase">active</span>
+        <span class="text-[10px] text-gray-400">active</span>
         <button class="flex items-center gap-1 text-sm font-semibold px-2 py-1.5 rounded-md bg-indigo-100 text-indigo-700">
           Tab
         </button>
       </div>
       <!-- Inactive with count -->
       <div class="flex flex-col items-start gap-1">
-        <span class="text-[10px] text-gray-400 uppercase">inactive + count</span>
+        <span class="text-[10px] text-gray-400">inactive + count</span>
         <button class="flex items-center gap-1 text-sm font-normal px-2 py-1 rounded-md bg-white text-gray-600">
           Tab
           <span class="text-sm font-normal px-2 py-0.5 rounded-full bg-red-50 text-red-500">999</span>
@@ -187,14 +187,14 @@
       </div>
       <!-- Inactive without count -->
       <div class="flex flex-col items-start gap-1">
-        <span class="text-[10px] text-gray-400 uppercase">inactive</span>
+        <span class="text-[10px] text-gray-400">inactive</span>
         <button class="flex items-center gap-1 text-sm font-normal px-2 py-1.5 rounded-md bg-white text-gray-600">
           Tab
         </button>
       </div>
       <!-- Hover with count -->
       <div class="flex flex-col items-start gap-1">
-        <span class="text-[10px] text-gray-400 uppercase">hover + count</span>
+        <span class="text-[10px] text-gray-400">hover + count</span>
         <button class="flex items-center gap-1 text-sm font-normal px-2 py-1 rounded-md bg-gray-100 text-gray-600">
           Tab
           <span class="text-sm font-normal px-2 py-0.5 rounded-full bg-red-50 text-red-500">999</span>
@@ -202,7 +202,7 @@
       </div>
       <!-- Hover without count -->
       <div class="flex flex-col items-start gap-1">
-        <span class="text-[10px] text-gray-400 uppercase">hover</span>
+        <span class="text-[10px] text-gray-400">hover</span>
         <button class="flex items-center gap-1 text-sm font-normal px-2 py-1.5 rounded-md bg-gray-100 text-gray-600">
           Tab
         </button>

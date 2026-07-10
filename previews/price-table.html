@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
-<style>#back-link { display: inline-flex; } .in-iframe #back-link { display: none; }</style>
-<script>if (window !== window.top) { document.documentElement.classList.add("in-iframe"); document.addEventListener("DOMContentLoaded", function() { var el = document.getElementById("back-link"); if (el) el.remove(); }); }</script>
+<style>#back-link { display: inline-flex; } .in-iframe #back-link { display: none; } .in-iframe body { padding: 0 !important; } .in-iframe.demo-only body { background: #f8f8fa !important; padding: 36px 32px 32px !important; }</style>
+<script>if (window !== window.top) { document.documentElement.classList.add("in-iframe"); var view = new URLSearchParams(location.search).get("view"); if (view === "demo") document.documentElement.classList.add("demo-only"); document.addEventListener("DOMContentLoaded", function() { var el = document.getElementById("back-link"); if (el) el.remove(); var demo = document.getElementById("demo-section"); if (view === "demo" && demo) { document.body.appendChild(demo); Array.from(document.body.children).forEach(function(c) { if (c === demo || c.tagName === "SCRIPT" || c.hasAttribute("data-demo-keep")) return; c.remove(); }); } else if (view === "preview" && demo) { demo.remove(); } }); }</script>
 </head>
 <body class="bg-white p-6 space-y-10">
   <a href="../" class="inline-flex items-center gap-1 text-sm text-gray-400 hover:text-gray-600 mb-4" id="back-link">
@@ -13,9 +13,9 @@
     一覧に戻る
   </a>
 
-  <!-- PRICE LIST (6行) -->
+  <!-- 6行 -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">PRICE LIST (6行)</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">6行</h3>
     <div class="flex">
       <!-- ラベル -->
       <div class="flex items-center justify-center bg-gray-50 px-2 py-1 text-xs font-semibold text-gray-900 leading-[14px] self-stretch">
@@ -57,9 +57,9 @@
     </div>
   </section>
 
-  <!-- PRICE LIST (3行) -->
+  <!-- 3行 -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">PRICE LIST (3行)</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">3行</h3>
     <div class="flex">
       <div class="flex items-center justify-center bg-gray-50 px-2 py-1 text-xs font-semibold text-gray-900 leading-[14px] self-stretch">
         <span class="writing-vertical">単<br>価<br>表</span>
@@ -85,9 +85,9 @@
     </div>
   </section>
 
-  <!-- PRICE LIST (1行) -->
+  <!-- 1行 -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">PRICE LIST (1行)</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">1行</h3>
     <div class="flex">
       <div class="flex items-center justify-center bg-gray-50 px-2 py-1 text-xs font-semibold text-gray-900 leading-[14px] self-stretch">
         <span class="writing-vertical">単<br>価<br>表</span>

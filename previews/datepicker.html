@@ -5,14 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-<style>#back-link { display: inline-flex; } .in-iframe #back-link { display: none; }</style>
-<script>if (window !== window.top) { document.documentElement.classList.add("in-iframe"); document.addEventListener("DOMContentLoaded", function() { var el = document.getElementById("back-link"); if (el) el.remove(); }); }</script>
+<style>#back-link { display: inline-flex; } .in-iframe #back-link { display: none; } .in-iframe body { padding: 0 !important; } .in-iframe.demo-only body { background: #f8f8fa !important; padding: 36px 32px 32px !important; } .in-iframe.demo-only #demo-section { padding-bottom: 320px; }</style>
+<script>if (window !== window.top) { document.documentElement.classList.add("in-iframe"); var view = new URLSearchParams(location.search).get("view"); if (view === "demo") document.documentElement.classList.add("demo-only"); document.addEventListener("DOMContentLoaded", function() { var el = document.getElementById("back-link"); if (el) el.remove(); var demo = document.getElementById("demo-section"); if (view === "demo" && demo) { document.body.appendChild(demo); Array.from(document.body.children).forEach(function(c) { if (c === demo || c.tagName === "SCRIPT" || c.hasAttribute("data-demo-keep")) return; c.remove(); }); } else if (view === "preview" && demo) { demo.remove(); } }); }</script>
 </head>
 <body class="bg-white p-6 space-y-10">
   <a href="../" class="inline-flex items-center gap-1 text-sm text-gray-400 hover:text-gray-600 mb-4" id="back-link">
     <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
     一覧に戻る
   </a>
+
+  <div id="demo-section" class="space-y-10">
 
   <!-- ===== INTERACTIVE DEMO — SINGLE DATE PICKER ===== -->
   <section x-data="{
@@ -85,7 +87,7 @@
       }
     }
   }">
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Interactive Demo — Single</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Single</h3>
     <div class="w-[180px] space-y-2">
       <label class="block text-sm font-normal text-gray-900">発注日 <span class="text-red-500">*</span></label>
       <div class="relative">
@@ -196,7 +198,7 @@
     },
     clear() { this.startDate = null; this.endDate = null; this.picking = 'start'; }
   }">
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Interactive Demo</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Range</h3>
     <div class="w-[280px] space-y-2">
       <label class="block text-sm font-normal text-gray-900">期間 <span class="text-red-500">*</span></label>
       <div class="relative">
@@ -244,14 +246,16 @@
     </div>
   </section>
 
+  </div>
+
   <!-- ===== DATEPICKER INPUT — SM ===== -->
   <!-- Size=sm: h-8(32px), text-sm(14), icon 12px, gap-1.5(6), px-3(12), py-1.5(6), rounded-md(6) -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Datepicker — Small</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Datepicker — Small</h3>
     <div class="flex flex-wrap items-start gap-6">
       <!-- Default -->
       <div class="flex flex-col gap-2 w-40">
-        <span class="text-[10px] text-gray-400 uppercase">default</span>
+        <span class="text-[10px] text-gray-400">default</span>
         <div class="space-y-2">
           <label class="flex items-center gap-1 text-sm font-normal text-gray-900">Label <span class="text-red-500">*</span></label>
           <div class="flex items-center gap-1.5 h-8 px-3 border border-gray-200 rounded-md bg-white">
@@ -263,7 +267,7 @@
       </div>
       <!-- Focus -->
       <div class="flex flex-col gap-2 w-40">
-        <span class="text-[10px] text-gray-400 uppercase">focus</span>
+        <span class="text-[10px] text-gray-400">focus</span>
         <div class="space-y-2">
           <label class="flex items-center gap-1 text-sm font-normal text-gray-900">Label <span class="text-red-500">*</span></label>
           <div class="flex items-center gap-1.5 h-8 px-3 border border-indigo-500 ring-1 ring-indigo-500 rounded-md bg-white">
@@ -275,7 +279,7 @@
       </div>
       <!-- Error -->
       <div class="flex flex-col gap-2 w-40">
-        <span class="text-[10px] text-gray-400 uppercase">error</span>
+        <span class="text-[10px] text-gray-400">error</span>
         <div class="space-y-2">
           <label class="flex items-center gap-1 text-sm font-normal text-gray-900">Label <span class="text-red-500">*</span></label>
           <div class="flex items-center gap-1.5 h-8 px-3 border border-red-500 rounded-md bg-white">
@@ -288,7 +292,7 @@
       </div>
       <!-- Disabled -->
       <div class="flex flex-col gap-2 w-40">
-        <span class="text-[10px] text-gray-400 uppercase">disabled</span>
+        <span class="text-[10px] text-gray-400">disabled</span>
         <div class="space-y-2">
           <label class="flex items-center gap-1 text-sm font-normal text-gray-900">Label <span class="text-red-500">*</span></label>
           <div class="flex items-center gap-1.5 h-8 px-3 border border-gray-200 rounded-md bg-gray-50">
@@ -300,7 +304,7 @@
       </div>
       <!-- Filled -->
       <div class="flex flex-col gap-2 w-40">
-        <span class="text-[10px] text-gray-400 uppercase">filled</span>
+        <span class="text-[10px] text-gray-400">filled</span>
         <div class="space-y-2">
           <label class="flex items-center gap-1 text-sm font-normal text-gray-900">Label <span class="text-red-500">*</span></label>
           <div class="flex items-center gap-1.5 h-8 px-3 border border-gray-200 rounded-md bg-white">
@@ -316,11 +320,11 @@
   <!-- ===== DATEPICKER INPUT — MD ===== -->
   <!-- Size=md: h-10(40px), text-base(16), icon 14px, gap-2(8), px-4(16), py-2(8), rounded-md(6) -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Datepicker — Medium</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Datepicker — Medium</h3>
     <div class="flex flex-wrap items-start gap-6">
       <!-- Default -->
       <div class="flex flex-col gap-2 w-[180px]">
-        <span class="text-[10px] text-gray-400 uppercase">default</span>
+        <span class="text-[10px] text-gray-400">default</span>
         <div class="space-y-2">
           <label class="flex items-center gap-1 text-sm font-normal text-gray-900">Label <span class="text-red-500">*</span></label>
           <div class="flex items-center gap-2 h-10 px-4 border border-gray-200 rounded-md bg-white">
@@ -332,7 +336,7 @@
       </div>
       <!-- Focus -->
       <div class="flex flex-col gap-2 w-[180px]">
-        <span class="text-[10px] text-gray-400 uppercase">focus</span>
+        <span class="text-[10px] text-gray-400">focus</span>
         <div class="space-y-2">
           <label class="flex items-center gap-1 text-sm font-normal text-gray-900">Label <span class="text-red-500">*</span></label>
           <div class="flex items-center gap-2 h-10 px-4 border border-indigo-500 ring-1 ring-indigo-500 rounded-md bg-white">
@@ -344,7 +348,7 @@
       </div>
       <!-- Error -->
       <div class="flex flex-col gap-2 w-[180px]">
-        <span class="text-[10px] text-gray-400 uppercase">error</span>
+        <span class="text-[10px] text-gray-400">error</span>
         <div class="space-y-2">
           <label class="flex items-center gap-1 text-sm font-normal text-gray-900">Label <span class="text-red-500">*</span></label>
           <div class="flex items-center gap-2 h-10 px-4 border border-red-500 rounded-md bg-white">
@@ -357,7 +361,7 @@
       </div>
       <!-- Disabled -->
       <div class="flex flex-col gap-2 w-[180px]">
-        <span class="text-[10px] text-gray-400 uppercase">disabled</span>
+        <span class="text-[10px] text-gray-400">disabled</span>
         <div class="space-y-2">
           <label class="flex items-center gap-1 text-sm font-normal text-gray-900">Label <span class="text-red-500">*</span></label>
           <div class="flex items-center gap-2 h-10 px-4 border border-gray-200 rounded-md bg-gray-50">
@@ -369,7 +373,7 @@
       </div>
       <!-- Filled -->
       <div class="flex flex-col gap-2 w-[180px]">
-        <span class="text-[10px] text-gray-400 uppercase">filled</span>
+        <span class="text-[10px] text-gray-400">filled</span>
         <div class="space-y-2">
           <label class="flex items-center gap-1 text-sm font-normal text-gray-900">Label <span class="text-red-500">*</span></label>
           <div class="flex items-center gap-2 h-10 px-4 border border-gray-200 rounded-md bg-white">
@@ -385,7 +389,7 @@
   <!-- ===== CALENDAR — SINGLE ===== -->
   <!-- 288px, p-3(12), rounded-lg(8), border gray-200, shadow-lg, gap-1(4) -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Calendar — Single</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Calendar — Single</h3>
     <div class="inline-block border border-gray-200 rounded-lg p-3 bg-white shadow-lg" style="width:288px">
       <!-- Header -->
       <div class="flex items-center justify-between pb-2">
@@ -460,7 +464,7 @@
   <!-- ===== CALENDAR — RANGE ===== -->
   <!-- Selected range: start/end=bg-indigo-500 circle, in-range=bg-indigo-50 -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Calendar — Range</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Calendar — Range</h3>
     <div class="inline-block border border-gray-200 rounded-lg p-3 bg-white shadow-lg" style="width:288px">
       <!-- Header -->
       <div class="flex items-center justify-between pb-2">
@@ -535,11 +539,11 @@
   <!-- ===== DATE RANGE PICKER INPUT — SM ===== -->
   <!-- Size=sm: w-[240px] matches Figma 240px component width -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Date Range Picker — Small</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Date Range Picker — Small</h3>
     <div class="flex flex-wrap items-start gap-6">
       <!-- Default -->
       <div class="flex flex-col gap-2 w-[240px]">
-        <span class="text-[10px] text-gray-400 uppercase">default</span>
+        <span class="text-[10px] text-gray-400">default</span>
         <div class="space-y-2">
           <label class="flex items-center gap-1 text-sm font-normal text-gray-900">Label <span class="text-red-500">*</span></label>
           <div class="flex items-center gap-1.5 h-8 px-3 border border-gray-200 rounded-md bg-white">
@@ -551,7 +555,7 @@
       </div>
       <!-- Focus -->
       <div class="flex flex-col gap-2 w-[240px]">
-        <span class="text-[10px] text-gray-400 uppercase">focus</span>
+        <span class="text-[10px] text-gray-400">focus</span>
         <div class="space-y-2">
           <label class="flex items-center gap-1 text-sm font-normal text-gray-900">Label <span class="text-red-500">*</span></label>
           <div class="flex items-center gap-1.5 h-8 px-3 border border-indigo-500 ring-1 ring-indigo-500 rounded-md bg-white">
@@ -563,7 +567,7 @@
       </div>
       <!-- Error -->
       <div class="flex flex-col gap-2 w-[240px]">
-        <span class="text-[10px] text-gray-400 uppercase">error</span>
+        <span class="text-[10px] text-gray-400">error</span>
         <div class="space-y-2">
           <label class="flex items-center gap-1 text-sm font-normal text-gray-900">Label <span class="text-red-500">*</span></label>
           <div class="flex items-center gap-1.5 h-8 px-3 border border-red-500 rounded-md bg-white">
@@ -576,7 +580,7 @@
       </div>
       <!-- Disabled -->
       <div class="flex flex-col gap-2 w-[240px]">
-        <span class="text-[10px] text-gray-400 uppercase">disabled</span>
+        <span class="text-[10px] text-gray-400">disabled</span>
         <div class="space-y-2">
           <label class="flex items-center gap-1 text-sm font-normal text-gray-900">Label <span class="text-red-500">*</span></label>
           <div class="flex items-center gap-1.5 h-8 px-3 border border-gray-200 rounded-md bg-gray-50">
@@ -588,7 +592,7 @@
       </div>
       <!-- Filled -->
       <div class="flex flex-col gap-2 w-[240px]">
-        <span class="text-[10px] text-gray-400 uppercase">filled</span>
+        <span class="text-[10px] text-gray-400">filled</span>
         <div class="space-y-2">
           <label class="flex items-center gap-1 text-sm font-normal text-gray-900">Label <span class="text-red-500">*</span></label>
           <div class="flex items-center gap-1.5 h-8 px-3 border border-gray-200 rounded-md bg-white">
@@ -604,11 +608,11 @@
   <!-- ===== DATE RANGE PICKER INPUT — MD ===== -->
   <!-- Size=md: h-10(40px), text-base(16), icon 14px, gap-2(8), px-4(16) -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Date Range Picker — Medium</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Date Range Picker — Medium</h3>
     <div class="flex flex-wrap items-start gap-6">
       <!-- Default -->
       <div class="flex flex-col gap-2 w-[280px]">
-        <span class="text-[10px] text-gray-400 uppercase">default</span>
+        <span class="text-[10px] text-gray-400">default</span>
         <div class="space-y-2">
           <label class="flex items-center gap-1 text-sm font-normal text-gray-900">Label <span class="text-red-500">*</span></label>
           <div class="flex items-center gap-2 h-10 px-4 border border-gray-200 rounded-md bg-white">
@@ -620,7 +624,7 @@
       </div>
       <!-- Focus -->
       <div class="flex flex-col gap-2 w-[280px]">
-        <span class="text-[10px] text-gray-400 uppercase">focus</span>
+        <span class="text-[10px] text-gray-400">focus</span>
         <div class="space-y-2">
           <label class="flex items-center gap-1 text-sm font-normal text-gray-900">Label <span class="text-red-500">*</span></label>
           <div class="flex items-center gap-2 h-10 px-4 border border-indigo-500 ring-1 ring-indigo-500 rounded-md bg-white">
@@ -632,7 +636,7 @@
       </div>
       <!-- Error -->
       <div class="flex flex-col gap-2 w-[280px]">
-        <span class="text-[10px] text-gray-400 uppercase">error</span>
+        <span class="text-[10px] text-gray-400">error</span>
         <div class="space-y-2">
           <label class="flex items-center gap-1 text-sm font-normal text-gray-900">Label <span class="text-red-500">*</span></label>
           <div class="flex items-center gap-2 h-10 px-4 border border-red-500 rounded-md bg-white">
@@ -645,7 +649,7 @@
       </div>
       <!-- Disabled -->
       <div class="flex flex-col gap-2 w-[280px]">
-        <span class="text-[10px] text-gray-400 uppercase">disabled</span>
+        <span class="text-[10px] text-gray-400">disabled</span>
         <div class="space-y-2">
           <label class="flex items-center gap-1 text-sm font-normal text-gray-900">Label <span class="text-red-500">*</span></label>
           <div class="flex items-center gap-2 h-10 px-4 border border-gray-200 rounded-md bg-gray-50">
@@ -657,7 +661,7 @@
       </div>
       <!-- Filled -->
       <div class="flex flex-col gap-2 w-[280px]">
-        <span class="text-[10px] text-gray-400 uppercase">filled</span>
+        <span class="text-[10px] text-gray-400">filled</span>
         <div class="space-y-2">
           <label class="flex items-center gap-1 text-sm font-normal text-gray-900">Label <span class="text-red-500">*</span></label>
           <div class="flex items-center gap-2 h-10 px-4 border border-gray-200 rounded-md bg-white">

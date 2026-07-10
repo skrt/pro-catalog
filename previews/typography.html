@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
-<style>#back-link { display: inline-flex; } .in-iframe #back-link { display: none; }</style>
-<script>if (window !== window.top) { document.documentElement.classList.add("in-iframe"); document.addEventListener("DOMContentLoaded", function() { var el = document.getElementById("back-link"); if (el) el.remove(); }); }</script>
+<style>#back-link { display: inline-flex; } .in-iframe #back-link { display: none; } .in-iframe body { padding: 0 !important; } .in-iframe.demo-only body { background: #f8f8fa !important; padding: 36px 32px 32px !important; }</style>
+<script>if (window !== window.top) { document.documentElement.classList.add("in-iframe"); var view = new URLSearchParams(location.search).get("view"); if (view === "demo") document.documentElement.classList.add("demo-only"); document.addEventListener("DOMContentLoaded", function() { var el = document.getElementById("back-link"); if (el) el.remove(); var demo = document.getElementById("demo-section"); if (view === "demo" && demo) { document.body.appendChild(demo); Array.from(document.body.children).forEach(function(c) { if (c === demo || c.tagName === "SCRIPT" || c.hasAttribute("data-demo-keep")) return; c.remove(); }); } else if (view === "preview" && demo) { demo.remove(); } }); }</script>
 </head>
 <body class="bg-white p-8">
   <a href="../" class="inline-flex items-center gap-1 text-sm text-gray-400 hover:text-gray-600 mb-4" id="back-link">
@@ -17,7 +17,7 @@
 
     <!-- Type Scale -->
     <div>
-      <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-6">Type Scale</p>
+      <p class="text-xs font-normal text-gray-400 tracking-wider mb-6">Type Scale</p>
       <div class="space-y-5">
         <!-- text-xs: 12px / 16px -->
         <div class="flex items-baseline gap-4">
@@ -102,7 +102,7 @@
 
     <!-- Font Weights (shown at text-base / 16px) -->
     <div>
-      <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-6">Font Weights (System, 16px)</p>
+      <p class="text-xs font-normal text-gray-400 tracking-wider mb-6">Font Weights (System, 16px)</p>
       <div class="space-y-3">
         <div class="flex items-baseline gap-4">
           <span class="w-32 shrink-0 text-xs text-gray-400 font-mono">100 Thin</span>
@@ -145,7 +145,7 @@
 
     <!-- TailwindCSS Class Reference -->
     <div>
-      <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">TailwindCSS Class Reference</p>
+      <p class="text-xs font-normal text-gray-400 tracking-wider mb-4">TailwindCSS Class Reference</p>
       <div class="overflow-x-auto">
         <table class="w-full text-sm">
           <thead>

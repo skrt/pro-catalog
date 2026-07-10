@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-<style>#back-link { display: inline-flex; } .in-iframe #back-link { display: none; }</style>
-<script>if (window !== window.top) { document.documentElement.classList.add("in-iframe"); document.addEventListener("DOMContentLoaded", function() { var el = document.getElementById("back-link"); if (el) el.remove(); }); }</script>
+<style>#back-link { display: inline-flex; } .in-iframe #back-link { display: none; } .in-iframe body { padding: 0 !important; } .in-iframe.demo-only body { background: #f8f8fa !important; padding: 36px 32px 32px !important; } .in-iframe.demo-only #demo-section { padding-bottom: 240px; }</style>
+<script>if (window !== window.top) { document.documentElement.classList.add("in-iframe"); var view = new URLSearchParams(location.search).get("view"); if (view === "demo") document.documentElement.classList.add("demo-only"); document.addEventListener("DOMContentLoaded", function() { var el = document.getElementById("back-link"); if (el) el.remove(); var demo = document.getElementById("demo-section"); if (view === "demo" && demo) { document.body.appendChild(demo); Array.from(document.body.children).forEach(function(c) { if (c === demo || c.tagName === "SCRIPT" || c.hasAttribute("data-demo-keep")) return; c.remove(); }); } else if (view === "preview" && demo) { demo.remove(); } }); }</script>
 </head>
 <body class="bg-white p-6 space-y-10">
   <a href="../" class="inline-flex items-center gap-1 text-sm text-gray-400 hover:text-gray-600 mb-4" id="back-link">
@@ -15,7 +15,7 @@
   </a>
 
   <!-- INTERACTIVE DEMO -->
-  <section x-data="{
+  <section id="demo-section" x-data="{
     query: '',
     selected: '',
     focused: false,
@@ -26,7 +26,6 @@
     },
     get showDropdown() { return this.focused; }
   }">
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Interactive Demo</h3>
     <div class="w-80 space-y-2">
       <label class="block text-sm font-normal text-gray-900">仕入先 <span class="text-red-500">*</span></label>
       <div class="relative">
@@ -73,7 +72,7 @@
 
   <!-- STATES -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">States</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">States</h3>
     <div class="flex items-start gap-6 flex-wrap">
 
       <!-- Default  stroke=#e5e7eb  icon=hidden -->
@@ -131,12 +130,12 @@
   <!-- COMBOBOX MENU -->
   <!-- w=320  borderRadius=6  border=gray-200  bg=white  shadow-sm -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">ComboBox Menu</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Menu</h3>
     <div class="flex items-start gap-8 flex-wrap">
 
       <!-- Default — results found -->
       <div class="space-y-2">
-        <span class="text-[10px] text-gray-400 uppercase">Default</span>
+        <span class="text-[10px] text-gray-400">Default</span>
         <div class="w-80 py-1 bg-white border border-gray-200 rounded-md shadow-lg">
           <div class="px-3 py-2 text-xs text-gray-400">検索結果：5件</div>
           <div class="px-3 py-2 text-sm leading-5 text-gray-900 cursor-pointer hover:bg-gray-50">にいやま株式会社</div>
@@ -149,7 +148,7 @@
 
       <!-- Empty — no results -->
       <div class="space-y-2">
-        <span class="text-[10px] text-gray-400 uppercase">Empty</span>
+        <span class="text-[10px] text-gray-400">Empty</span>
         <div class="w-80 py-1 bg-white border border-gray-200 rounded-md shadow-lg">
           <div class="px-3 py-2 text-xs text-gray-400">検索結果：0件</div>
           <div class="px-3 py-3 text-sm leading-5 text-gray-400">該当する結果がありません</div>
@@ -165,7 +164,7 @@
 
   <!-- DEFAULT MENU — Default State -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Menu — Default</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Menu — Default</h3>
     <div class="w-[320px] py-1 bg-white border border-gray-200 rounded-md shadow-lg max-h-[240px] overflow-clip">
       <div class="px-3 py-2 text-xs text-gray-400">検索結果：10件</div>
       <div class="px-3 py-2 text-sm leading-5 text-gray-900 hover:bg-gray-50 cursor-pointer">にいやま株式会社</div>
@@ -183,7 +182,7 @@
 
   <!-- DEFAULT MENU — Empty State -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Menu — Empty</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Menu — Empty</h3>
     <div class="w-[320px] py-1 bg-white border border-gray-200 rounded-md shadow-lg max-h-[240px] overflow-clip">
       <div class="px-3 py-2 text-xs text-gray-400">検索結果：0件</div>
       <div class="px-3 py-2 text-sm leading-5 text-gray-400">該当する結果がありません</div>
@@ -192,7 +191,7 @@
 
   <!-- DEFAULT MENU — Loading State -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Menu — Loading</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Menu — Loading</h3>
     <div class="w-[320px] py-1 bg-white border border-gray-200 rounded-md shadow-lg max-h-[240px] overflow-clip">
       <div class="px-3 py-2 text-xs text-gray-400 flex items-center gap-1">検索結果：5件 <svg class="w-3 h-3 animate-spin text-gray-400" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" opacity="0.25"/><path d="M12 2a10 10 0 0 1 10 10" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></div>
       <div class="px-3 py-2 text-sm leading-5 text-gray-900 hover:bg-gray-50 cursor-pointer">にいやま株式会社</div>
@@ -205,7 +204,7 @@
 
   <!-- ITEM SELECT MENU — Default State -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Menu — ItemSelect</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Menu — ItemSelect</h3>
     <div class="w-[576px] py-1 bg-white border border-gray-200 rounded-md shadow-lg max-h-[420px] overflow-clip flex flex-col">
       <div class="px-3 py-2 text-xs text-gray-400">検索結果：2,096件</div>
       <!-- Header -->
@@ -246,7 +245,7 @@
 
   <!-- ITEM SELECT MENU — Empty State -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Menu — ItemSelect Empty</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Menu — ItemSelect Empty</h3>
     <div class="w-[576px] py-1 bg-white border border-gray-200 rounded-md shadow-lg max-h-[420px] overflow-clip">
       <div class="px-3 py-2 text-xs text-gray-400">検索結果：0件</div>
       <div class="flex items-start">
@@ -260,7 +259,7 @@
 
   <!-- PRICE LIST MENU -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Menu — PriceTable</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Menu — PriceTable</h3>
     <div class="w-[248px] bg-white border border-gray-200 rounded-md shadow-lg overflow-clip">
       <!-- Header -->
       <div class="flex items-start">

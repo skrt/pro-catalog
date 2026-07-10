@@ -25,8 +25,8 @@
       }
     }
   </script>
-<style>#back-link { display: inline-flex; } .in-iframe #back-link { display: none; }</style>
-<script>if (window !== window.top) { document.documentElement.classList.add("in-iframe"); document.addEventListener("DOMContentLoaded", function() { var el = document.getElementById("back-link"); if (el) el.remove(); }); }</script>
+<style>#back-link { display: inline-flex; } .in-iframe #back-link { display: none; } .in-iframe body { padding: 0 !important; } .in-iframe.demo-only body { background: #f8f8fa !important; padding: 36px 32px 32px !important; } .in-iframe.demo-only #demo-section { padding-bottom: 96px; }</style>
+<script>if (window !== window.top) { document.documentElement.classList.add("in-iframe"); var view = new URLSearchParams(location.search).get("view"); if (view === "demo") document.documentElement.classList.add("demo-only"); document.addEventListener("DOMContentLoaded", function() { var el = document.getElementById("back-link"); if (el) el.remove(); var demo = document.getElementById("demo-section"); if (view === "demo" && demo) { document.body.appendChild(demo); Array.from(document.body.children).forEach(function(c) { if (c === demo || c.tagName === "SCRIPT" || c.hasAttribute("data-demo-keep")) return; c.remove(); }); } else if (view === "preview" && demo) { demo.remove(); } }); }</script>
 <script>
   function toggleMenu(btn) {
     var menu = btn.nextElementSibling;
@@ -51,7 +51,7 @@
 
     <!-- Color Variants (md size) -->
     <div>
-      <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Color Variants</p>
+      <p class="text-xs font-normal text-gray-400 tracking-wider mb-4">Color Variants</p>
       <div class="flex flex-wrap items-center gap-4">
         <div class="text-center space-y-1.5">
           <button class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-white rounded-md bg-btn-primary-default hover:bg-btn-primary-hover active:bg-btn-primary-active transition-colors">
@@ -82,7 +82,7 @@
 
     <!-- Sizes (secondary) -->
     <div>
-      <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Sizes</p>
+      <p class="text-xs font-normal text-gray-400 tracking-wider mb-4">Sizes</p>
       <div class="flex flex-wrap items-end gap-4">
         <div class="text-center space-y-1.5">
           <button class="inline-flex items-center gap-1 px-2 py-1 text-xs font-semibold rounded-md bg-btn-secondary-default text-btn-text-secondary-default hover:bg-btn-secondary-hover hover:text-btn-text-secondary-hover active:bg-btn-secondary-active active:text-btn-text-secondary-active transition-colors">
@@ -121,7 +121,7 @@
 
     <!-- States (secondary, md size) -->
     <div>
-      <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">States (Secondary)</p>
+      <p class="text-xs font-normal text-gray-400 tracking-wider mb-4">States (Secondary)</p>
       <div class="flex flex-wrap items-center gap-3">
         <!-- Default -->
         <div class="text-center space-y-1.5">
@@ -164,7 +164,7 @@
 
     <!-- Icon Options -->
     <div>
-      <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Icon Options</p>
+      <p class="text-xs font-normal text-gray-400 tracking-wider mb-4">Icon Options</p>
       <div class="flex flex-wrap items-center gap-3">
         <!-- With Left Icon -->
         <button class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold rounded-md bg-btn-secondary-default text-btn-text-secondary-default hover:bg-btn-secondary-hover hover:text-btn-text-secondary-hover active:bg-btn-secondary-active active:text-btn-text-secondary-active transition-colors">
@@ -181,8 +181,7 @@
     </div>
 
     <!-- With Menu (Demo) -->
-    <div>
-      <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">With Menu (Demo)</p>
+    <div id="demo-section">
       <div class="flex flex-wrap items-start gap-6">
         <!-- Secondary with menu toggle (発注書作成: CSVで入力) -->
         <div class="relative inline-flex flex-col" data-menu-wrapper>

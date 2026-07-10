@@ -21,10 +21,12 @@
 <style>
   #back-link { display: inline-flex; }
   .in-iframe #back-link { display: none; }
+  .in-iframe body { padding: 0 !important; }
+  .in-iframe.demo-only body { background: #f8f8fa !important; padding: 36px 32px 32px !important; }
 </style>
 <script>
   var _inIframe = window !== window.top;
-  if (_inIframe) { document.documentElement.classList.add("in-iframe"); document.addEventListener("DOMContentLoaded", function() { var el = document.getElementById("back-link"); if (el) el.remove(); }); }
+  if (_inIframe) { document.documentElement.classList.add("in-iframe"); var _view = new URLSearchParams(location.search).get("view"); if (_view === "demo") document.documentElement.classList.add("demo-only"); document.addEventListener("DOMContentLoaded", function() { var el = document.getElementById("back-link"); if (el) el.remove(); var demo = document.getElementById("demo-section"); if (_view === "demo" && demo) { document.body.appendChild(demo); Array.from(document.body.children).forEach(function(c) { if (c === demo || c.tagName === "SCRIPT" || c.hasAttribute("data-demo-keep")) return; c.remove(); }); } else if (_view === "preview" && demo) { demo.remove(); } }); }
 </script>
 </head>
 <body class="bg-white p-6 space-y-10">
@@ -35,7 +37,7 @@
 
   <!-- ===== DRAWER / Default（添付なし・送信disabled） ===== -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Drawer / Default</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Default</h3>
     <div class="w-[512px] h-[720px] flex flex-col bg-white border-l border-[#E5E7EB]">
       <!-- Upper Area -->
       <div class="flex flex-col gap-3 p-6 shrink-0">
@@ -117,7 +119,7 @@
 
   <!-- ===== DRAWER / 添付データあり ===== -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Drawer / 添付データあり</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">添付データあり</h3>
     <div class="w-[512px] h-[720px] flex flex-col bg-white border-l border-[#E5E7EB]">
       <!-- Upper Area -->
       <div class="flex flex-col gap-3 p-6 shrink-0">
@@ -236,7 +238,7 @@
 
   <!-- ===== DRAWER / エラー：添付データ上限 ===== -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Drawer / エラー：添付データ上限</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">エラー：添付データ上限</h3>
     <div class="w-[512px] h-[720px] flex flex-col bg-white border-l border-[#E5E7EB]">
       <!-- Upper Area -->
       <div class="flex flex-col gap-3 p-6 shrink-0">
@@ -314,11 +316,11 @@
 
   <!-- ===== DRAWER MESSAGE (Individual) ===== -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Drawer Message</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Message</h3>
     <div class="w-[464px] space-y-6">
       <!-- Receive (from supplier) -->
       <div class="space-y-1">
-        <span class="text-[10px] text-gray-400 uppercase">Receive (Supplier)</span>
+        <span class="text-[10px] text-gray-400">Receive (Supplier)</span>
         <div class="flex flex-col gap-2 py-2">
           <div class="flex items-center gap-2">
             <p class="text-base font-bold text-[#101828] leading-6">test@shiza1.com</p>
@@ -337,7 +339,7 @@
       </div>
       <!-- Receive (no attachment) -->
       <div class="space-y-1">
-        <span class="text-[10px] text-gray-400 uppercase">Receive (No Attachment)</span>
+        <span class="text-[10px] text-gray-400">Receive (No Attachment)</span>
         <div class="flex flex-col gap-2 py-2">
           <div class="flex items-center gap-2">
             <p class="text-base font-bold text-[#101828] leading-6">test@shiza1.com</p>
@@ -348,7 +350,7 @@
       </div>
       <!-- Send (from user) -->
       <div class="space-y-1">
-        <span class="text-[10px] text-gray-400 uppercase">Send (User)</span>
+        <span class="text-[10px] text-gray-400">Send (User)</span>
         <div class="pl-10">
           <div class="bg-[#F9FAFB] rounded-lg p-4 flex flex-col gap-2">
             <div class="flex items-center gap-2">
@@ -365,7 +367,7 @@
       </div>
       <!-- Send (no attachment) -->
       <div class="space-y-1">
-        <span class="text-[10px] text-gray-400 uppercase">Send (No Attachment)</span>
+        <span class="text-[10px] text-gray-400">Send (No Attachment)</span>
         <div class="pl-10">
           <div class="bg-[#F9FAFB] rounded-lg p-4 flex flex-col gap-2">
             <div class="flex items-center gap-2">
@@ -383,7 +385,7 @@
   </section>
 
   <!-- ===== INTERACTIVE DEMO (Inline Column) ===== -->
-  <section x-data="{
+  <section id="demo-section" x-data="{
     open: false,
     chatActive: false,
     msgText: '',
@@ -419,7 +421,6 @@
       }
     }
   }">
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Interactive Demo</h3>
     <div class="flex h-[600px] border border-[#E5E7EB] rounded-lg overflow-hidden relative">
       <!-- Left: Main Content Area -->
       <div class="flex-1 min-w-0 p-6 overflow-y-auto bg-gray-50">

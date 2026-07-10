@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-<style>#back-link { display: inline-flex; } .in-iframe #back-link { display: none; }</style>
-<script>if (window !== window.top) { document.documentElement.classList.add("in-iframe"); document.addEventListener("DOMContentLoaded", function() { var el = document.getElementById("back-link"); if (el) el.remove(); }); }</script>
+<style>#back-link { display: inline-flex; } .in-iframe #back-link { display: none; } .in-iframe body { padding: 0 !important; } .in-iframe.demo-only body { background: #f8f8fa !important; padding: 36px 32px 32px !important; } .in-iframe.demo-only #demo-section { padding-bottom: 240px; }</style>
+<script>if (window !== window.top) { document.documentElement.classList.add("in-iframe"); var view = new URLSearchParams(location.search).get("view"); if (view === "demo") document.documentElement.classList.add("demo-only"); document.addEventListener("DOMContentLoaded", function() { var el = document.getElementById("back-link"); if (el) el.remove(); var demo = document.getElementById("demo-section"); if (view === "demo" && demo) { document.body.appendChild(demo); Array.from(document.body.children).forEach(function(c) { if (c === demo || c.tagName === "SCRIPT" || c.hasAttribute("data-demo-keep")) return; c.remove(); }); } else if (view === "preview" && demo) { demo.remove(); } }); }</script>
 </head>
 <body class="bg-white p-6 space-y-10">
   <a href="../" class="inline-flex items-center gap-1 text-sm text-gray-400 hover:text-gray-600 mb-4" id="back-link">
@@ -15,8 +15,7 @@
   </a>
 
   <!-- INTERACTIVE DEMO -->
-  <section x-data="{ open: false, selected: '', options: ['北海道', '東京都', '大阪府', '福岡県', '沖縄県'] }">
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Interactive Demo</h3>
+  <section id="demo-section" x-data="{ open: false, selected: '', options: ['北海道', '東京都', '大阪府', '福岡県', '沖縄県'] }">
     <div class="w-80 space-y-2">
       <label class="block text-sm font-normal text-gray-900">都道府県 <span class="text-red-500">*</span></label>
       <div class="relative">
@@ -48,7 +47,7 @@
 
   <!-- SIZES -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Sizes</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Sizes</h3>
     <div class="flex items-start gap-6 flex-wrap">
 
       <!-- XS -->
@@ -96,7 +95,7 @@
 
   <!-- STATES -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">States</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">States</h3>
     <div class="flex items-start gap-6 flex-wrap">
 
       <!-- Default -->
@@ -148,7 +147,7 @@
 
   <!-- SELECT MENU — Default -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">SelectMenu — Default</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Menu — Default</h3>
     <div class="w-[320px] max-h-[240px] overflow-y-auto py-1 bg-white border border-gray-200 rounded-md shadow-lg">
       <div class="flex items-center px-3 py-2 text-sm leading-5 font-normal text-gray-900 whitespace-nowrap">丸山印刷株式会社</div>
       <div class="flex items-center px-3 py-2 text-sm leading-5 font-normal text-gray-900 whitespace-nowrap">株式会社サプライヤー</div>
@@ -162,7 +161,7 @@
 
   <!-- SELECT MENU — Empty -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">SelectMenu — Empty</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Menu — Empty</h3>
     <div class="w-[320px] py-1 bg-white border border-gray-200 rounded-md shadow-lg">
       <div class="px-3 py-2 text-sm leading-5 font-normal text-gray-400 whitespace-nowrap">該当する選択肢がありません</div>
     </div>
@@ -170,13 +169,13 @@
 
   <!-- SELECT MENU — Hover -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">SelectMenu — Hover</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Menu — Hover</h3>
     <div class="w-[320px] px-3 py-2 text-sm leading-5 font-normal text-gray-900 whitespace-nowrap bg-gray-50">丸山印刷株式会社</div>
   </section>
 
   <!-- SELECT MENU — Selected -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">SelectMenu — Selected</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Menu — Selected</h3>
     <div class="w-[320px] px-3 py-2 text-sm leading-5 font-normal text-gray-900 whitespace-nowrap bg-indigo-50">丸山印刷株式会社</div>
   </section>
 

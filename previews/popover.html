@@ -46,8 +46,8 @@
       border-top: 1px solid #E2E8F0;
     }
   </style>
-<style>#back-link { display: inline-flex; } .in-iframe #back-link { display: none; }</style>
-<script>if (window !== window.top) { document.documentElement.classList.add("in-iframe"); document.addEventListener("DOMContentLoaded", function() { var el = document.getElementById("back-link"); if (el) el.remove(); }); }</script>
+<style>#back-link { display: inline-flex; } .in-iframe #back-link { display: none; } .in-iframe body { padding: 0 !important; } .in-iframe.demo-only body { background: #f8f8fa !important; padding: 36px 32px 32px !important; }</style>
+<script>if (window !== window.top) { document.documentElement.classList.add("in-iframe"); var view = new URLSearchParams(location.search).get("view"); if (view === "demo") document.documentElement.classList.add("demo-only"); document.addEventListener("DOMContentLoaded", function() { var el = document.getElementById("back-link"); if (el) el.remove(); var demo = document.getElementById("demo-section"); if (view === "demo" && demo) { document.body.appendChild(demo); Array.from(document.body.children).forEach(function(c) { if (c === demo || c.tagName === "SCRIPT" || c.hasAttribute("data-demo-keep")) return; c.remove(); }); } else if (view === "preview" && demo) { demo.remove(); } }); }</script>
 </head>
 <body class="bg-white p-6 space-y-10">
   <a href="../" class="inline-flex items-center gap-1 text-sm text-gray-400 hover:text-gray-600 mb-4" id="back-link">
@@ -55,9 +55,9 @@
     一覧に戻る
   </a>
 
-  <!-- DEFAULT STATE -->
+  <!-- Default -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">DEFAULT STATE</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Default</h3>
     <div class="flex items-start justify-center pt-6">
       <!-- Popover: Union shape with arrow, border=#E2E8F0(1px), bg=#FFFFFF, radius=4px -->
       <div class="popover-shape arrow-top w-32 px-3 py-2">
@@ -66,9 +66,9 @@
     </div>
   </section>
 
-  <!-- HOVER STATE -->
+  <!-- Hover -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">HOVER STATE</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Hover</h3>
     <div class="flex items-start justify-center pt-6">
       <!-- Hover: text-indigo-600 + underline -->
       <div class="popover-shape arrow-top w-32 px-3 py-2">
@@ -77,9 +77,8 @@
     </div>
   </section>
 
-  <!-- DEMO: HOVER BADGE TO SHOW POPOVER (BASIC) -->
-  <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">DEMO - BASIC</h3>
+  <!-- DEMO: HOVER BADGE TO SHOW POPOVER -->
+  <section id="demo-section">
     <div class="flex items-start justify-center">
       <div class="relative inline-flex flex-col items-center group">
         <!-- Trigger: Badge (Type=pending_delivery) -->

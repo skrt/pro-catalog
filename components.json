@@ -33,6 +33,45 @@
       "category": "actions",
       "preview": "previews/button.html",
       "figmaUrl": "https://www.figma.com/design/tnxuN8LS2uMJEw2lYnvx69/shizai-pro?node-id=1625-1268",
+      "usage": {
+        "when": [
+          "クリックでアクションを実行するときに使用します。重要度に応じて4色のカラーバリアントを使い分けます。"
+        ],
+        "tables": [
+          {
+            "title": "Color",
+            "items": [
+              {
+                "label": "primary",
+                "desc": "画面の主要アクション（保存・発注・確定など）。1画面1つが目安"
+              },
+              {
+                "label": "secondary",
+                "desc": "主要アクションを補助する操作"
+              },
+              {
+                "label": "alert",
+                "desc": "削除・取消など破壊的な操作"
+              },
+              {
+                "label": "tertiary",
+                "desc": "キャンセル・戻るなど控えめな操作"
+              }
+            ]
+          }
+        ],
+        "rules": [
+          "ラベルは動詞で簡潔に書く（「保存する」「発注する」）",
+          "送信・確定の処理中は loading 状態にして二重送信を防ぐ（primary のみ）"
+        ],
+        "avoid": [
+          "並列に複数の primary を置かない"
+        ],
+        "vs": [
+          "MenuButton: クリックでメニューを開いて操作を選ばせる場合",
+          "IconButton: アイコンだけで意味が伝わる狭い場所の操作"
+        ]
+      },
       "props": [
         {
           "name": "Size",
@@ -199,26 +238,56 @@
       "description": "メニュー付きボタン。クリックでドロップダウンメニューを表示。ラベル右側にchevron-downアイコンが固定で付く。",
       "category": "actions",
       "preview": "previews/menu-button.html",
+      "usage": {
+        "when": [
+          "1つのボタンに複数の関連操作をまとめるときに使用します。クリックでドロップダウンメニューを開きます。"
+        ],
+        "rules": [
+          "ラベル右側の chevron-down は固定表示（メニューが開くことを示すため外さない）",
+          "メニュー項目は関連する操作のみでまとめる"
+        ],
+        "avoid": [
+          "操作が1つしかない場合は使わない（Button を使う）"
+        ],
+        "vs": [
+          "Button: 単一アクションの実行"
+        ]
+      },
+      "hasDemo": true,
       "props": [
         {
           "name": "Size",
           "type": "enum",
           "default": "md",
-          "values": ["xs", "sm", "md", "lg"],
+          "values": [
+            "xs",
+            "sm",
+            "md",
+            "lg"
+          ],
           "description": "ボタンのサイズ。Buttonコンポーネントと同一トークン"
         },
         {
           "name": "Color",
           "type": "enum",
           "default": "secondary",
-          "values": ["primary", "secondary", "tertiary"],
+          "values": [
+            "primary",
+            "secondary",
+            "tertiary"
+          ],
           "description": "Buttonコンポーネントと同一カラー（alertは対象外）"
         },
         {
           "name": "State",
           "type": "enum",
           "default": "default",
-          "values": ["default", "hover", "active", "disabled"],
+          "values": [
+            "default",
+            "hover",
+            "active",
+            "disabled"
+          ],
           "description": "インタラクション状態"
         },
         {
@@ -228,7 +297,21 @@
           "description": "左アイコンの表示（Right Iconのchevron-downは常時表示）"
         }
       ],
-      "notes": "Buttonとの違い: (1) 右側にchevron-downが固定で付く (2) クリックでドロップダウンメニューを表示。メニュー部分はring-1 ring-inset ring-gray-200 rounded-md shadow-lg、各項目はpx-3 py-2 text-sm text-gray-700 hover:bg-gray-50"
+      "notes": "Buttonとの違い: (1) 右側にchevron-downが固定で付く (2) クリックでドロップダウンメニューを表示。メニュー部分はring-1 ring-inset ring-gray-200 rounded-md shadow-lg、各項目はpx-3 py-2 text-sm text-gray-700 hover:bg-gray-50",
+      "spec": {
+        "states": [
+          {
+            "transition": "Closed → Open",
+            "trigger": "ボタンをクリック",
+            "effect": "ボタン直下にメニューが開く（他に開いているメニューは閉じる）"
+          },
+          {
+            "transition": "Open → Closed",
+            "trigger": "再度ボタンをクリック、またはメニューの外をクリック",
+            "effect": "メニューが閉じる"
+          }
+        ]
+      }
     },
     {
       "id": "icon-button",
@@ -237,6 +320,18 @@
       "category": "actions",
       "preview": "previews/icon-button.html",
       "figmaUrl": "https://www.figma.com/design/tnxuN8LS2uMJEw2lYnvx69/shizai-pro?node-id=1632-784",
+      "usage": {
+        "when": [
+          "スペースが限られた場所にアイコンのみの操作ボタンを置くときに使用します。"
+        ],
+        "rules": [
+          "アイコンだけで意味が伝わらない操作には Tooltip を併用する",
+          "未読・要対応の通知は Attention バッジで示す"
+        ],
+        "vs": [
+          "Button: ラベルを置くスペースがあるなら常にこちら"
+        ]
+      },
       "props": [
         {
           "name": "Size",
@@ -365,6 +460,22 @@
       "category": "forms",
       "preview": "previews/input.html",
       "figmaUrl": "https://www.figma.com/design/tnxuN8LS2uMJEw2lYnvx69/shizai-pro?node-id=1625-11162",
+      "usage": {
+        "when": [
+          "1行のテキストを入力してもらうときに使用します。ラベル・ヘルパーテキスト・エラー表示を組み合わせられます。"
+        ],
+        "rules": [
+          "必須項目はラベルに必須マーク（*）を付ける",
+          "入力条件・形式の説明はヘルパーテキストに、検証エラーはエラーテキストに表示する"
+        ],
+        "vs": [
+          "TextArea: 複数行の自由記述",
+          "NumberInput: 数値・金額・数量",
+          "Select: 決まった候補からの選択",
+          "ComboBox: 入力で候補を絞り込みたいマスタデータ"
+        ]
+      },
+      "hasDemo": true,
       "props": [
         {
           "name": "Size",
@@ -525,7 +636,21 @@
             }
           ]
         }
-      ]
+      ],
+      "spec": {
+        "states": [
+          {
+            "transition": "Default → Focus",
+            "trigger": "フィールドをクリック、または Tab でフォーカス",
+            "effect": "枠線がフォーカス表示に変わる"
+          },
+          {
+            "transition": "Focus → Default",
+            "trigger": "フィールドの外をクリックしてフォーカスを外す",
+            "effect": "枠線が通常表示に戻る"
+          }
+        ]
+      }
     },
     {
       "id": "number-input",
@@ -534,6 +659,18 @@
       "category": "forms",
       "preview": "previews/number-input.html",
       "figmaUrl": "https://www.figma.com/design/tnxuN8LS2uMJEw2lYnvx69/shizai-pro?node-id=2160-45186",
+      "usage": {
+        "when": [
+          "単価・数量・金額など数値を入力してもらうときに使用します。値は右揃えで表示されます。"
+        ],
+        "rules": [
+          "単位・桁区切りなど入力形式の補足はヘルパーテキストで示す"
+        ],
+        "vs": [
+          "Input: 自由なテキストの入力"
+        ]
+      },
+      "hasDemo": true,
       "props": [
         {
           "name": "Size",
@@ -632,7 +769,27 @@
             }
           ]
         }
-      ]
+      ],
+      "spec": {
+        "states": [
+          {
+            "transition": "Default → Focus",
+            "trigger": "フィールドをクリック、または Tab でフォーカス",
+            "effect": "枠線がフォーカス表示に変わる"
+          },
+          {
+            "transition": "Focus → Default",
+            "trigger": "フィールドの外をクリックしてフォーカスを外す",
+            "effect": "枠線が通常表示に戻る"
+          }
+        ],
+        "behavior": [
+          {
+            "action": "数値キーボード",
+            "detail": "inputmode=numeric によりモバイルでは数字キーボードを表示する"
+          }
+        ]
+      }
     },
     {
       "id": "select",
@@ -641,6 +798,19 @@
       "category": "forms",
       "preview": "previews/select.html",
       "figmaUrl": "https://www.figma.com/design/tnxuN8LS2uMJEw2lYnvx69/shizai-pro?node-id=1627-2381",
+      "usage": {
+        "when": [
+          "決まった選択肢から1つを選んでもらうときに使用します。"
+        ],
+        "avoid": [
+          "選択肢が多く絞り込みが必要な場合は使わない（ComboBox を使う）"
+        ],
+        "vs": [
+          "RadioGroup: 選択肢を常時全部見せたい排他選択",
+          "ComboBox: 選択肢が多い、または名前検索したいマスタデータ"
+        ]
+      },
+      "hasDemo": true,
       "props": [
         {
           "name": "Size",
@@ -812,7 +982,32 @@
             }
           ]
         }
-      ]
+      ],
+      "spec": {
+        "states": [
+          {
+            "transition": "Closed → Open",
+            "trigger": "フィールドをクリック",
+            "effect": "メニューが開き、フィールドがフォーカス表示になり chevron が反転する"
+          },
+          {
+            "transition": "Open → Closed（選択）",
+            "trigger": "メニュー項目をクリック",
+            "effect": "選択値がフィールドに表示され、メニューが閉じる"
+          },
+          {
+            "transition": "Open → Closed（キャンセル）",
+            "trigger": "フィールドの外をクリック",
+            "effect": "選択を変えずにメニューが閉じる"
+          }
+        ],
+        "behavior": [
+          {
+            "action": "選択中の表示",
+            "detail": "選択中の項目はメニュー内でハイライトされる"
+          }
+        ]
+      }
     },
     {
       "id": "text-area",
@@ -821,6 +1016,15 @@
       "category": "forms",
       "preview": "previews/text-area.html",
       "figmaUrl": "https://www.figma.com/design/tnxuN8LS2uMJEw2lYnvx69/shizai-pro?node-id=1631-398",
+      "usage": {
+        "when": [
+          "メモ・説明文・コメントなど複数行のテキストを入力してもらうときに使用します。"
+        ],
+        "vs": [
+          "Input: 1行で足りるもの"
+        ]
+      },
+      "hasDemo": true,
       "props": [
         {
           "name": "Size",
@@ -955,7 +1159,31 @@
             }
           ]
         }
-      ]
+      ],
+      "spec": {
+        "states": [
+          {
+            "transition": "Default → Focus",
+            "trigger": "フィールドをクリック、または Tab でフォーカス",
+            "effect": "枠線がフォーカス表示に変わる"
+          },
+          {
+            "transition": "Focus → Default",
+            "trigger": "フィールドの外をクリックしてフォーカスを外す",
+            "effect": "枠線が通常表示に戻る"
+          }
+        ],
+        "behavior": [
+          {
+            "action": "文字数カウンター",
+            "detail": "入力中の文字数を「n/200」形式で右下に表示する"
+          },
+          {
+            "action": "リサイズ",
+            "detail": "縦方向のみ手動リサイズできる"
+          }
+        ]
+      }
     },
     {
       "id": "combobox",
@@ -964,6 +1192,15 @@
       "category": "forms",
       "preview": "previews/combobox.html",
       "figmaUrl": "https://www.figma.com/design/tnxuN8LS2uMJEw2lYnvx69/shizai-pro?node-id=1641-1763",
+      "usage": {
+        "when": [
+          "テキスト入力で候補を絞り込みながら1つを選んでもらうときに使用します。"
+        ],
+        "vs": [
+          "Select: 絞り込み不要の少数の固定リスト"
+        ]
+      },
+      "hasDemo": true,
       "props": [
         {
           "name": "State",
@@ -1097,7 +1334,45 @@
             }
           ]
         }
-      ]
+      ],
+      "spec": {
+        "states": [
+          {
+            "transition": "Default → Open",
+            "trigger": "入力欄をクリック",
+            "effect": "候補メニューが開き、検索結果の件数が表示される"
+          },
+          {
+            "transition": "Open → 絞り込み",
+            "trigger": "テキストを入力",
+            "effect": "部分一致（大文字小文字を区別しない）で候補を絞り込む"
+          },
+          {
+            "transition": "Open → Closed（選択）",
+            "trigger": "候補をクリック",
+            "effect": "選択値が入力欄に入り、メニューが閉じる"
+          },
+          {
+            "transition": "Open → Closed（キャンセル）",
+            "trigger": "入力欄の外をクリック",
+            "effect": "メニューが閉じる"
+          }
+        ],
+        "behavior": [
+          {
+            "action": "クリア",
+            "detail": "値があるとき右端にクリアアイコンを表示し、クリックで入力と選択を消去する"
+          },
+          {
+            "action": "該当なし",
+            "detail": "絞り込み結果が0件のとき「該当なし」を表示する"
+          },
+          {
+            "action": "再編集",
+            "detail": "選択済みの状態で再フォーカスすると、選択値が入力欄に戻り編集できる"
+          }
+        ]
+      }
     },
     {
       "id": "switch",
@@ -1106,6 +1381,17 @@
       "category": "forms",
       "preview": "previews/switch.html",
       "figmaUrl": "https://www.figma.com/design/tnxuN8LS2uMJEw2lYnvx69/shizai-pro?node-id=1643-7626",
+      "usage": {
+        "when": [
+          "設定の ON/OFF を切り替えるときに使用します。切替が即時に反映される操作に使います。"
+        ],
+        "avoid": [
+          "フォーム送信で確定する項目には使わない（Checkbox を使う）"
+        ],
+        "vs": [
+          "Checkbox: フォーム送信で確定する項目・複数選択"
+        ]
+      },
       "props": [
         {
           "name": "Size",
@@ -1195,6 +1481,30 @@
       "category": "forms",
       "preview": "previews/radio-group.html",
       "figmaUrl": "https://www.figma.com/design/tnxuN8LS2uMJEw2lYnvx69/shizai-pro?node-id=1641-5155",
+      "usage": {
+        "when": [
+          "複数の選択肢から1つを選んでもらうときに使用します。丸型の Radio 形式と Pill タブの Button 形式を使い分けます。"
+        ],
+        "tables": [
+          {
+            "title": "Form",
+            "items": [
+              {
+                "label": "radio",
+                "desc": "フォーム内の単一選択（標準形）"
+              },
+              {
+                "label": "button",
+                "desc": "一覧の絞り込み・表示切替。カウンター表示可"
+              }
+            ]
+          }
+        ],
+        "vs": [
+          "Select: 選択肢が隠れてよい場合",
+          "Checkbox: 複数選択"
+        ]
+      },
       "props": [
         {
           "name": "Form",
@@ -1391,6 +1701,16 @@
       "category": "forms",
       "preview": "previews/checkbox.html",
       "figmaUrl": "https://www.figma.com/design/tnxuN8LS2uMJEw2lYnvx69/shizai-pro?node-id=1634-980",
+      "usage": {
+        "when": [
+          "複数の選択肢から任意の数を選んでもらうときに使用します。Table の行選択・全選択にも使います。"
+        ],
+        "vs": [
+          "RadioGroup: 1つだけ選ぶ排他選択",
+          "Switch: 即時反映される ON/OFF の切替"
+        ]
+      },
+      "hasDemo": true,
       "props": [
         {
           "name": "Size",
@@ -1486,7 +1806,32 @@
             }
           ]
         }
-      ]
+      ],
+      "spec": {
+        "states": [
+          {
+            "transition": "Default → Checked",
+            "trigger": "ボックスまたはラベルをクリック",
+            "effect": "チェックマークが表示される"
+          },
+          {
+            "transition": "Checked → Default",
+            "trigger": "再度クリック",
+            "effect": "チェックマークが消える"
+          },
+          {
+            "transition": "Disabled",
+            "trigger": "クリック",
+            "effect": "反応しない"
+          }
+        ],
+        "behavior": [
+          {
+            "action": "クリック領域",
+            "detail": "ラベルを含む行全体がクリック可能"
+          }
+        ]
+      }
     },
     {
       "id": "datepicker",
@@ -1495,6 +1840,15 @@
       "category": "forms",
       "preview": "previews/datepicker.html",
       "figmaUrl": "https://www.figma.com/design/tnxuN8LS2uMJEw2lYnvx69/shizai-pro?node-id=1728-2465",
+      "usage": {
+        "when": [
+          "日付を入力・選択してもらうときに使用します。単一日付の Datepicker Input、カレンダー Popup、期間選択の Date Range Picker の3パーツで構成します。"
+        ],
+        "vs": [
+          "Date Range Picker: 期間（開始〜終了）の指定。開始・終了を別々の Datepicker 2つにしない"
+        ]
+      },
+      "hasDemo": true,
       "props": [
         {
           "name": "Size",
@@ -1673,7 +2027,44 @@
             }
           ]
         }
-      ]
+      ],
+      "spec": {
+        "states": [
+          {
+            "transition": "Closed → Open",
+            "trigger": "カレンダーアイコンをクリック",
+            "effect": "入力欄の直下にカレンダー Popup が開く"
+          },
+          {
+            "transition": "Open → Closed（選択）",
+            "trigger": "日付セルをクリック",
+            "effect": "選択日が yyyy/mm/dd 形式で入力欄に入り、カレンダーが閉じる"
+          },
+          {
+            "transition": "Open → Closed（キャンセル）",
+            "trigger": "カレンダーの外をクリック",
+            "effect": "日付を変えずに閉じる"
+          }
+        ],
+        "behavior": [
+          {
+            "action": "月移動",
+            "detail": "前月・翌月ボタンで表示月を切り替える"
+          },
+          {
+            "action": "当日表示",
+            "detail": "今日の日付をハイライトする"
+          },
+          {
+            "action": "期間選択",
+            "detail": "Date Range Picker は開始日→終了日の順にクリックで選択し、ホバー中の範囲をプレビュー表示する"
+          },
+          {
+            "action": "クリア",
+            "detail": "Date Range Picker は選択中にクリアアイコンを表示し、クリックで期間を消去する"
+          }
+        ]
+      }
     },
     {
       "id": "alert",
@@ -1682,6 +2073,40 @@
       "category": "feedback",
       "preview": "previews/alert.html",
       "figmaUrl": "https://www.figma.com/design/tnxuN8LS2uMJEw2lYnvx69/shizai-pro?node-id=1634-5472",
+      "usage": {
+        "when": [
+          "操作結果やシステムからの通知をページ内に表示するときに使用します。4種のステータスで内容の種別を表します。"
+        ],
+        "tables": [
+          {
+            "title": "Status",
+            "items": [
+              {
+                "label": "success",
+                "desc": "処理の成功・完了"
+              },
+              {
+                "label": "warning",
+                "desc": "注意が必要な状態"
+              },
+              {
+                "label": "error",
+                "desc": "処理の失敗・修正が必要なエラー"
+              },
+              {
+                "label": "info",
+                "desc": "補足情報・お知らせ"
+              }
+            ]
+          }
+        ],
+        "rules": [
+          "通知の対象（ページ・セクション・フォーム）の近くに配置する"
+        ],
+        "vs": [
+          "Toast: 操作直後に自動で消える一時的な通知"
+        ]
+      },
       "props": [
         {
           "name": "Status",
@@ -1774,6 +2199,17 @@
       "category": "feedback",
       "preview": "previews/toast.html",
       "figmaUrl": "https://www.figma.com/design/tnxuN8LS2uMJEw2lYnvx69/shizai-pro?node-id=1637-6265",
+      "usage": {
+        "when": [
+          "操作直後の結果を一時的に通知するときに使用します。"
+        ],
+        "rules": [
+          "自動で消える前提の軽い通知に使う（Close は閉じるボタンの表示切替）"
+        ],
+        "vs": [
+          "Alert: ページに表示され続ける通知・エラー"
+        ]
+      },
       "props": [
         {
           "name": "Status",
@@ -1860,6 +2296,18 @@
       "category": "feedback",
       "preview": "previews/tooltip.html",
       "figmaUrl": "https://www.figma.com/design/tnxuN8LS2uMJEw2lYnvx69/shizai-pro?node-id=1643-7651",
+      "usage": {
+        "when": [
+          "ホバー時に短い補足テキストを表示するときに使用します。上下左右の4方向から表示位置を選べます。"
+        ],
+        "rules": [
+          "IconButton などラベルのない操作の説明に使う",
+          "操作に必須の情報を Tooltip の中にだけ置かない"
+        ],
+        "vs": [
+          "Popover: クリックで開くコンテンツ"
+        ]
+      },
       "props": [
         {
           "name": "Position",
@@ -1906,6 +2354,16 @@
       "category": "feedback",
       "preview": "previews/popover.html",
       "figmaUrl": "https://www.figma.com/design/tnxuN8LS2uMJEw2lYnvx69/shizai-pro?node-id=1643-7758",
+      "usage": {
+        "when": [
+          "クリックで補足コンテンツを表示するときに使用します。"
+        ],
+        "vs": [
+          "Tooltip: ホバーで出す短い補足テキスト",
+          "Modal: 確認・選択など操作を伴う内容"
+        ]
+      },
+      "hasDemo": true,
       "props": [
         {
           "name": "State",
@@ -1952,7 +2410,27 @@
             }
           ]
         }
-      ]
+      ],
+      "spec": {
+        "states": [
+          {
+            "transition": "Default → Hover",
+            "trigger": "トリガー（Badge 等）にホバー",
+            "effect": "トリガーの下にポップオーバーが表示される"
+          },
+          {
+            "transition": "Hover → Default",
+            "trigger": "ホバーを外す",
+            "effect": "ポップオーバーが消える"
+          }
+        ],
+        "behavior": [
+          {
+            "action": "コンテンツ",
+            "detail": "アクションリンク（ステータス変更等）を配置できる"
+          }
+        ]
+      }
     },
     {
       "id": "modal",
@@ -1961,6 +2439,42 @@
       "category": "feedback",
       "preview": "previews/modal.html",
       "figmaUrl": "https://www.figma.com/design/tnxuN8LS2uMJEw2lYnvx69/shizai-pro?node-id=1643-7759",
+      "usage": {
+        "when": [
+          "現在の画面の文脈を保ったまま、確認や選択をしてもらうときに使用します。用途に応じてパーツを組み合わせます。"
+        ],
+        "tables": [
+          {
+            "title": "構成パーツ",
+            "items": [
+              {
+                "label": "Modal Dialog",
+                "desc": "タイトル+コンテンツ Slot の確認ダイアログ"
+              },
+              {
+                "label": "Modal Footer",
+                "desc": "件数表示とアクションボタンを置くフッター"
+              },
+              {
+                "label": "Modal / Table",
+                "desc": "フィルタ+テーブルで項目を選択するモーダル"
+              },
+              {
+                "label": "ItemSelect Row / MemberSelect Row",
+                "desc": "選択モーダル内の行"
+              }
+            ]
+          }
+        ],
+        "rules": [
+          "破壊的な操作の確認では実行ボタンに alert カラーの Button を使う"
+        ],
+        "vs": [
+          "Popover: 操作を伴わない軽い補足表示",
+          "Drawer: メッセージ送受信など画面の文脈を保った継続的な作業"
+        ]
+      },
+      "hasDemo": true,
       "props": [
         {
           "name": "Modal Dialog",
@@ -2073,7 +2587,35 @@
             }
           ]
         }
-      ]
+      ],
+      "spec": {
+        "states": [
+          {
+            "transition": "Closed → Open",
+            "trigger": "トリガーボタンをクリック",
+            "effect": "オーバーレイと共にモーダルが中央に表示される"
+          },
+          {
+            "transition": "Open → Closed",
+            "trigger": "フッターのキャンセル／完了ボタン、またはオーバーレイをクリック",
+            "effect": "モーダルが閉じる"
+          }
+        ],
+        "behavior": [
+          {
+            "action": "ItemSelect",
+            "detail": "行のチェックボックスで複数選択し、フッターに「n件選択中」を表示する"
+          },
+          {
+            "action": "MemberSelect",
+            "detail": "行をクリックすると1件を選択してモーダルが閉じる"
+          },
+          {
+            "action": "スクロール",
+            "detail": "テーブル部のみスクロールし、ヘッダーとフッターは固定される"
+          }
+        ]
+      }
     },
     {
       "id": "drawer",
@@ -2082,6 +2624,15 @@
       "category": "layout",
       "preview": "previews/drawer.html",
       "figmaUrl": "https://www.figma.com/design/tnxuN8LS2uMJEw2lYnvx69/shizai-pro?node-id=1731-4924",
+      "usage": {
+        "when": [
+          "画面右からスライドするパネルで、元の画面の文脈を保ったまま作業してもらうときに使用します。仕入先とのメッセージ送受信に使います。"
+        ],
+        "vs": [
+          "Modal: 短い確認・選択で完結する操作"
+        ]
+      },
+      "hasDemo": true,
       "props": [
         {
           "name": "Attachment",
@@ -2190,7 +2741,31 @@
             }
           ]
         }
-      ]
+      ],
+      "spec": {
+        "states": [
+          {
+            "transition": "Closed → Open",
+            "trigger": "トリガーボタンをクリック",
+            "effect": "右から幅400pxのパネルがスライドして開く"
+          },
+          {
+            "transition": "Open → Closed",
+            "trigger": "閉じるボタンをクリック",
+            "effect": "パネルが右に収納される"
+          }
+        ],
+        "behavior": [
+          {
+            "action": "メッセージ送信",
+            "detail": "送信すると Toast で通知し、会話中状態に切り替わる"
+          },
+          {
+            "action": "会話状態",
+            "detail": "Switch で会話中／終了を切り替え、Toast で通知する"
+          }
+        ]
+      }
     },
     {
       "id": "badge",
@@ -2199,6 +2774,14 @@
       "category": "data-display",
       "preview": "previews/badge.html",
       "figmaUrl": "https://www.figma.com/design/tnxuN8LS2uMJEw2lYnvx69/shizai-pro?node-id=1715-5360",
+      "usage": {
+        "when": [
+          "ステータスや区分を色付きラベルで表示するときに使用します。色は7色から選び、ラベルテキストは使用時に自由に設定します。"
+        ],
+        "rules": [
+          "同じ意味には画面をまたいで同じ色を使う"
+        ]
+      },
       "props": [
         {
           "name": "Color",
@@ -2297,6 +2880,41 @@
       "category": "data-display",
       "preview": "previews/detail-row.html",
       "figmaUrl": "https://www.figma.com/design/tnxuN8LS2uMJEw2lYnvx69/shizai-pro?node-id=1646-8409",
+      "usage": {
+        "when": [
+          "ラベルと値のペアで詳細情報を表示するときに使用します。値の表示形式を5タイプから選びます。"
+        ],
+        "tables": [
+          {
+            "title": "Type",
+            "items": [
+              {
+                "label": "text",
+                "desc": "テキスト表示（標準）"
+              },
+              {
+                "label": "badge",
+                "desc": "ステータスを Badge で表示"
+              },
+              {
+                "label": "link",
+                "desc": "リンク表示"
+              },
+              {
+                "label": "slot",
+                "desc": "WMS で変動する要素（最大3コンテンツ）"
+              },
+              {
+                "label": "select",
+                "desc": "ステータス変更用セレクト（xs・ボーダー色=ステータス色）"
+              }
+            ]
+          }
+        ],
+        "vs": [
+          "Table: 複数レコードの一覧表示"
+        ]
+      },
       "props": [
         {
           "name": "Type",
@@ -2396,6 +3014,18 @@
       "category": "data-display",
       "preview": "previews/table.html",
       "figmaUrl": "https://www.figma.com/design/tnxuN8LS2uMJEw2lYnvx69/shizai-pro?node-id=1647-11090",
+      "usage": {
+        "when": [
+          "データの一覧を表示するときに使用します。ヘッダー・データ行で構成し、下部に Pagination を配置します。"
+        ],
+        "rules": [
+          "セルの表示形式は12種の Cell Type から選ぶ（数値は number で右揃え）",
+          "行の詳細を展開する場合は Expand 系バリアントを使う"
+        ],
+        "vs": [
+          "DetailRow: 1レコードのラベルと値のペア表示"
+        ]
+      },
       "props": [
         {
           "name": "Cell Type",
@@ -2708,6 +3338,15 @@
       "category": "layout",
       "preview": "previews/global-nav.html",
       "figmaUrl": "https://www.figma.com/design/tnxuN8LS2uMJEw2lYnvx69/shizai-pro?node-id=3022-23424",
+      "usage": {
+        "when": [
+          "発注・納品・アイテムなど、画面の切り替えナビゲーションに使用します。"
+        ],
+        "rules": [
+          "Header の直下に配置する",
+          "現在のページを active 状態で示す"
+        ]
+      },
       "props": [
         {
           "name": "State",
@@ -2773,6 +3412,14 @@
       "category": "layout",
       "preview": "previews/header.html",
       "figmaUrl": "https://www.figma.com/design/tnxuN8LS2uMJEw2lYnvx69/shizai-pro?node-id=1712-5014",
+      "usage": {
+        "when": [
+          "画面最上部のグローバルヘッダーに使用します。ロゴ・会社名・ユーザーメニュー・ヘルプボタンを含みます。"
+        ],
+        "rules": [
+          "全画面で共通して表示する"
+        ]
+      },
       "props": [
         {
           "name": "Company Name",
@@ -2839,6 +3486,30 @@
       "category": "layout",
       "preview": "previews/heading.html",
       "figmaUrl": "https://www.figma.com/design/tnxuN8LS2uMJEw2lYnvx69/shizai-pro?node-id=1714-5204",
+      "usage": {
+        "when": [
+          "ページ・セクション・サブセクションの見出しに使用します。3タイプのサイズと補足テキストを組み合わせます。"
+        ],
+        "tables": [
+          {
+            "title": "Type",
+            "items": [
+              {
+                "label": "Page",
+                "desc": "ページタイトル（24px）。1ページ1つ"
+              },
+              {
+                "label": "Section",
+                "desc": "セクション見出し（20px）"
+              },
+              {
+                "label": "Sub",
+                "desc": "サブセクション見出し（16px）"
+              }
+            ]
+          }
+        ]
+      },
       "props": [
         {
           "name": "Type",
@@ -2927,6 +3598,11 @@
       "category": "layout",
       "preview": "previews/card.html",
       "figmaUrl": "https://www.figma.com/design/tnxuN8LS2uMJEw2lYnvx69/shizai-pro?node-id=2066-18617",
+      "usage": {
+        "when": [
+          "関連する情報や設定項目をグループ化して表示するときに使用します。タイトルとコンテンツ Slot で構成します。"
+        ]
+      },
       "props": [
         {
           "name": "Title",
@@ -2969,6 +3645,14 @@
       "category": "layout",
       "preview": "previews/footer.html",
       "figmaUrl": "https://www.figma.com/design/tnxuN8LS2uMJEw2lYnvx69/shizai-pro?node-id=2252-25945",
+      "usage": {
+        "when": [
+          "画面下部に固定表示するアクションバーに使用します。下書き保存・確認画面への遷移など、ページ全体に対する主要アクションを配置します。"
+        ],
+        "rules": [
+          "ページ全体を確定する操作のみを置く（行単位の操作は Table 内に置く）"
+        ]
+      },
       "props": [],
       "tokens": [
         {
@@ -2993,6 +3677,14 @@
       "category": "data-display",
       "preview": "previews/calc.html",
       "figmaUrl": "https://www.figma.com/design/tnxuN8LS2uMJEw2lYnvx69/shizai-pro?node-id=1715-5529",
+      "usage": {
+        "when": [
+          "小計・消費税（税率別内訳）・合計金額を表示するときに使用します。"
+        ],
+        "vs": [
+          "OrderPreview: 発注書全体のプレビュー"
+        ]
+      },
       "props": [
         {
           "name": "Subtotal",
@@ -3067,6 +3759,11 @@
       "category": "data-display",
       "preview": "previews/attachment.html",
       "figmaUrl": "https://www.figma.com/design/tnxuN8LS2uMJEw2lYnvx69/shizai-pro?node-id=2540-114711",
+      "usage": {
+        "when": [
+          "添付ファイルのファイル名・サイズを表示するときに使用します。削除ボタン付きで、sm / xs の2サイズがあります。"
+        ]
+      },
       "props": [
         {
           "name": "Size",
@@ -3116,6 +3813,11 @@
       "category": "data-display",
       "preview": "previews/order-preview.html",
       "figmaUrl": "https://www.figma.com/design/tnxuN8LS2uMJEw2lYnvx69/shizai-pro?node-id=1715-11371",
+      "usage": {
+        "when": [
+          "発注書のプレビューを印刷用レイアウトで表示するときに使用します。分納の場合は分割納品情報を表示します。"
+        ]
+      },
       "props": [
         {
           "name": "分納",
@@ -3165,6 +3867,14 @@
       "category": "design-tokens",
       "preview": "previews/typography.html",
       "figmaUrl": "https://www.figma.com/design/tnxuN8LS2uMJEw2lYnvx69/shizai-pro?node-id=8-2",
+      "usage": {
+        "when": [
+          "テキストのサイズ・ウェイトを決めるときに参照します。Inter フォント・13段階のサイズスケールで構成します。"
+        ],
+        "rules": [
+          "見出しのサイズは Heading のタイプ定義を優先する"
+        ]
+      },
       "props": [
         {
           "name": "Size",
@@ -3371,6 +4081,14 @@
       "category": "design-tokens",
       "preview": "previews/colors.html",
       "figmaUrl": "https://www.figma.com/design/tnxuN8LS2uMJEw2lYnvx69/shizai-pro?node-id=2-9",
+      "usage": {
+        "when": [
+          "色を選ぶときに参照します。TailwindCSS v4 準拠の22色×11段階のパレットです。"
+        ],
+        "rules": [
+          "ステータス表現は Badge・Alert など既存コンポーネントの色定義を優先する"
+        ]
+      },
       "props": [
         {
           "name": "Color",
@@ -3503,6 +4221,14 @@
       "category": "data-display",
       "preview": "previews/approval-tracker.html",
       "figmaUrl": "https://www.figma.com/design/tnxuN8LS2uMJEw2lYnvx69/shizai-pro?node-id=1743-6136",
+      "usage": {
+        "when": [
+          "承認フローの進行状況を表示するときに使用します。承認待ち・承認済み・差し戻しの3状態をカードで示し、コネクタ線でステップを接続します。"
+        ],
+        "rules": [
+          "最後のステップは右側のコネクタ線を非表示にする"
+        ]
+      },
       "props": [
         {
           "name": "State",
@@ -3615,6 +4341,11 @@
       "category": "data-display",
       "preview": "previews/price-table.html",
       "figmaUrl": "https://www.figma.com/design/tnxuN8LS2uMJEw2lYnvx69/shizai-pro?node-id=1918-29693",
+      "usage": {
+        "when": [
+          "数量×単価の価格テーブルをラベル付きで表示するときに使用します。行数は1〜6行で可変です。"
+        ]
+      },
       "props": [
         {
           "name": "Rows",
@@ -3704,6 +4435,11 @@
       "category": "data-display",
       "preview": "previews/pagination.html",
       "figmaUrl": "https://www.figma.com/design/tnxuN8LS2uMJEw2lYnvx69/shizai-pro?node-id=1647-8579",
+      "usage": {
+        "when": [
+          "Table の下部に配置し、ページ移動に使用します。"
+        ]
+      },
       "props": [
         {
           "name": "Page Count",

@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-<style>#back-link { display: inline-flex; } .in-iframe #back-link { display: none; }</style>
-<script>if (window !== window.top) { document.documentElement.classList.add("in-iframe"); document.addEventListener("DOMContentLoaded", function() { var el = document.getElementById("back-link"); if (el) el.remove(); }); }</script>
+<style>#back-link { display: inline-flex; } .in-iframe #back-link { display: none; } .in-iframe body { padding: 0 !important; } .in-iframe.demo-only body { background: #f8f8fa !important; padding: 36px 32px 32px !important; }</style>
+<script>if (window !== window.top) { document.documentElement.classList.add("in-iframe"); var view = new URLSearchParams(location.search).get("view"); if (view === "demo") document.documentElement.classList.add("demo-only"); document.addEventListener("DOMContentLoaded", function() { var el = document.getElementById("back-link"); if (el) el.remove(); var demo = document.getElementById("demo-section"); if (view === "demo" && demo) { document.body.appendChild(demo); Array.from(document.body.children).forEach(function(c) { if (c === demo || c.tagName === "SCRIPT" || c.hasAttribute("data-demo-keep")) return; c.remove(); }); } else if (view === "preview" && demo) { demo.remove(); } }); }</script>
 </head>
 <body class="bg-white p-6 space-y-10">
   <a href="../" class="inline-flex items-center gap-1 text-sm text-gray-400 hover:text-gray-600 mb-4" id="back-link">
@@ -15,8 +15,7 @@
   </a>
 
   <!-- INTERACTIVE DEMO -->
-  <section x-data="{ value: '', focused: false }">
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Interactive Demo</h3>
+  <section id="demo-section" x-data="{ value: '', focused: false }">
     <div class="w-80 space-y-2">
       <label class="block text-sm font-semibold text-gray-900">備考 <span class="text-red-500">*</span></label>
       <textarea
@@ -37,7 +36,7 @@
 
   <!-- SIZES -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Sizes</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Sizes</h3>
     <div class="flex items-start gap-6 flex-wrap">
 
       <!-- XS  h=60 padding 4/8 fontSize=12 -->
@@ -89,7 +88,7 @@
 
   <!-- STATES -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">States</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">States</h3>
     <div class="flex items-start gap-6 flex-wrap">
 
       <!-- Default -->

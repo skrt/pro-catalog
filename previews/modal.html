@@ -13,10 +13,12 @@
 <style>
   #back-link { display: inline-flex; }
   .in-iframe #back-link { display: none; }
+  .in-iframe body { padding: 0 !important; }
+  .in-iframe.demo-only body { background: #f8f8fa !important; padding: 36px 32px 32px !important; }
 </style>
 <script>
   var _inIframe = window !== window.top;
-  if (_inIframe) { document.documentElement.classList.add("in-iframe"); document.addEventListener("DOMContentLoaded", function() { var el = document.getElementById("back-link"); if (el) el.remove(); }); }
+  if (_inIframe) { document.documentElement.classList.add("in-iframe"); var _view = new URLSearchParams(location.search).get("view"); if (_view === "demo") document.documentElement.classList.add("demo-only"); document.addEventListener("DOMContentLoaded", function() { var el = document.getElementById("back-link"); if (el) el.remove(); var demo = document.getElementById("demo-section"); if (_view === "demo" && demo) { document.body.appendChild(demo); Array.from(document.body.children).forEach(function(c) { if (c === demo || c.tagName === "SCRIPT" || c.hasAttribute("data-demo-keep")) return; c.remove(); }); } else if (_view === "preview" && demo) { demo.remove(); } }); }
 
   // --- Demo overlay: open demo in a child iframe layered on top of parent ---
   function _showDemoInParent(name) {
@@ -148,12 +150,12 @@
 
   <!-- ===== MODAL FOOTER ===== -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Modal Footer</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Modal Footer</h3>
     <p class="text-xs text-gray-400 mb-3">Props: Countを表示 (Boolean), Actions (Slot)</p>
     <div class="space-y-4">
       <!-- With count -->
       <div class="space-y-1">
-        <span class="text-[10px] text-gray-400 uppercase">With Count</span>
+        <span class="text-[10px] text-gray-400">With Count</span>
         <div class="w-[672px] flex items-center gap-3 justify-end bg-[#F9FAFB] border-t border-[#E5E7EB] px-6 py-4">
           <p class="flex-1 text-sm text-[#101828] leading-5">0件選択中</p>
           <div class="flex items-center gap-3">
@@ -164,7 +166,7 @@
       </div>
       <!-- Without count -->
       <div class="space-y-1">
-        <span class="text-[10px] text-gray-400 uppercase">Without Count</span>
+        <span class="text-[10px] text-gray-400">Without Count</span>
         <div class="w-[672px] flex items-center gap-3 justify-end bg-[#F9FAFB] border-t border-[#E5E7EB] px-6 py-4">
           <div class="flex items-center gap-3">
             <button class="inline-flex items-center justify-center rounded-md border border-[#E5E7EB] bg-white hover:bg-[#F9FAFB] active:bg-[#F3F4F6] text-sm font-semibold text-[#101828] px-4 py-2.5 transition-colors">キャンセル</button>
@@ -177,7 +179,7 @@
 
   <!-- ===== MODAL DIALOG ===== -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Modal Dialog</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Modal Dialog</h3>
     <p class="text-xs text-gray-400 mb-3">Props: Title (Text), Contents (Slot)</p>
     <div id="demo-dialog" class="w-[400px] rounded-xl bg-white border border-[#E5E7EB]" style="box-shadow: 0 8px 32px -8px rgba(0,0,0,0.16);">
       <div class="flex flex-col gap-2 p-6">
@@ -193,13 +195,13 @@
 
   <!-- ===== MODAL / TABLE ===== -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Modal / Table</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Modal / Table</h3>
     <p class="text-xs text-gray-400 mb-3">Props: Filter (Slot), Header (Slot), Table (Slot)</p>
   </section>
 
   <!-- ===== ITEMSELECT ROW ===== -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">ItemSelect Row</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">ItemSelect Row</h3>
     <p class="text-xs text-gray-400 mb-3">Props: State (default / hover)</p>
     <div class="w-[672px]">
       <!-- Default -->
@@ -231,7 +233,7 @@
 
   <!-- ===== MEMBERSELECT ROW ===== -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">MemberSelect Row</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">MemberSelect Row</h3>
     <p class="text-xs text-gray-400 mb-3">Props: State (default / hover)</p>
     <div class="w-[672px]">
       <!-- Default -->
@@ -247,9 +249,9 @@
     </div>
   </section>
 
-  <!-- ===== MODAL — USAGE PATTERNS ===== -->
+  <!-- ===== Usage Patterns ===== -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">MODAL — USAGE PATTERNS</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Usage Patterns</h3>
 
     <!-- Item Select -->
     <div class="space-y-1 mb-8">
@@ -345,7 +347,7 @@
   </section>
 
   <!-- ===== INTERACTIVE DEMO ===== -->
-  <section x-data="{
+  <section id="demo-section" x-data="{
     openDialog: false,
     openItemSelect: false,
     openMemberSelect: false,
@@ -385,7 +387,6 @@
       this['open' + name] = false;
     }
   }" x-cloak>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Interactive Demo</h3>
 
     <div class="flex items-center gap-3 flex-wrap">
       <button

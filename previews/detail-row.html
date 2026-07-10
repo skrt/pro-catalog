@@ -22,8 +22,8 @@
       }
     }
   </script>
-<style>#back-link { display: inline-flex; } .in-iframe #back-link { display: none; }</style>
-<script>if (window !== window.top) { document.documentElement.classList.add("in-iframe"); document.addEventListener("DOMContentLoaded", function() { var el = document.getElementById("back-link"); if (el) el.remove(); }); }</script>
+<style>#back-link { display: inline-flex; } .in-iframe #back-link { display: none; } .in-iframe body { padding: 0 !important; } .in-iframe.demo-only body { background: #f8f8fa !important; padding: 36px 32px 32px !important; }</style>
+<script>if (window !== window.top) { document.documentElement.classList.add("in-iframe"); var view = new URLSearchParams(location.search).get("view"); if (view === "demo") document.documentElement.classList.add("demo-only"); document.addEventListener("DOMContentLoaded", function() { var el = document.getElementById("back-link"); if (el) el.remove(); var demo = document.getElementById("demo-section"); if (view === "demo" && demo) { document.body.appendChild(demo); Array.from(document.body.children).forEach(function(c) { if (c === demo || c.tagName === "SCRIPT" || c.hasAttribute("data-demo-keep")) return; c.remove(); }); } else if (view === "preview" && demo) { demo.remove(); } }); }</script>
 </head>
 <body class="bg-white p-6 space-y-10">
   <a href="../" class="inline-flex items-center gap-1 text-sm text-gray-400 hover:text-gray-600 mb-4" id="back-link">
@@ -31,10 +31,10 @@
     一覧に戻る
   </a>
 
-  <!-- TEXT TYPE -->
+  <!-- Text Type -->
   <!-- Row: HORIZONTAL, gap=8, padding=0, title=120px FIXED 16px/Regular gray-600, content=HUG 16px/Regular gray-900 -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">TEXT TYPE</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Text Type</h3>
     <div class="space-y-4">
       <!-- Row 1 -->
       <div class="flex items-start gap-2">
@@ -54,10 +54,10 @@
     </div>
   </section>
 
-  <!-- LINK TYPE -->
+  <!-- Link Type -->
   <!-- content: 16px/Regular indigo-500 -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">LINK TYPE</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Link Type</h3>
     <div class="space-y-4">
       <div class="flex items-start gap-2">
         <span class="text-base font-normal text-gray-600 w-[120px] shrink-0">発注書</span>
@@ -66,10 +66,10 @@
     </div>
   </section>
 
-  <!-- SLOT TYPE -->
+  <!-- Slot Type -->
   <!-- WMSで変動する要素に使います。Multiple values separated by "/" (gray-400), values in indigo-500 -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">SLOT TYPE</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Slot Type</h3>
     <div class="space-y-4">
       <div class="flex items-start gap-2">
         <span class="text-base font-normal text-gray-600 w-[120px] shrink-0">関連書類</span>
@@ -84,11 +84,11 @@
     </div>
   </section>
 
-  <!-- BADGE TYPE -->
+  <!-- Badge Type -->
   <!-- Badge = Badge component instance (Color=red): bg=#FFFFFF, border=#E7000B 1px, radius=full, padding=2px 6px, text=12px/Medium #E7000B -->
   <!-- Row: counterAxisAlignItems=CENTER -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">BADGE TYPE</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Badge Type</h3>
     <div class="space-y-4">
       <div class="flex items-center gap-2">
         <span class="text-base font-normal text-gray-600 w-[120px] shrink-0">ステータス</span>
@@ -99,11 +99,11 @@
     </div>
   </section>
 
-  <!-- SELECT TYPE -->
+  <!-- Select Type -->
   <!-- Select = xs Select component: w=80px, border=amber-600(#E17100), text=amber-600, 12px/Regular, rounded-md, px-2 py-1 -->
   <!-- Row: counterAxisAlignItems=CENTER -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">SELECT TYPE</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Select Type</h3>
     <div class="space-y-4">
       <div class="flex items-center gap-2">
         <span class="text-base font-normal text-gray-600 w-[120px] shrink-0">ステータス</span>

@@ -23,8 +23,8 @@
       }
     }
   </script>
-  <style>#back-link { display: inline-flex; } .in-iframe #back-link { display: none; }</style>
-  <script>if (window !== window.top) { document.documentElement.classList.add("in-iframe"); document.addEventListener("DOMContentLoaded", function() { var el = document.getElementById("back-link"); if (el) el.remove(); }); }</script>
+  <style>#back-link { display: inline-flex; } .in-iframe #back-link { display: none; } .in-iframe body { padding: 0 !important; } .in-iframe.demo-only body { background: #f8f8fa !important; padding: 36px 32px 32px !important; }</style>
+  <script>if (window !== window.top) { document.documentElement.classList.add("in-iframe"); var view = new URLSearchParams(location.search).get("view"); if (view === "demo") document.documentElement.classList.add("demo-only"); document.addEventListener("DOMContentLoaded", function() { var el = document.getElementById("back-link"); if (el) el.remove(); var demo = document.getElementById("demo-section"); if (view === "demo" && demo) { document.body.appendChild(demo); Array.from(document.body.children).forEach(function(c) { if (c === demo || c.tagName === "SCRIPT" || c.hasAttribute("data-demo-keep")) return; c.remove(); }); } else if (view === "preview" && demo) { demo.remove(); } }); }</script>
 </head>
 <body class="bg-white p-6 space-y-10">
   <a href="../" class="inline-flex items-center gap-1 text-sm text-gray-400 hover:text-gray-600 mb-4" id="back-link">
@@ -42,7 +42,7 @@
   <!-- Page: px-3 py-1.5, text-sm font-semibold        -->
   <!-- =========================================== -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">DEFAULT</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Default</h3>
     <div class="bg-white border border-gray-100 rounded-lg">
       <div class="flex items-center justify-end px-4 py-2">
         <div class="flex items-center gap-2">
@@ -66,12 +66,12 @@
   </section>
 
   <!-- =========================================== -->
-  <!-- WITH TABLE (実使用例)                         -->
+  <!-- With Table (実使用例)                         -->
   <!-- Table 内部に Pagination を配置した例            -->
   <!-- Table: no border, no radius, no header border-b -->
   <!-- =========================================== -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">WITH TABLE</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">With Table</h3>
     <div class="bg-white">
       <!-- Mini table header: no border-bottom -->
       <div class="bg-gray-50 px-4 py-2">

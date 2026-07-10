@@ -18,8 +18,8 @@
       }
     }
   </script>
-  <style>#back-link { display: inline-flex; } .in-iframe #back-link { display: none; }</style>
-  <script>if (window !== window.top) { document.documentElement.classList.add("in-iframe"); document.addEventListener("DOMContentLoaded", function() { var el = document.getElementById("back-link"); if (el) el.remove(); }); }</script>
+  <style>#back-link { display: inline-flex; } .in-iframe #back-link { display: none; } .in-iframe body { padding: 0 !important; } .in-iframe.demo-only body { background: #f8f8fa !important; padding: 36px 32px 32px !important; }</style>
+  <script>if (window !== window.top) { document.documentElement.classList.add("in-iframe"); var view = new URLSearchParams(location.search).get("view"); if (view === "demo") document.documentElement.classList.add("demo-only"); document.addEventListener("DOMContentLoaded", function() { var el = document.getElementById("back-link"); if (el) el.remove(); var demo = document.getElementById("demo-section"); if (view === "demo" && demo) { document.body.appendChild(demo); Array.from(document.body.children).forEach(function(c) { if (c === demo || c.tagName === "SCRIPT" || c.hasAttribute("data-demo-keep")) return; c.remove(); }); } else if (view === "preview" && demo) { demo.remove(); } }); }</script>
 </head>
 <body class="bg-white p-6 space-y-10">
   <a href="../" class="inline-flex items-center gap-1 text-sm text-gray-400 hover:text-gray-600 mb-4" id="back-link">
@@ -34,12 +34,12 @@
   <!-- Prop: name (14px) + date (12px)               -->
   <!-- =========================================== -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">STATES</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">States</h3>
     <div class="flex flex-wrap items-start gap-6">
 
       <!-- Unconfirmed -->
       <div class="flex flex-col gap-1">
-        <span class="text-[10px] font-semibold text-gray-400 uppercase">Unconfirmed</span>
+        <span class="text-[10px] text-gray-400">Unconfirmed</span>
         <div class="w-[160px] bg-white border border-gray-200 rounded-lg p-3 flex flex-col gap-2 overflow-clip">
           <div class="flex items-center gap-2">
             <span class="text-sm font-normal text-gray-600 leading-5 shrink-0">1次承認</span>
@@ -57,7 +57,7 @@
 
       <!-- Done -->
       <div class="flex flex-col gap-1">
-        <span class="text-[10px] font-semibold text-gray-400 uppercase">Done</span>
+        <span class="text-[10px] text-gray-400">Done</span>
         <div class="w-[160px] bg-white border border-flow-green rounded-lg p-3 flex flex-col gap-2 overflow-clip">
           <div class="flex items-center gap-2">
             <span class="text-sm font-normal text-gray-600 leading-5 shrink-0">1次承認</span>
@@ -75,7 +75,7 @@
 
       <!-- Reject -->
       <div class="flex flex-col gap-1">
-        <span class="text-[10px] font-semibold text-gray-400 uppercase">Reject</span>
+        <span class="text-[10px] text-gray-400">Reject</span>
         <div class="w-[160px] bg-white border border-flow-red rounded-lg p-3 flex flex-col gap-2 overflow-clip">
           <div class="flex items-center gap-2">
             <span class="text-sm font-normal text-gray-600 leading-5 shrink-0">1次承認</span>
@@ -95,17 +95,17 @@
   </section>
 
   <!-- =========================================== -->
-  <!-- APPROVAL TRACKER — USAGE PATTERNS            -->
+  <!-- APPROVAL TRACKER — Usage Patterns            -->
   <!-- Assembly examples: steps connected by 8px    -->
   <!-- lines. Done=green line, otherwise=gray line  -->
   <!-- =========================================== -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">USAGE PATTERNS</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Usage Patterns</h3>
     <div class="space-y-6">
 
       <!-- Default: all 3 steps unconfirmed -->
       <div>
-        <span class="text-[10px] font-semibold text-gray-400 uppercase mb-2 block">Default</span>
+        <span class="text-[10px] text-gray-400 mb-2 block">Default</span>
         <div class="flex items-start">
           <div class="flex items-center shrink-0">
             <div class="w-[160px] bg-white border border-gray-200 rounded-lg p-3 flex flex-col gap-2 overflow-clip">
@@ -157,7 +157,7 @@
 
       <!-- Partial: 1st done, rest unconfirmed -->
       <div>
-        <span class="text-[10px] font-semibold text-gray-400 uppercase mb-2 block">Partial</span>
+        <span class="text-[10px] text-gray-400 mb-2 block">Partial</span>
         <div class="flex items-start">
           <div class="flex items-center shrink-0">
             <div class="w-[160px] bg-white border border-flow-green rounded-lg p-3 flex flex-col gap-2 overflow-clip">
@@ -209,7 +209,7 @@
 
       <!-- Approval: all 3 done -->
       <div>
-        <span class="text-[10px] font-semibold text-gray-400 uppercase mb-2 block">Approval</span>
+        <span class="text-[10px] text-gray-400 mb-2 block">Approval</span>
         <div class="flex items-start">
           <div class="flex items-center shrink-0">
             <div class="w-[160px] bg-white border border-flow-green rounded-lg p-3 flex flex-col gap-2 overflow-clip">
@@ -261,7 +261,7 @@
 
       <!-- Reject: 1st done, 2nd rejected, 3rd unconfirmed -->
       <div>
-        <span class="text-[10px] font-semibold text-gray-400 uppercase mb-2 block">Reject</span>
+        <span class="text-[10px] text-gray-400 mb-2 block">Reject</span>
         <div class="flex items-start">
           <div class="flex items-center shrink-0">
             <div class="w-[160px] bg-white border border-flow-green rounded-lg p-3 flex flex-col gap-2 overflow-clip">
@@ -315,17 +315,17 @@
   </section>
 
   <!-- =========================================== -->
-  <!-- APPROVAL TRACKER — USAGE PATTERNS (AND/SKIP) -->
+  <!-- APPROVAL TRACKER — Usage Patterns (AND/SKIP) -->
   <!-- AND: extra "承認" step before numbered steps  -->
   <!-- Skip: single step only                        -->
   <!-- =========================================== -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">USAGE PATTERNS (AND / SKIP)</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Usage Patterns (And / Skip)</h3>
     <div class="space-y-6">
 
       <!-- Skip: single unconfirmed step -->
       <div>
-        <span class="text-[10px] font-semibold text-gray-400 uppercase mb-2 block">Skip</span>
+        <span class="text-[10px] text-gray-400 mb-2 block">Skip</span>
         <div class="flex items-start">
           <div class="w-[160px] bg-white border border-gray-200 rounded-lg p-3 flex flex-col gap-2 overflow-clip shrink-0">
             <div class="flex items-center gap-2">
@@ -345,7 +345,7 @@
 
       <!-- And-Default: 承認(unconfirmed) → 3 unconfirmed steps -->
       <div>
-        <span class="text-[10px] font-semibold text-gray-400 uppercase mb-2 block">And-Default</span>
+        <span class="text-[10px] text-gray-400 mb-2 block">And-Default</span>
         <div class="flex items-start">
           <div class="flex items-center shrink-0">
             <div class="w-[160px] bg-white border border-gray-200 rounded-lg p-3 flex flex-col gap-2 overflow-clip">
@@ -397,7 +397,7 @@
 
       <!-- And-Approval: 承認(done) → 3 done steps -->
       <div>
-        <span class="text-[10px] font-semibold text-gray-400 uppercase mb-2 block">And-Approval</span>
+        <span class="text-[10px] text-gray-400 mb-2 block">And-Approval</span>
         <div class="flex items-start">
           <div class="flex items-center shrink-0">
             <div class="w-[160px] bg-white border border-flow-green rounded-lg p-3 flex flex-col gap-2 overflow-clip">
@@ -449,7 +449,7 @@
 
       <!-- And-Reject: 承認(done) → 1次(reject) → 1次(unconfirmed) -->
       <div>
-        <span class="text-[10px] font-semibold text-gray-400 uppercase mb-2 block">And-Reject</span>
+        <span class="text-[10px] text-gray-400 mb-2 block">And-Reject</span>
         <div class="flex items-start">
           <div class="flex items-center shrink-0">
             <div class="w-[160px] bg-white border border-flow-green rounded-lg p-3 flex flex-col gap-2 overflow-clip">

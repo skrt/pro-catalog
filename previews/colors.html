@@ -8,8 +8,8 @@
   <style>
     [x-cloak] { display: none !important; }
   </style>
-<style>#back-link { display: inline-flex; } .in-iframe #back-link { display: none; }</style>
-<script>if (window !== window.top) { document.documentElement.classList.add("in-iframe"); document.addEventListener("DOMContentLoaded", function() { var el = document.getElementById("back-link"); if (el) el.remove(); }); }</script>
+<style>#back-link { display: inline-flex; } .in-iframe #back-link { display: none; } .in-iframe body { padding: 0 !important; } .in-iframe.demo-only body { background: #f8f8fa !important; padding: 36px 32px 32px !important; }</style>
+<script>if (window !== window.top) { document.documentElement.classList.add("in-iframe"); var view = new URLSearchParams(location.search).get("view"); if (view === "demo") document.documentElement.classList.add("demo-only"); document.addEventListener("DOMContentLoaded", function() { var el = document.getElementById("back-link"); if (el) el.remove(); var demo = document.getElementById("demo-section"); if (view === "demo" && demo) { document.body.appendChild(demo); Array.from(document.body.children).forEach(function(c) { if (c === demo || c.tagName === "SCRIPT" || c.hasAttribute("data-demo-keep")) return; c.remove(); }); } else if (view === "preview" && demo) { demo.remove(); } }); }</script>
 </head>
 <body class="bg-white p-8">
   <a href="../" class="inline-flex items-center gap-1 text-sm text-gray-400 hover:text-gray-600 mb-4" id="back-link">
@@ -21,7 +21,7 @@
 
     <!-- Base Colors -->
     <div>
-      <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Base</p>
+      <p class="text-xs font-normal text-gray-400 tracking-wider mb-4">Base</p>
       <div class="flex gap-3">
         <div class="text-center space-y-1.5 cursor-pointer" @click="copy('#000000')">
           <div class="w-16 h-16 rounded-lg bg-black border border-gray-200"></div>
@@ -44,7 +44,7 @@
     <!-- Color Palettes -->
     <template x-for="palette in palettes" :key="palette.name">
       <div>
-        <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3" x-text="palette.name"></p>
+        <p class="text-xs font-normal text-gray-400 tracking-wider mb-3" x-text="palette.name"></p>
         <div class="flex gap-1.5">
           <template x-for="shade in palette.shades" :key="shade.shade">
             <div class="text-center space-y-1 cursor-pointer flex-1 min-w-0" @click="copy(shade.hex)">
@@ -59,7 +59,7 @@
 
     <!-- TailwindCSS Class Reference -->
     <div>
-      <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">TailwindCSS Class Reference</p>
+      <p class="text-xs font-normal text-gray-400 tracking-wider mb-4">TailwindCSS Class Reference</p>
       <div class="overflow-x-auto">
         <table class="w-full text-xs">
           <thead>

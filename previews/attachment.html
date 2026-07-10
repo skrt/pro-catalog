@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
-<style>#back-link { display: inline-flex; } .in-iframe #back-link { display: none; }</style>
-<script>if (window !== window.top) { document.documentElement.classList.add("in-iframe"); document.addEventListener("DOMContentLoaded", function() { var el = document.getElementById("back-link"); if (el) el.remove(); }); }</script>
+<style>#back-link { display: inline-flex; } .in-iframe #back-link { display: none; } .in-iframe body { padding: 0 !important; } .in-iframe.demo-only body { background: #f8f8fa !important; padding: 36px 32px 32px !important; }</style>
+<script>if (window !== window.top) { document.documentElement.classList.add("in-iframe"); var view = new URLSearchParams(location.search).get("view"); if (view === "demo") document.documentElement.classList.add("demo-only"); document.addEventListener("DOMContentLoaded", function() { var el = document.getElementById("back-link"); if (el) el.remove(); var demo = document.getElementById("demo-section"); if (view === "demo" && demo) { document.body.appendChild(demo); Array.from(document.body.children).forEach(function(c) { if (c === demo || c.tagName === "SCRIPT" || c.hasAttribute("data-demo-keep")) return; c.remove(); }); } else if (view === "preview" && demo) { demo.remove(); } }); }</script>
 </head>
 <body class="bg-white p-6 space-y-10">
   <a href="../" class="inline-flex items-center gap-1 text-sm text-gray-400 hover:text-gray-600 mb-4" id="back-link">
@@ -13,14 +13,14 @@
     一覧に戻る
   </a>
 
-  <!-- SIZE VARIANTS -->
+  <!-- Size Variants -->
   <section>
-    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">SIZE VARIANTS</h3>
+    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Size Variants</h3>
     <div class="space-y-4">
 
       <!-- sm: h=32px, px-3 py-1.5, text-sm, icon-button 32px, trash 14px -->
       <div class="flex flex-col gap-1">
-        <span class="text-[10px] font-semibold text-gray-400 uppercase">sm</span>
+        <span class="text-[10px] text-gray-400">sm</span>
         <div class="flex items-start gap-2">
           <button class="inline-flex items-center gap-1.5 h-8 px-3 py-1.5 bg-white border border-gray-200 rounded-md text-sm font-normal text-gray-900 hover:bg-gray-50">
             sample-XXXXX.png (2,222KB)
@@ -33,7 +33,7 @@
 
       <!-- xs: h=24px, px-2 py-1, text-xs, icon-button 24px, trash 12px -->
       <div class="flex flex-col gap-1">
-        <span class="text-[10px] font-semibold text-gray-400 uppercase">xs</span>
+        <span class="text-[10px] text-gray-400">xs</span>
         <div class="flex items-start gap-2">
           <button class="inline-flex items-center gap-1 h-6 px-2 py-1 bg-white border border-gray-200 rounded-md text-xs font-normal text-gray-900 hover:bg-gray-50">
             sample-XXXXX.png (2,222KB)
