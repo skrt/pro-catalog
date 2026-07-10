@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<style>#back-link { display: inline-flex; } .in-iframe #back-link { display: none; } .in-iframe body { padding: 0 !important; } .in-iframe.demo-only body { background: #f8f8fa !important; padding: 36px 32px 32px !important; }</style>
+<script>if (window !== window.top) { document.documentElement.classList.add("in-iframe"); var view = new URLSearchParams(location.search).get("view"); if (view === "demo") document.documentElement.classList.add("demo-only"); document.addEventListener("DOMContentLoaded", function() { var el = document.getElementById("back-link"); if (el) el.remove(); var demo = document.getElementById("demo-section"); if (view === "demo" && demo) { document.body.appendChild(demo); Array.from(document.body.children).forEach(function(c) { if (c === demo || c.tagName === "SCRIPT" || c.hasAttribute("data-demo-keep")) return; c.remove(); }); } else if (view === "preview" && demo) { demo.remove(); } }); }</script>
+</head>
+<body class="bg-white p-8">
+  <a href="../" class="inline-flex items-center gap-1 text-sm text-gray-400 hover:text-gray-600 mb-4" id="back-link">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+    一覧に戻る
+  </a>
+
+  <!--
+    Validator
+    フォームのバリデーションエラー文言を一元管理する参照表。
+    各フォームコンポーネントの Error 状態のエラーテキストにこの文言を表示する。
+    文言は shizai-pro 実装（app/ 配下）から収集。新しい文言を追加したらここにも反映する。
+  -->
+
+  <div class="space-y-10">
+
+    <div>
+      <p class="text-xs font-normal text-gray-400 tracking-wider mb-4">Messages</p>
+      <div class="overflow-x-auto">
+        <table class="w-full text-xs">
+          <thead>
+            <tr class="text-left border-b border-gray-200">
+              <th class="pb-2 pr-4 font-semibold text-gray-700 w-48">Category</th>
+              <th class="pb-2 pr-4 font-semibold text-gray-700">文言</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- required -->
+            <tr class="border-b border-gray-50"><td class="py-1.5 pr-4 font-semibold text-gray-700">required</td><td class="py-1.5 pr-4 text-red-500">入力しましょう</td></tr>
+            <tr class="border-b border-gray-50"><td class="py-1.5 pr-4"></td><td class="py-1.5 pr-4 text-red-500">選択しましょう</td></tr>
+            <!-- format -->
+            <tr class="border-b border-gray-50"><td class="py-1.5 pr-4 font-semibold text-gray-700">format</td><td class="py-1.5 pr-4 text-red-500">有効なメールアドレスを入力しましょう</td></tr>
+            <tr class="border-b border-gray-50"><td class="py-1.5 pr-4"></td><td class="py-1.5 pr-4 text-red-500">8文字以上で入力しましょう</td></tr>
+            <tr class="border-b border-gray-50"><td class="py-1.5 pr-4"></td><td class="py-1.5 pr-4 text-red-500">3〜4桁の半角数字を入力しましょう</td></tr>
+            <tr class="border-b border-gray-50"><td class="py-1.5 pr-4"></td><td class="py-1.5 pr-4 text-red-500">1〜30の数値を入力しましょう</td></tr>
+            <!-- length -->
+            <tr class="border-b border-gray-50"><td class="py-1.5 pr-4 font-semibold text-gray-700">length</td><td class="py-1.5 pr-4 text-red-500">70文字以内にしましょう</td></tr>
+            <!-- duplicate -->
+            <tr class="border-b border-gray-50"><td class="py-1.5 pr-4 font-semibold text-gray-700">duplicate</td><td class="py-1.5 pr-4 text-red-500">このアイテムはすでに登録されています</td></tr>
+            <tr class="border-b border-gray-50"><td class="py-1.5 pr-4"></td><td class="py-1.5 pr-4 text-red-500">このIDはすでに使用されているため、別のIDを入力しましょう</td></tr>
+            <!-- feature -->
+            <tr class="border-b border-gray-50"><td class="py-1.5 pr-4 font-semibold text-gray-700">feature / purchase-order</td><td class="py-1.5 pr-4 text-red-500">明細を1行以上追加しましょう</td></tr>
+            <tr class="border-b border-gray-50"><td class="py-1.5 pr-4 font-semibold text-gray-700">feature / member-invite</td><td class="py-1.5 pr-4 text-red-500">管理者を1人以上含めましょう</td></tr>
+            <tr class="border-b border-gray-50"><td class="py-1.5 pr-4 font-semibold text-gray-700">feature / attachment</td><td class="py-1.5 pr-4 text-red-500">添付データの合計を32MB以下にしましょう</td></tr>
+            <tr class="border-b border-gray-50"><td class="py-1.5 pr-4 font-semibold text-gray-700">feature / approval</td><td class="py-1.5 pr-4 text-red-500">承認者を設定しましょう</td></tr>
+            <tr class="border-b border-gray-50"><td class="py-1.5 pr-4"></td><td class="py-1.5 pr-4 text-red-500">最終承認者は管理者を指定しましょう</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div>
+      <p class="text-xs font-normal text-gray-400 tracking-wider mb-4">Rules</p>
+      <ul class="text-xs text-gray-500 space-y-1.5 list-disc pl-4 max-w-2xl">
+        <li>トーンは「〜しましょう」の推奨形に統一する。例外: duplicate 系は状態説明なので「〜されています」も可</li>
+        <li>表示位置は各フォームコンポーネントのフィールド下エラーテキスト（<span class="font-mono">text-xs text-red-500</span>）＋フィールドの赤枠。スタイルは各コンポーネントの State (error) トークンを参照</li>
+        <li>機能固有の文言は <span class="font-mono">feature / {機能名}</span> カテゴリで追加する（機能名は kebab-case）</li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="text-xs font-normal text-gray-400 tracking-wider mb-4">Known Issues</p>
+      <ul class="text-xs text-gray-500 space-y-1.5 list-disc pl-4 max-w-2xl">
+        <li>認証画面（ログイン・マジックリンク）のみ「入力してください」を使用しており、トーンが不統一（実装準拠で記載。「入力しましょう」への統一を検討）</li>
+      </ul>
+    </div>
+
+  </div>
+
+</body>
+</html>
