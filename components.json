@@ -50,7 +50,7 @@
                 "desc": "主要アクションを補助する操作"
               },
               {
-                "label": "alert",
+                "label": "danger",
                 "desc": "削除・取消など破壊的な操作"
               },
               {
@@ -92,10 +92,10 @@
           "values": [
             "primary",
             "secondary",
-            "alert",
+            "danger",
             "tertiary"
           ],
-          "description": "primary: インディゴ背景・主要アクション / secondary: 淡インディゴ背景・補助 / alert: 赤背景・削除等 / tertiary: 白背景ボーダー"
+          "description": "primary: インディゴ背景・主要アクション / secondary: 淡インディゴ背景・補助 / danger: 赤背景・削除等 / tertiary: 白背景ボーダー"
         },
         {
           "name": "State",
@@ -189,7 +189,7 @@
               }
             },
             {
-              "variant": "alert",
+              "variant": "danger",
               "tokens": {
                 "bg-default": "bg-red-500 (#FB2C36)",
                 "bg-hover": "bg-red-600 (#E7000B)",
@@ -276,7 +276,7 @@
             "secondary",
             "tertiary"
           ],
-          "description": "Buttonコンポーネントと同一カラー（alertは対象外）"
+          "description": "Buttonコンポーネントと同一カラー（dangerは対象外）"
         },
         {
           "name": "State",
@@ -2550,7 +2550,7 @@
           }
         ],
         "rules": [
-          "破壊的な操作の確認では実行ボタンに alert カラーの Button を使う"
+          "破壊的な操作の確認では実行ボタンに danger カラーの Button を使う"
         ],
         "vs": [
           "Popover: 操作を伴わない軽い補足表示",
