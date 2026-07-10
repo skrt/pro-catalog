@@ -79,7 +79,8 @@
             <!-- length -->
             <tr class="border-b border-gray-50"><td class="py-1.5 pr-4 font-semibold text-gray-700">length</td><td class="py-1.5 pr-4 text-red-500">70文字以内にしましょう</td></tr>
             <!-- duplicate -->
-            <tr class="border-b border-gray-50"><td class="py-1.5 pr-4 font-semibold text-gray-700">duplicate</td><td class="py-1.5 pr-4 text-red-500">このアイテムはすでに登録されています</td></tr>
+            <tr class="border-b border-gray-50"><td class="py-1.5 pr-4 font-semibold text-gray-700">duplicate</td><td class="py-1.5 pr-4 text-red-500">既に使用されています</td></tr>
+            <tr class="border-b border-gray-50"><td class="py-1.5 pr-4"></td><td class="py-1.5 pr-4 text-red-500">このアイテムはすでに登録されています</td></tr>
             <tr class="border-b border-gray-50"><td class="py-1.5 pr-4"></td><td class="py-1.5 pr-4 text-red-500">このIDはすでに使用されているため、別のIDを入力しましょう</td></tr>
             <!-- feature -->
             <tr class="border-b border-gray-50"><td class="py-1.5 pr-4 font-semibold text-gray-700">feature / purchase-order</td><td class="py-1.5 pr-4 text-red-500">明細を1行以上追加しましょう</td></tr>
@@ -98,13 +99,6 @@
         <li>トーンは「〜しましょう」の推奨形に統一する。例外: duplicate 系は状態説明なので「〜されています」も可</li>
         <li>表示位置は各フォームコンポーネントのフィールド下エラーテキスト（<span class="font-mono">text-xs text-red-500</span>）＋フィールドの赤枠。スタイルは各コンポーネントの State (error) トークンを参照</li>
         <li>機能固有の文言は <span class="font-mono">feature / {機能名}</span> カテゴリで追加する（機能名は kebab-case）</li>
-      </ul>
-    </div>
-
-    <div>
-      <p class="text-xs font-normal text-gray-400 tracking-wider mb-4">Known Issues</p>
-      <ul class="text-xs text-gray-500 space-y-1.5 list-disc pl-4 max-w-2xl">
-        <li>認証画面（ログイン・マジックリンク）のみ「入力してください」を使用しており、トーンが不統一（実装準拠で記載。「入力しましょう」への統一を検討）</li>
       </ul>
     </div>
 
