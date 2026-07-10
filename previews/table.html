@@ -50,6 +50,10 @@
     .form-checkbox:indeterminate{background-color:currentColor;background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 16 16'%3e%3cpath stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 8h8'/%3e%3c/svg%3e");background-position:50%;background-repeat:no-repeat;background-size:100% 100%;border-color:#0000}
     .form-checkbox:indeterminate:hover,.form-checkbox:indeterminate:focus{background-color:currentColor;border-color:#0000}
     @media (forced-colors:active){.form-checkbox:checked,.form-checkbox:indeterminate{appearance:auto}}
+    /* 移植元のデフォルト色（blue-600/gray-500）が CDN 環境ではユーティリティより後勝ちするため、
+       shizai-pro のトークン値（indigo-500 / gray-200 / rounded-sm）を specificity を上げて確定させる */
+    input.form-checkbox{color:#615fff;border-color:#e5e7eb;border-radius:4px}
+    input.form-checkbox:focus{--tw-ring-color:#615fff}
   </style>
 <style>#back-link { display: inline-flex; } .in-iframe #back-link { display: none; } .in-iframe body { padding: 0 !important; } .in-iframe.demo-only body { background: #f8f8fa !important; padding: 36px 32px 32px !important; }</style>
 <script>if (window !== window.top) { document.documentElement.classList.add("in-iframe"); var view = new URLSearchParams(location.search).get("view"); if (view === "demo") document.documentElement.classList.add("demo-only"); document.addEventListener("DOMContentLoaded", function() { var el = document.getElementById("back-link"); if (el) el.remove(); var demo = document.getElementById("demo-section"); if (view === "demo" && demo) { document.body.appendChild(demo); Array.from(document.body.children).forEach(function(c) { if (c === demo || c.tagName === "SCRIPT" || c.hasAttribute("data-demo-keep")) return; c.remove(); }); } else if (view === "preview" && demo) { demo.remove(); } }); }</script>
