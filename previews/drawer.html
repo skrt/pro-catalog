@@ -73,26 +73,26 @@
   <!-- ===== DRAWER / Default（添付なし・送信disabled） ===== -->
   <section>
     <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Default</h3>
-    <div class="w-128 h-180 flex flex-col bg-white border-l border-[#E5E7EB]">
+    <div class="w-128 h-180 flex flex-col bg-white border-l border-gray-200">
       <!-- Upper Area -->
       <div class="flex flex-col gap-3 p-6 shrink-0">
         <!-- Title Row -->
         <div class="flex items-center justify-between">
-          <p class="text-xl font-bold text-[#101828] leading-7">仕入先にメッセージを送る</p>
-          <button class="inline-flex items-center justify-center w-8 h-8 border border-[#E5E7EB] rounded-md bg-white hover:bg-[#F9FAFB] active:bg-[#F3F4F6] transition-colors">
-            <svg class="w-3.5 h-3.5 text-[#101828]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+          <p class="text-xl font-bold text-gray-900 leading-7">仕入先にメッセージを送る</p>
+          <button class="inline-flex items-center justify-center w-8 h-8 border border-gray-200 rounded-md bg-white hover:bg-gray-50 active:bg-gray-100 transition-colors">
+            <svg class="w-3.5 h-3.5 text-gray-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
           </button>
         </div>
         <!-- Textarea -->
-        <textarea class="w-full h-17.5 px-3 py-1.5 text-sm border border-[#E5E7EB] rounded-md placeholder-[#99A1AF] text-[#101828] outline-none bg-white focus:border-[#615fff] focus:ring-1 focus:ring-[#615fff] resize-y" placeholder="入力された内容をメールで仕入先に送ります"></textarea>
+        <textarea class="w-full h-17.5 px-3 py-1.5 text-sm border border-gray-200 rounded-md placeholder-gray-400 text-gray-900 outline-none bg-white focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 resize-y" placeholder="入力された内容をメールで仕入先に送ります"></textarea>
         <!-- Actions -->
         <div class="flex flex-col gap-2">
           <div class="flex items-center justify-between">
-            <button class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-[#101828] bg-white border border-[#E5E7EB] rounded-md hover:bg-[#F9FAFB] active:bg-[#F3F4F6] transition-colors">
+            <button class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-gray-900 bg-white border border-gray-200 rounded-md hover:bg-gray-50 active:bg-gray-100 transition-colors">
               <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
               データ添付
             </button>
-            <button class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-white bg-[#E5E7EB] rounded-md cursor-not-allowed" disabled>
+            <button class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-white bg-gray-200 rounded-md cursor-not-allowed" disabled>
               <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg>
               送信
             </button>
@@ -100,14 +100,14 @@
         </div>
       </div>
       <!-- Divider -->
-      <div class="h-px bg-[#E5E7EB] shrink-0"></div>
+      <div class="h-px bg-gray-200 shrink-0"></div>
       <!-- Lower Area -->
       <div class="flex-1 flex flex-col gap-4 pt-6 px-6 overflow-hidden">
         <!-- History Header -->
         <div class="flex items-center justify-between shrink-0">
-          <p class="text-xl font-bold text-[#101828] leading-7">会話履歴</p>
+          <p class="text-xl font-bold text-gray-900 leading-7">会話履歴</p>
           <div class="flex items-center gap-1">
-            <span class="text-sm text-[#4A5565]">会話中</span>
+            <span class="text-sm text-gray-600">会話中</span>
             <div class="switch-track switch-sm switch-off">
               <div class="switch-thumb"></div>
             </div>
@@ -119,30 +119,30 @@
             <!-- Receive Message -->
             <div class="flex flex-col gap-2 py-2">
               <div class="flex items-center gap-2">
-                <p class="text-base font-bold text-[#101828] leading-6">test@shiza1.com</p>
-                <p class="text-xs text-[#99A1AF]">2022/08/24 19:40</p>
+                <p class="text-base font-bold text-gray-900 leading-6">test@shiza1.com</p>
+                <p class="text-xs text-gray-400">2022/08/24 19:40</p>
               </div>
-              <div class="text-sm text-[#101828] leading-5">
+              <div class="text-sm text-gray-900 leading-5">
                 <p>内容を確認いたしました。<br>単価が80円で確定しましたので、ご連絡いたします。</p>
                 <p>ご確認いただけましたら幸いです。</p>
               </div>
               <div class="flex flex-wrap gap-2">
-                <span class="inline-flex items-center px-3 py-1.5 text-sm text-[#171923] border border-[#E5E7EB] rounded-md bg-white">sample-XXXXX.png (2,222KB)</span>
-                <span class="inline-flex items-center px-3 py-1.5 text-sm text-[#171923] border border-[#E5E7EB] rounded-md bg-white">sample-XXXXX.png (2,222KB)</span>
-                <span class="inline-flex items-center px-3 py-1.5 text-sm text-[#171923] border border-[#E5E7EB] rounded-md bg-white">sample-XXXXX.png (2,222KB)</span>
+                <span class="inline-flex items-center px-3 py-1.5 text-sm text-gray-900 border border-gray-200 rounded-md bg-white">sample-XXXXX.png (2,222KB)</span>
+                <span class="inline-flex items-center px-3 py-1.5 text-sm text-gray-900 border border-gray-200 rounded-md bg-white">sample-XXXXX.png (2,222KB)</span>
+                <span class="inline-flex items-center px-3 py-1.5 text-sm text-gray-900 border border-gray-200 rounded-md bg-white">sample-XXXXX.png (2,222KB)</span>
               </div>
             </div>
             <!-- Send Message -->
             <div class="pl-10">
-              <div class="bg-[#F9FAFB] rounded-lg p-4 flex flex-col gap-2">
+              <div class="bg-gray-50 rounded-lg p-4 flex flex-col gap-2">
                 <div class="flex items-center gap-2">
-                  <p class="text-base font-bold text-[#4A5565] leading-6">酒井 亮太</p>
-                  <p class="text-xs text-[#99A1AF]">2022/08/24 19:40</p>
+                  <p class="text-base font-bold text-gray-600 leading-6">酒井 亮太</p>
+                  <p class="text-xs text-gray-400">2022/08/24 19:40</p>
                 </div>
-                <p class="text-sm text-[#4A5565] leading-5">発注書を送付しました</p>
+                <p class="text-sm text-gray-600 leading-5">発注書を送付しました</p>
                 <div class="flex flex-wrap gap-2">
-                  <span class="inline-flex items-center px-3 py-1.5 text-sm text-[#171923] border border-[#E5E7EB] rounded-md bg-white">20260401-001_発注書.pdf (64KB)</span>
-                  <span class="inline-flex items-center px-3 py-1.5 text-sm text-[#171923] border border-[#E5E7EB] rounded-md bg-white">20260401-001_発注書.xlsx (7KB)</span>
+                  <span class="inline-flex items-center px-3 py-1.5 text-sm text-gray-900 border border-gray-200 rounded-md bg-white">20260401-001_発注書.pdf (64KB)</span>
+                  <span class="inline-flex items-center px-3 py-1.5 text-sm text-gray-900 border border-gray-200 rounded-md bg-white">20260401-001_発注書.xlsx (7KB)</span>
                 </div>
               </div>
             </div>
@@ -155,23 +155,23 @@
   <!-- ===== DRAWER / 添付データあり ===== -->
   <section>
     <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">添付データあり</h3>
-    <div class="w-128 h-180 flex flex-col bg-white border-l border-[#E5E7EB]">
+    <div class="w-128 h-180 flex flex-col bg-white border-l border-gray-200">
       <!-- Upper Area -->
       <div class="flex flex-col gap-3 p-6 shrink-0">
         <div class="flex items-center justify-between">
-          <p class="text-xl font-bold text-[#101828] leading-7">仕入先にメッセージを送る</p>
-          <button class="inline-flex items-center justify-center w-8 h-8 border border-[#E5E7EB] rounded-md bg-white hover:bg-[#F9FAFB] active:bg-[#F3F4F6] transition-colors">
-            <svg class="w-3.5 h-3.5 text-[#101828]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+          <p class="text-xl font-bold text-gray-900 leading-7">仕入先にメッセージを送る</p>
+          <button class="inline-flex items-center justify-center w-8 h-8 border border-gray-200 rounded-md bg-white hover:bg-gray-50 active:bg-gray-100 transition-colors">
+            <svg class="w-3.5 h-3.5 text-gray-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
           </button>
         </div>
-        <textarea class="w-full h-17.5 px-3 py-1.5 text-sm border border-[#E5E7EB] rounded-md placeholder-[#99A1AF] text-[#101828] outline-none bg-white focus:border-[#615fff] focus:ring-1 focus:ring-[#615fff] resize-y" placeholder="入力された内容をメールで仕入先に送ります"></textarea>
+        <textarea class="w-full h-17.5 px-3 py-1.5 text-sm border border-gray-200 rounded-md placeholder-gray-400 text-gray-900 outline-none bg-white focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 resize-y" placeholder="入力された内容をメールで仕入先に送ります"></textarea>
         <!-- Attachments (Upper Area) -->
         <div class="flex flex-col">
           <div class="flex items-start gap-2">
-            <button class="inline-flex items-center gap-1.5 h-8 px-3 py-1.5 bg-white border border-[#E5E7EB] rounded-md text-sm text-[#171923] hover:bg-[#F9FAFB]">
+            <button class="inline-flex items-center gap-1.5 h-8 px-3 py-1.5 bg-white border border-gray-200 rounded-md text-sm text-gray-900 hover:bg-gray-50">
               sample-XXXXX.png (2,222KB)
             </button>
-            <button class="inline-flex items-center justify-center w-8 h-8 bg-white border border-[#E5E7EB] rounded-md text-[#101828] hover:bg-[#F9FAFB]">
+            <button class="inline-flex items-center justify-center w-8 h-8 bg-white border border-gray-200 rounded-md text-gray-900 hover:bg-gray-50">
               <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
             </button>
           </div>
@@ -179,24 +179,24 @@
         <!-- Actions -->
         <div class="flex flex-col gap-2">
           <div class="flex items-center justify-between">
-            <button class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-[#101828] bg-white border border-[#E5E7EB] rounded-md hover:bg-[#F9FAFB] active:bg-[#F3F4F6] transition-colors">
+            <button class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-gray-900 bg-white border border-gray-200 rounded-md hover:bg-gray-50 active:bg-gray-100 transition-colors">
               <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
               データ添付
             </button>
-            <button class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-white bg-[#E5E7EB] rounded-md cursor-not-allowed" disabled>
+            <button class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-white bg-gray-200 rounded-md cursor-not-allowed" disabled>
               <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg>
               送信
             </button>
           </div>
         </div>
       </div>
-      <div class="h-px bg-[#E5E7EB] shrink-0"></div>
+      <div class="h-px bg-gray-200 shrink-0"></div>
       <!-- Lower Area -->
       <div class="flex-1 flex flex-col gap-4 pt-6 px-6 overflow-hidden">
         <div class="flex items-center justify-between shrink-0">
-          <p class="text-xl font-bold text-[#101828] leading-7">会話履歴</p>
+          <p class="text-xl font-bold text-gray-900 leading-7">会話履歴</p>
           <div class="flex items-center gap-1">
-            <span class="text-sm text-[#4A5565]">会話中</span>
+            <span class="text-sm text-gray-600">会話中</span>
             <div class="switch-track switch-sm switch-off">
               <div class="switch-thumb"></div>
             </div>
@@ -206,60 +206,60 @@
           <div class="flex-1 flex flex-col gap-2">
             <!-- Send Message -->
             <div class="pl-10">
-              <div class="bg-[#F9FAFB] rounded-lg p-4 flex flex-col gap-2">
+              <div class="bg-gray-50 rounded-lg p-4 flex flex-col gap-2">
                 <div class="flex items-center gap-2">
-                  <p class="text-base font-bold text-[#4A5565] leading-6">酒井 亮太</p>
-                  <p class="text-xs text-[#99A1AF]">2022/08/24 19:40</p>
+                  <p class="text-base font-bold text-gray-600 leading-6">酒井 亮太</p>
+                  <p class="text-xs text-gray-400">2022/08/24 19:40</p>
                 </div>
-                <p class="text-sm text-[#4A5565] leading-5">発注書を送付しました</p>
+                <p class="text-sm text-gray-600 leading-5">発注書を送付しました</p>
                 <div class="flex flex-wrap gap-2">
-                  <span class="inline-flex items-center px-3 py-1.5 text-sm text-[#171923] border border-[#E5E7EB] rounded-md bg-white">20260401-001_発注書.pdf (64KB)</span>
-                  <span class="inline-flex items-center px-3 py-1.5 text-sm text-[#171923] border border-[#E5E7EB] rounded-md bg-white">20260401-001_発注書.xlsx (7KB)</span>
+                  <span class="inline-flex items-center px-3 py-1.5 text-sm text-gray-900 border border-gray-200 rounded-md bg-white">20260401-001_発注書.pdf (64KB)</span>
+                  <span class="inline-flex items-center px-3 py-1.5 text-sm text-gray-900 border border-gray-200 rounded-md bg-white">20260401-001_発注書.xlsx (7KB)</span>
                 </div>
               </div>
             </div>
             <!-- Receive Message -->
             <div class="flex flex-col gap-2 py-2">
               <div class="flex items-center gap-2">
-                <p class="text-base font-bold text-[#101828] leading-6">test@shiza1.com</p>
-                <p class="text-xs text-[#99A1AF]">2022/08/24 19:40</p>
+                <p class="text-base font-bold text-gray-900 leading-6">test@shiza1.com</p>
+                <p class="text-xs text-gray-400">2022/08/24 19:40</p>
               </div>
-              <div class="text-sm text-[#101828] leading-5">
+              <div class="text-sm text-gray-900 leading-5">
                 <p>内容を確認いたしました。<br>単価が80円で確定しましたので、ご連絡いたします。</p>
                 <p>ご確認いただけましたら幸いです。</p>
               </div>
               <div class="flex flex-wrap gap-2">
-                <span class="inline-flex items-center px-3 py-1.5 text-sm text-[#171923] border border-[#E5E7EB] rounded-md bg-white">sample-XXXXX.png (2,222KB)</span>
-                <span class="inline-flex items-center px-3 py-1.5 text-sm text-[#171923] border border-[#E5E7EB] rounded-md bg-white">sample-XXXXX.png (2,222KB)</span>
-                <span class="inline-flex items-center px-3 py-1.5 text-sm text-[#171923] border border-[#E5E7EB] rounded-md bg-white">sample-XXXXX.png (2,222KB)</span>
+                <span class="inline-flex items-center px-3 py-1.5 text-sm text-gray-900 border border-gray-200 rounded-md bg-white">sample-XXXXX.png (2,222KB)</span>
+                <span class="inline-flex items-center px-3 py-1.5 text-sm text-gray-900 border border-gray-200 rounded-md bg-white">sample-XXXXX.png (2,222KB)</span>
+                <span class="inline-flex items-center px-3 py-1.5 text-sm text-gray-900 border border-gray-200 rounded-md bg-white">sample-XXXXX.png (2,222KB)</span>
               </div>
             </div>
             <!-- Send Message -->
             <div class="pl-10">
-              <div class="bg-[#F9FAFB] rounded-lg p-4 flex flex-col gap-2">
+              <div class="bg-gray-50 rounded-lg p-4 flex flex-col gap-2">
                 <div class="flex items-center gap-2">
-                  <p class="text-base font-bold text-[#4A5565] leading-6">酒井 亮太</p>
-                  <p class="text-xs text-[#99A1AF]">2022/08/24 19:40</p>
+                  <p class="text-base font-bold text-gray-600 leading-6">酒井 亮太</p>
+                  <p class="text-xs text-gray-400">2022/08/24 19:40</p>
                 </div>
-                <p class="text-sm text-[#4A5565] leading-5">発注書を送付しました</p>
+                <p class="text-sm text-gray-600 leading-5">発注書を送付しました</p>
               </div>
             </div>
             <!-- Receive Message (no attachment) -->
             <div class="flex flex-col gap-2 py-2">
               <div class="flex items-center gap-2">
-                <p class="text-base font-bold text-[#101828] leading-6">test@shiza1.com</p>
-                <p class="text-xs text-[#99A1AF]">2022/08/24 19:40</p>
+                <p class="text-base font-bold text-gray-900 leading-6">test@shiza1.com</p>
+                <p class="text-xs text-gray-400">2022/08/24 19:40</p>
               </div>
-              <p class="text-sm text-[#101828] leading-5">更新内容を確認しました。<br>ありがとうございます。</p>
+              <p class="text-sm text-gray-900 leading-5">更新内容を確認しました。<br>ありがとうございます。</p>
             </div>
             <!-- Send Message (multi-line) -->
             <div class="pl-10">
-              <div class="bg-[#F9FAFB] rounded-lg p-4 flex flex-col gap-2">
+              <div class="bg-gray-50 rounded-lg p-4 flex flex-col gap-2">
                 <div class="flex items-center gap-2">
-                  <p class="text-base font-bold text-[#4A5565] leading-6">酒井 亮太</p>
-                  <p class="text-xs text-[#99A1AF]">2022/08/24 19:40</p>
+                  <p class="text-base font-bold text-gray-600 leading-6">酒井 亮太</p>
+                  <p class="text-xs text-gray-400">2022/08/24 19:40</p>
                 </div>
-                <div class="text-sm text-[#4A5565] leading-5">
+                <div class="text-sm text-gray-600 leading-5">
                   <p>内容を確認いただけたとのことでありがとうございます。</p>
                   <p>引き続きよろしくお願いいたします。</p>
                 </div>
@@ -274,23 +274,23 @@
   <!-- ===== DRAWER / エラー：添付データ上限 ===== -->
   <section>
     <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">エラー：添付データ上限</h3>
-    <div class="w-128 h-180 flex flex-col bg-white border-l border-[#E5E7EB]">
+    <div class="w-128 h-180 flex flex-col bg-white border-l border-gray-200">
       <!-- Upper Area -->
       <div class="flex flex-col gap-3 p-6 shrink-0">
         <div class="flex items-center justify-between">
-          <p class="text-xl font-bold text-[#101828] leading-7">仕入先にメッセージを送る</p>
-          <button class="inline-flex items-center justify-center w-8 h-8 border border-[#E5E7EB] rounded-md bg-white hover:bg-[#F9FAFB] active:bg-[#F3F4F6] transition-colors">
-            <svg class="w-3.5 h-3.5 text-[#101828]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+          <p class="text-xl font-bold text-gray-900 leading-7">仕入先にメッセージを送る</p>
+          <button class="inline-flex items-center justify-center w-8 h-8 border border-gray-200 rounded-md bg-white hover:bg-gray-50 active:bg-gray-100 transition-colors">
+            <svg class="w-3.5 h-3.5 text-gray-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
           </button>
         </div>
-        <textarea class="w-full h-17.5 px-3 py-1.5 text-sm border border-[#E5E7EB] rounded-md placeholder-[#99A1AF] text-[#101828] outline-none bg-white focus:border-[#615fff] focus:ring-1 focus:ring-[#615fff] resize-y" placeholder="入力された内容をメールで仕入先に送ります"></textarea>
+        <textarea class="w-full h-17.5 px-3 py-1.5 text-sm border border-gray-200 rounded-md placeholder-gray-400 text-gray-900 outline-none bg-white focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 resize-y" placeholder="入力された内容をメールで仕入先に送ります"></textarea>
         <!-- Attachments -->
         <div class="flex flex-col">
           <div class="flex items-start gap-2">
-            <button class="inline-flex items-center gap-1.5 h-8 px-3 py-1.5 bg-white border border-[#E5E7EB] rounded-md text-sm text-[#171923] hover:bg-[#F9FAFB]">
+            <button class="inline-flex items-center gap-1.5 h-8 px-3 py-1.5 bg-white border border-gray-200 rounded-md text-sm text-gray-900 hover:bg-gray-50">
               sample-XXXXX.png (2,222KB)
             </button>
-            <button class="inline-flex items-center justify-center w-8 h-8 bg-white border border-[#E5E7EB] rounded-md text-[#101828] hover:bg-[#F9FAFB]">
+            <button class="inline-flex items-center justify-center w-8 h-8 bg-white border border-gray-200 rounded-md text-gray-900 hover:bg-gray-50">
               <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
             </button>
           </div>
@@ -298,25 +298,25 @@
         <!-- Actions + Error Text -->
         <div class="flex flex-col gap-2">
           <div class="flex items-center justify-between">
-            <button class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-[#101828] bg-white border border-[#E5E7EB] rounded-md hover:bg-[#F9FAFB] active:bg-[#F3F4F6] transition-colors">
+            <button class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-gray-900 bg-white border border-gray-200 rounded-md hover:bg-gray-50 active:bg-gray-100 transition-colors">
               <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
               データ添付
             </button>
-            <button class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-white bg-[#E5E7EB] rounded-md cursor-not-allowed" disabled>
+            <button class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-white bg-gray-200 rounded-md cursor-not-allowed" disabled>
               <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg>
               送信
             </button>
           </div>
-          <p class="text-xs text-[#FB2C36]">添付データの合計を20MB以下にしましょう</p>
+          <p class="text-xs text-red-500">添付データの合計を20MB以下にしましょう</p>
         </div>
       </div>
-      <div class="h-px bg-[#E5E7EB] shrink-0"></div>
+      <div class="h-px bg-gray-200 shrink-0"></div>
       <!-- Lower Area (abbreviated) -->
       <div class="flex-1 flex flex-col gap-4 pt-6 px-6 overflow-hidden">
         <div class="flex items-center justify-between shrink-0">
-          <p class="text-xl font-bold text-[#101828] leading-7">会話履歴</p>
+          <p class="text-xl font-bold text-gray-900 leading-7">会話履歴</p>
           <div class="flex items-center gap-1">
-            <span class="text-sm text-[#4A5565]">会話中</span>
+            <span class="text-sm text-gray-600">会話中</span>
             <div class="switch-track switch-sm switch-off">
               <div class="switch-thumb"></div>
             </div>
@@ -325,20 +325,20 @@
         <div class="flex-1 flex gap-2 min-h-0 overflow-y-auto hide-scrollbar">
           <div class="flex-1 flex flex-col gap-2">
             <div class="pl-10">
-              <div class="bg-[#F9FAFB] rounded-lg p-4 flex flex-col gap-2">
+              <div class="bg-gray-50 rounded-lg p-4 flex flex-col gap-2">
                 <div class="flex items-center gap-2">
-                  <p class="text-base font-bold text-[#4A5565] leading-6">酒井 亮太</p>
-                  <p class="text-xs text-[#99A1AF]">2022/08/24 19:40</p>
+                  <p class="text-base font-bold text-gray-600 leading-6">酒井 亮太</p>
+                  <p class="text-xs text-gray-400">2022/08/24 19:40</p>
                 </div>
-                <p class="text-sm text-[#4A5565] leading-5">発注書を送付しました</p>
+                <p class="text-sm text-gray-600 leading-5">発注書を送付しました</p>
               </div>
             </div>
             <div class="flex flex-col gap-2 py-2">
               <div class="flex items-center gap-2">
-                <p class="text-base font-bold text-[#101828] leading-6">test@shiza1.com</p>
-                <p class="text-xs text-[#99A1AF]">2022/08/24 19:40</p>
+                <p class="text-base font-bold text-gray-900 leading-6">test@shiza1.com</p>
+                <p class="text-xs text-gray-400">2022/08/24 19:40</p>
               </div>
-              <div class="text-sm text-[#101828] leading-5">
+              <div class="text-sm text-gray-900 leading-5">
                 <p>内容を確認いたしました。<br>単価が80円で確定しましたので、ご連絡いたします。</p>
                 <p>ご確認いただけましたら幸いです。</p>
               </div>
@@ -358,17 +358,17 @@
         <span class="text-[10px] text-gray-400">Receive (Supplier)</span>
         <div class="flex flex-col gap-2 py-2">
           <div class="flex items-center gap-2">
-            <p class="text-base font-bold text-[#101828] leading-6">test@shiza1.com</p>
-            <p class="text-xs text-[#99A1AF]">2022/08/24 19:40</p>
+            <p class="text-base font-bold text-gray-900 leading-6">test@shiza1.com</p>
+            <p class="text-xs text-gray-400">2022/08/24 19:40</p>
           </div>
-          <div class="text-sm text-[#101828] leading-5">
+          <div class="text-sm text-gray-900 leading-5">
             <p>内容を確認いたしました。<br>単価が80円で確定しましたので、ご連絡いたします。</p>
             <p>ご確認いただけましたら幸いです。</p>
           </div>
           <div class="flex flex-wrap gap-2">
-            <span class="inline-flex items-center px-3 py-1.5 text-sm text-[#171923] border border-[#E5E7EB] rounded-md bg-white">sample-XXXXX.png (2,222KB)</span>
-            <span class="inline-flex items-center px-3 py-1.5 text-sm text-[#171923] border border-[#E5E7EB] rounded-md bg-white">sample-XXXXX.png (2,222KB)</span>
-            <span class="inline-flex items-center px-3 py-1.5 text-sm text-[#171923] border border-[#E5E7EB] rounded-md bg-white">sample-XXXXX.png (2,222KB)</span>
+            <span class="inline-flex items-center px-3 py-1.5 text-sm text-gray-900 border border-gray-200 rounded-md bg-white">sample-XXXXX.png (2,222KB)</span>
+            <span class="inline-flex items-center px-3 py-1.5 text-sm text-gray-900 border border-gray-200 rounded-md bg-white">sample-XXXXX.png (2,222KB)</span>
+            <span class="inline-flex items-center px-3 py-1.5 text-sm text-gray-900 border border-gray-200 rounded-md bg-white">sample-XXXXX.png (2,222KB)</span>
           </div>
         </div>
       </div>
@@ -377,25 +377,25 @@
         <span class="text-[10px] text-gray-400">Receive (No Attachment)</span>
         <div class="flex flex-col gap-2 py-2">
           <div class="flex items-center gap-2">
-            <p class="text-base font-bold text-[#101828] leading-6">test@shiza1.com</p>
-            <p class="text-xs text-[#99A1AF]">2022/08/24 19:40</p>
+            <p class="text-base font-bold text-gray-900 leading-6">test@shiza1.com</p>
+            <p class="text-xs text-gray-400">2022/08/24 19:40</p>
           </div>
-          <p class="text-sm text-[#101828] leading-5">更新内容を確認しました。<br>ありがとうございます。</p>
+          <p class="text-sm text-gray-900 leading-5">更新内容を確認しました。<br>ありがとうございます。</p>
         </div>
       </div>
       <!-- Send (from user) -->
       <div class="space-y-1">
         <span class="text-[10px] text-gray-400">Send (User)</span>
         <div class="pl-10">
-          <div class="bg-[#F9FAFB] rounded-lg p-4 flex flex-col gap-2">
+          <div class="bg-gray-50 rounded-lg p-4 flex flex-col gap-2">
             <div class="flex items-center gap-2">
-              <p class="text-base font-bold text-[#4A5565] leading-6">酒井 亮太</p>
-              <p class="text-xs text-[#99A1AF]">2022/08/24 19:40</p>
+              <p class="text-base font-bold text-gray-600 leading-6">酒井 亮太</p>
+              <p class="text-xs text-gray-400">2022/08/24 19:40</p>
             </div>
-            <p class="text-sm text-[#4A5565] leading-5">発注書を送付しました</p>
+            <p class="text-sm text-gray-600 leading-5">発注書を送付しました</p>
             <div class="flex flex-wrap gap-2">
-              <span class="inline-flex items-center px-3 py-1.5 text-sm text-[#171923] border border-[#E5E7EB] rounded-md bg-white">20260401-001_発注書.pdf (64KB)</span>
-              <span class="inline-flex items-center px-3 py-1.5 text-sm text-[#171923] border border-[#E5E7EB] rounded-md bg-white">20260401-001_発注書.xlsx (7KB)</span>
+              <span class="inline-flex items-center px-3 py-1.5 text-sm text-gray-900 border border-gray-200 rounded-md bg-white">20260401-001_発注書.pdf (64KB)</span>
+              <span class="inline-flex items-center px-3 py-1.5 text-sm text-gray-900 border border-gray-200 rounded-md bg-white">20260401-001_発注書.xlsx (7KB)</span>
             </div>
           </div>
         </div>
@@ -404,12 +404,12 @@
       <div class="space-y-1">
         <span class="text-[10px] text-gray-400">Send (No Attachment)</span>
         <div class="pl-10">
-          <div class="bg-[#F9FAFB] rounded-lg p-4 flex flex-col gap-2">
+          <div class="bg-gray-50 rounded-lg p-4 flex flex-col gap-2">
             <div class="flex items-center gap-2">
-              <p class="text-base font-bold text-[#4A5565] leading-6">酒井 亮太</p>
-              <p class="text-xs text-[#99A1AF]">2022/08/24 19:40</p>
+              <p class="text-base font-bold text-gray-600 leading-6">酒井 亮太</p>
+              <p class="text-xs text-gray-400">2022/08/24 19:40</p>
             </div>
-            <div class="text-sm text-[#4A5565] leading-5">
+            <div class="text-sm text-gray-600 leading-5">
               <p>内容を確認いただけたとのことでありがとうございます。</p>
               <p>引き続きよろしくお願いいたします。</p>
             </div>
@@ -456,20 +456,20 @@
       }
     }
   }">
-    <div class="flex h-150 border border-[#E5E7EB] rounded-lg overflow-hidden relative">
+    <div class="flex h-150 border border-gray-200 rounded-lg overflow-hidden relative">
       <!-- Left: Main Content Area -->
       <div class="flex-1 min-w-0 p-6 overflow-y-auto bg-gray-50">
         <div class="flex items-center justify-between mb-4">
-          <p class="text-lg font-bold text-[#101828]">発注書一覧</p>
+          <p class="text-lg font-bold text-gray-900">発注書一覧</p>
           <button
             @click="open = true"
-            class="inline-flex items-center gap-2 h-8 rounded-md bg-[#615fff] hover:bg-[#4f39f6] active:bg-[#432dd7] text-sm font-semibold text-white px-3 py-1.5 transition-colors">
+            class="inline-flex items-center gap-2 h-8 rounded-md bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-700 text-sm font-semibold text-white px-3 py-1.5 transition-colors">
             <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
             Open Drawer
           </button>
         </div>
         <template x-for="i in 12" :key="i">
-          <div class="flex items-center h-10 border-b border-[#E5E7EB] bg-white px-3 text-sm text-gray-600">
+          <div class="flex items-center h-10 border-b border-gray-200 bg-white px-3 text-sm text-gray-600">
             <span class="w-35 shrink-0" x-text="'20260216-' + String(i).padStart(3, '0')"></span>
             <span class="flex-1">サンプル発注</span>
             <span class="w-25 shrink-0 text-right">66,000</span>
@@ -478,40 +478,40 @@
       </div>
       <!-- Right: Drawer Panel -->
       <div
-        class="shrink-0 overflow-hidden border-l border-[#E5E7EB] transition-all duration-300"
+        class="shrink-0 overflow-hidden border-l border-gray-200 transition-all duration-300"
         :style="open ? 'width: 400px' : 'width: 0; border-left-width: 0'">
         <div class="w-100 h-full flex flex-col bg-white">
           <!-- Upper Area -->
           <div class="flex flex-col gap-3 p-6 shrink-0">
             <div class="flex items-center justify-between">
-              <p class="text-xl font-bold text-[#101828] leading-7">メッセージ</p>
-              <button @click="open = false" class="inline-flex items-center justify-center w-8 h-8 border border-[#E5E7EB] rounded-md bg-white hover:bg-[#F9FAFB] active:bg-[#F3F4F6] transition-colors">
-                <svg class="w-3.5 h-3.5 text-[#101828]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+              <p class="text-xl font-bold text-gray-900 leading-7">メッセージ</p>
+              <button @click="open = false" class="inline-flex items-center justify-center w-8 h-8 border border-gray-200 rounded-md bg-white hover:bg-gray-50 active:bg-gray-100 transition-colors">
+                <svg class="w-3.5 h-3.5 text-gray-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
               </button>
             </div>
-            <textarea x-model="msgText" class="w-full h-17.5 px-3 py-1.5 text-sm border border-[#E5E7EB] rounded-md placeholder-[#99A1AF] text-[#101828] outline-none bg-white focus:border-[#615fff] focus:ring-1 focus:ring-[#615fff] resize-y" placeholder="入力された内容をメールで仕入先に送ります"></textarea>
+            <textarea x-model="msgText" class="w-full h-17.5 px-3 py-1.5 text-sm border border-gray-200 rounded-md placeholder-gray-400 text-gray-900 outline-none bg-white focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 resize-y" placeholder="入力された内容をメールで仕入先に送ります"></textarea>
             <div class="flex items-center justify-between">
-              <button class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-[#101828] bg-white border border-[#E5E7EB] rounded-md hover:bg-[#F9FAFB] active:bg-[#F3F4F6] transition-colors">
+              <button class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-gray-900 bg-white border border-gray-200 rounded-md hover:bg-gray-50 active:bg-gray-100 transition-colors">
                 <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
                 データ添付
               </button>
               <button
                 @click="sendMessage()"
                 :disabled="!msgText.trim()"
-                :class="msgText.trim() ? 'bg-[#615fff] hover:bg-[#4f39f6] active:bg-[#432dd7] cursor-pointer' : 'bg-[#E5E7EB] cursor-not-allowed'"
+                :class="msgText.trim() ? 'bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-700 cursor-pointer' : 'bg-gray-200 cursor-not-allowed'"
                 class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-white rounded-md transition-colors">
                 <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg>
                 送信
               </button>
             </div>
           </div>
-          <div class="h-px bg-[#E5E7EB] shrink-0"></div>
+          <div class="h-px bg-gray-200 shrink-0"></div>
           <!-- Lower Area -->
           <div class="flex-1 flex flex-col gap-4 pt-6 px-6 overflow-hidden">
             <div class="flex items-center justify-between shrink-0">
-              <p class="text-xl font-bold text-[#101828] leading-7">会話履歴</p>
+              <p class="text-xl font-bold text-gray-900 leading-7">会話履歴</p>
               <div class="flex items-center gap-1">
-                <span class="text-sm text-[#4A5565]">会話中</span>
+                <span class="text-sm text-gray-600">会話中</span>
                 <div @click="toggleChat()" class="switch-track switch-sm cursor-pointer" :class="chatActive ? 'switch-on' : 'switch-off'">
                   <div class="switch-thumb"></div>
                 </div>
@@ -521,23 +521,23 @@
               <div class="flex flex-col gap-2">
                 <div class="flex flex-col gap-2 py-2">
                   <div class="flex items-center gap-2">
-                    <p class="text-base font-bold text-[#101828] leading-6">test@shiza1.com</p>
-                    <p class="text-xs text-[#99A1AF]">2022/08/24 19:40</p>
+                    <p class="text-base font-bold text-gray-900 leading-6">test@shiza1.com</p>
+                    <p class="text-xs text-gray-400">2022/08/24 19:40</p>
                   </div>
-                  <div class="text-sm text-[#101828] leading-5">内容を確認いたしました。<br>単価が80円で確定しましたので、ご連絡いたします。</div>
+                  <div class="text-sm text-gray-900 leading-5">内容を確認いたしました。<br>単価が80円で確定しましたので、ご連絡いたします。</div>
                   <div class="flex flex-wrap gap-2">
-                    <span class="inline-flex items-center px-3 py-1.5 text-sm text-[#171923] border border-[#E5E7EB] rounded-md bg-white">sample-XXXXX.png (2,222KB)</span>
+                    <span class="inline-flex items-center px-3 py-1.5 text-sm text-gray-900 border border-gray-200 rounded-md bg-white">sample-XXXXX.png (2,222KB)</span>
                   </div>
                 </div>
                 <div class="pl-10">
-                  <div class="bg-[#F9FAFB] rounded-lg p-4 flex flex-col gap-2">
+                  <div class="bg-gray-50 rounded-lg p-4 flex flex-col gap-2">
                     <div class="flex items-center gap-2">
-                      <p class="text-base font-bold text-[#4A5565] leading-6">酒井 亮太</p>
-                      <p class="text-xs text-[#99A1AF]">2022/08/24 19:40</p>
+                      <p class="text-base font-bold text-gray-600 leading-6">酒井 亮太</p>
+                      <p class="text-xs text-gray-400">2022/08/24 19:40</p>
                     </div>
-                    <p class="text-sm text-[#4A5565] leading-5">発注書を送付しました</p>
+                    <p class="text-sm text-gray-600 leading-5">発注書を送付しました</p>
                     <div class="flex flex-wrap gap-2">
-                      <span class="inline-flex items-center px-3 py-1.5 text-sm text-[#171923] border border-[#E5E7EB] rounded-md bg-white">sample-XXXXX.png (2,222KB)</span>
+                      <span class="inline-flex items-center px-3 py-1.5 text-sm text-gray-900 border border-gray-200 rounded-md bg-white">sample-XXXXX.png (2,222KB)</span>
                     </div>
                   </div>
                 </div>
@@ -556,7 +556,7 @@
                x-transition:leave="transition ease-in duration-200"
                x-transition:leave-start="translate-y-0 opacity-100"
                x-transition:leave-end="translate-y-4 opacity-0"
-               class="w-90 rounded-md bg-[#009689] flex items-start gap-3" style="padding: 12px 16px;">
+               class="w-90 rounded-md bg-teal-600 flex items-start gap-3" style="padding: 12px 16px;">
             <div class="flex-shrink-0 mt-0.75">
               <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
             </div>

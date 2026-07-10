@@ -67,18 +67,18 @@
       <div class="flex flex-wrap items-end gap-6">
         <!-- sm: checkbox 12px rounded-sm, text 14px, gap 8px -->
         <label class="inline-flex items-center gap-2 cursor-pointer">
-          <span class="w-3 h-3 rounded-sm border border-[#e5e7eb] bg-white"></span>
-          <span class="text-sm text-[#101828]">Checkbox Label</span>
+          <span class="w-3 h-3 rounded-sm border border-gray-200 bg-white"></span>
+          <span class="text-sm text-gray-900">Checkbox Label</span>
         </label>
         <!-- md: checkbox 16px rounded, text 16px, gap 8px -->
         <label class="inline-flex items-center gap-2 cursor-pointer">
-          <span class="w-4 h-4 rounded border border-[#e5e7eb] bg-white"></span>
-          <span class="text-base text-[#101828]">Checkbox Label</span>
+          <span class="w-4 h-4 rounded border border-gray-200 bg-white"></span>
+          <span class="text-base text-gray-900">Checkbox Label</span>
         </label>
         <!-- lg: checkbox 20px rounded, text 18px, gap 8px -->
         <label class="inline-flex items-center gap-2 cursor-pointer">
-          <span class="w-5 h-5 rounded border border-[#e5e7eb] bg-white"></span>
-          <span class="text-lg text-[#101828]">Checkbox Label</span>
+          <span class="w-5 h-5 rounded border border-gray-200 bg-white"></span>
+          <span class="text-lg text-gray-900">Checkbox Label</span>
         </label>
       </div>
     </div>
@@ -90,36 +90,36 @@
         <!-- Default -->
         <div class="text-center space-y-1.5">
           <label class="inline-flex items-center gap-2">
-            <span class="w-4 h-4 rounded border border-[#e5e7eb] bg-white"></span>
-            <span class="text-base text-[#101828]">Checkbox Label</span>
+            <span class="w-4 h-4 rounded border border-gray-200 bg-white"></span>
+            <span class="text-base text-gray-900">Checkbox Label</span>
           </label>
           <p class="text-[10px] text-gray-400">Default</p>
         </div>
         <!-- Checked -->
         <div class="text-center space-y-1.5">
           <label class="inline-flex items-center gap-2">
-            <span class="w-4 h-4 rounded bg-[#615fff] inline-flex items-center justify-center">
+            <span class="w-4 h-4 rounded bg-indigo-500 inline-flex items-center justify-center">
               <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
             </span>
-            <span class="text-base text-[#101828]">Checkbox Label</span>
+            <span class="text-base text-gray-900">Checkbox Label</span>
           </label>
           <p class="text-[10px] text-gray-400">Checked</p>
         </div>
         <!-- Disabled -->
         <div class="text-center space-y-1.5">
           <label class="inline-flex items-center gap-2 cursor-not-allowed">
-            <span class="w-4 h-4 rounded border border-[#e5e7eb] bg-[#f9fafb]"></span>
-            <span class="text-base text-[#99a1af]">Checkbox Label</span>
+            <span class="w-4 h-4 rounded border border-gray-200 bg-gray-50"></span>
+            <span class="text-base text-gray-400">Checkbox Label</span>
           </label>
           <p class="text-[10px] text-gray-400">Disabled</p>
         </div>
         <!-- Checked + Disabled -->
         <div class="text-center space-y-1.5">
           <label class="inline-flex items-center gap-2 cursor-not-allowed">
-            <span class="w-4 h-4 rounded bg-[#99a1af] inline-flex items-center justify-center">
+            <span class="w-4 h-4 rounded bg-gray-400 inline-flex items-center justify-center">
               <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
             </span>
-            <span class="text-base text-[#101828]">Checkbox Label</span>
+            <span class="text-base text-gray-900">Checkbox Label</span>
           </label>
           <p class="text-[10px] text-gray-400">Checked Disabled</p>
         </div>
@@ -134,12 +134,12 @@
             <span
               class="w-4 h-4 rounded inline-flex items-center justify-center transition-all"
               :class="item.checked
-                ? (item.disabled ? 'bg-[#99a1af]' : 'bg-[#615fff]')
-                : (item.disabled ? 'border border-[#e5e7eb] bg-[#f9fafb]' : 'border border-[#e5e7eb] bg-white')"
+                ? (item.disabled ? 'bg-gray-400' : 'bg-indigo-500')
+                : (item.disabled ? 'border border-gray-200 bg-gray-50' : 'border border-gray-200 bg-white')"
             >
               <svg x-show="item.checked" class="w-3 h-3 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
             </span>
-            <span class="text-base" :class="item.disabled ? 'text-[#99a1af]' : 'text-[#101828]'" x-text="item.label"></span>
+            <span class="text-base" :class="item.disabled ? 'text-gray-400' : 'text-gray-900'" x-text="item.label"></span>
           </label>
         </template>
       </div>
