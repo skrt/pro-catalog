@@ -39,6 +39,18 @@
     --shadow-modal: 0 8px 32px -8px rgba(0, 0, 0, 0.16);
   }
 </style>
+  <style>
+    /* @tailwindcss/forms (strategy: class) の .form-checkbox
+       CDN 環境ではプラグインを読み込めないため、Rails の app/assets/builds/tailwind.css
+       から該当ルールを移植している（checkbox.html と同一）。 */
+    .form-checkbox{appearance:none;print-color-adjust:exact;vertical-align:middle;-webkit-user-select:none;user-select:none;color:oklch(54.6% .245 262.881);--tw-shadow:0 0 #0000;background-color:#fff;background-origin:border-box;border-width:1px;border-color:oklch(55.1% .027 264.364);border-radius:0;flex-shrink:0;width:1rem;height:1rem;padding:0;display:inline-block}
+    .form-checkbox:focus{outline-offset:2px;--tw-ring-inset:var(--tw-empty, );--tw-ring-offset-width:2px;--tw-ring-offset-color:#fff;--tw-ring-color:oklch(54.6% .245 262.881);--tw-ring-offset-shadow:var(--tw-ring-inset)0 0 0 var(--tw-ring-offset-width)var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset)0 0 0 calc(2px + var(--tw-ring-offset-width))var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow);outline:2px solid #0000}
+    .form-checkbox:checked{background-color:currentColor;background-image:url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");background-position:50%;background-repeat:no-repeat;background-size:100% 100%;border-color:#0000}
+    .form-checkbox:checked:hover,.form-checkbox:checked:focus{background-color:currentColor;border-color:#0000}
+    .form-checkbox:indeterminate{background-color:currentColor;background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 16 16'%3e%3cpath stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 8h8'/%3e%3c/svg%3e");background-position:50%;background-repeat:no-repeat;background-size:100% 100%;border-color:#0000}
+    .form-checkbox:indeterminate:hover,.form-checkbox:indeterminate:focus{background-color:currentColor;border-color:#0000}
+    @media (forced-colors:active){.form-checkbox:checked,.form-checkbox:indeterminate{appearance:auto}}
+  </style>
 <style>#back-link { display: inline-flex; } .in-iframe #back-link { display: none; } .in-iframe body { padding: 0 !important; } .in-iframe.demo-only body { background: #f8f8fa !important; padding: 36px 32px 32px !important; }</style>
 <script>if (window !== window.top) { document.documentElement.classList.add("in-iframe"); var view = new URLSearchParams(location.search).get("view"); if (view === "demo") document.documentElement.classList.add("demo-only"); document.addEventListener("DOMContentLoaded", function() { var el = document.getElementById("back-link"); if (el) el.remove(); var demo = document.getElementById("demo-section"); if (view === "demo" && demo) { document.body.appendChild(demo); Array.from(document.body.children).forEach(function(c) { if (c === demo || c.tagName === "SCRIPT" || c.hasAttribute("data-demo-keep")) return; c.remove(); }); } else if (view === "preview" && demo) { demo.remove(); } }); }</script>
 </head>
@@ -58,7 +70,7 @@
       <div class="flex items-center bg-gray-50">
         <!-- Table / Header Type=Checkbox: w-10, py-2 px-3 -->
         <div class="flex items-center justify-center shrink-0 w-10 py-2 px-3">
-          <input type="checkbox" class="w-4 h-4 rounded-sm border-gray-300 text-indigo-600">
+          <input type="checkbox" class="form-checkbox w-4 h-4 rounded-sm border-gray-200 text-indigo-500 focus:ring-indigo-500">
         </div>
         <!-- Table / Header Type=expand placeholder: w-8 -->
         <div class="w-8 shrink-0"></div>
@@ -81,7 +93,7 @@
       <div class="flex items-center border-b border-gray-200 hover:bg-gray-50 transition-colors">
         <!-- Table / Data Type=checkbox: w-10, py-3.5 px-3 -->
         <div class="flex items-center justify-center shrink-0 w-10 py-3.5 px-3">
-          <input type="checkbox" class="w-4 h-4 rounded-sm border-gray-300 text-indigo-600">
+          <input type="checkbox" class="form-checkbox w-4 h-4 rounded-sm border-gray-200 text-indigo-500 focus:ring-indigo-500">
         </div>
         <!-- Table / Data Type=icon: w-8, py-2.5 px-1 -->
         <div class="w-8 shrink-0 py-2.5 px-1 flex items-center justify-center">
@@ -122,7 +134,7 @@
       <!-- Data Row 2 -->
       <div class="flex items-center border-b border-gray-200 hover:bg-gray-50 transition-colors">
         <div class="flex items-center justify-center shrink-0 w-10 py-3.5 px-3">
-          <input type="checkbox" class="w-4 h-4 rounded-sm border-gray-300 text-indigo-600">
+          <input type="checkbox" class="form-checkbox w-4 h-4 rounded-sm border-gray-200 text-indigo-500 focus:ring-indigo-500">
         </div>
         <div class="w-8 shrink-0 py-2.5 px-1 flex items-center justify-center">
           <button class="w-6 h-6 rounded-md bg-white border border-gray-200 hover:bg-gray-50 active:bg-gray-100 inline-flex items-center justify-center transition-colors">
@@ -152,7 +164,7 @@
       <!-- Data Row 3: 2-line text (taller row) -->
       <div class="flex items-center border-b border-gray-200 hover:bg-gray-50 transition-colors">
         <div class="flex items-center justify-center shrink-0 w-10 py-3.5 px-3">
-          <input type="checkbox" class="w-4 h-4 rounded-sm border-gray-300 text-indigo-600">
+          <input type="checkbox" class="form-checkbox w-4 h-4 rounded-sm border-gray-200 text-indigo-500 focus:ring-indigo-500">
         </div>
         <div class="w-8 shrink-0 py-2.5 px-1 flex items-center justify-center">
           <button class="w-6 h-6 rounded-md bg-white border border-gray-200 hover:bg-gray-50 active:bg-gray-100 inline-flex items-center justify-center transition-colors">
@@ -182,7 +194,7 @@
       <!-- Data Row 4 -->
       <div class="flex items-center border-b border-gray-200 hover:bg-gray-50 transition-colors">
         <div class="flex items-center justify-center shrink-0 w-10 py-3.5 px-3">
-          <input type="checkbox" class="w-4 h-4 rounded-sm border-gray-300 text-indigo-600">
+          <input type="checkbox" class="form-checkbox w-4 h-4 rounded-sm border-gray-200 text-indigo-500 focus:ring-indigo-500">
         </div>
         <div class="w-8 shrink-0 py-2.5 px-1 flex items-center justify-center">
           <button class="w-6 h-6 rounded-md bg-white border border-gray-200 hover:bg-gray-50 active:bg-gray-100 inline-flex items-center justify-center transition-colors">
@@ -212,7 +224,7 @@
       <!-- Data Row 5 -->
       <div class="flex items-center hover:bg-gray-50 transition-colors">
         <div class="flex items-center justify-center shrink-0 w-10 py-3.5 px-3">
-          <input type="checkbox" class="w-4 h-4 rounded-sm border-gray-300 text-indigo-600">
+          <input type="checkbox" class="form-checkbox w-4 h-4 rounded-sm border-gray-200 text-indigo-500 focus:ring-indigo-500">
         </div>
         <div class="w-8 shrink-0 py-2.5 px-1 flex items-center justify-center">
           <button class="w-6 h-6 rounded-md bg-white border border-gray-200 hover:bg-gray-50 active:bg-gray-100 inline-flex items-center justify-center transition-colors">
@@ -267,7 +279,7 @@
       <div class="flex flex-col items-start gap-1">
         <span class="text-[10px] text-gray-400">checkbox</span>
         <div class="flex items-center justify-center border border-dashed border-gray-200 rounded w-10 py-3.5 px-3">
-          <input type="checkbox" class="w-4 h-4 rounded-sm border-gray-300 text-indigo-600">
+          <input type="checkbox" class="form-checkbox w-4 h-4 rounded-sm border-gray-200 text-indigo-500 focus:ring-indigo-500">
         </div>
       </div>
       <!-- Type=icon button (expand) -->
@@ -381,7 +393,7 @@ Line 3</span>
       <div class="flex flex-col items-start gap-1">
         <span class="text-[10px] text-gray-400">checkbox</span>
         <div class="bg-gray-50 flex items-center justify-center rounded border border-dashed border-gray-200 w-10 h-8 py-2 px-3">
-          <input type="checkbox" class="w-4 h-4 rounded-sm border-gray-300 text-indigo-600">
+          <input type="checkbox" class="form-checkbox w-4 h-4 rounded-sm border-gray-200 text-indigo-500 focus:ring-indigo-500">
         </div>
       </div>
       <!-- Type=Text -->
