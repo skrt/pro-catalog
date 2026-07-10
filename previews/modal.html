@@ -3,7 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<style type="text/tailwindcss">
+  @theme {
+    /* shizai-pro Rails app/assets/tailwind/application.css と同一のトークン定義 */
+    --color-badge-gray: #4A5565;
+    --color-badge-red: #E7000B;
+    --color-badge-orange: #F54A00;
+    --color-badge-amber: #E17100;
+    --color-badge-blue: #155dfc;
+    --color-badge-teal: #009689;
+    --color-badge-violet: #7F22FE;
+
+    --color-toast-success: #009689;
+    --color-toast-warning: #FD9A00;
+    --color-toast-error: #FB2C36;
+    --color-toast-info: #6A7282;
+
+    --color-btn-primary: #615fff;
+    --color-btn-primary-hover: #4f39f6;
+    --color-btn-primary-active: #432dd7;
+    --color-btn-secondary: #e0e7ff;
+    --color-btn-secondary-hover: #c6d2ff;
+    --color-btn-secondary-active: #a3b3ff;
+    --color-btn-alert: #FB2C36;
+    --color-btn-alert-hover: #E7000B;
+    --color-btn-alert-active: #C10007;
+    --color-btn-tertiary-hover: #f9fafb;
+    --color-btn-tertiary-active: #f3f4f6;
+    --color-btn-text-secondary: #372aac;
+    --color-btn-text-secondary-hover: #312c85;
+    --color-btn-text-secondary-active: #2e2670;
+    --color-btn-text-tertiary: #101828;
+
+    --shadow-modal: 0 8px 32px -8px rgba(0, 0, 0, 0.16);
+  }
+</style>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <style>
     [x-cloak] { display: none !important; }
@@ -156,7 +191,7 @@
       <!-- With count -->
       <div class="space-y-1">
         <span class="text-[10px] text-gray-400">With Count</span>
-        <div class="w-[672px] flex items-center gap-3 justify-end bg-[#F9FAFB] border-t border-[#E5E7EB] px-6 py-4">
+        <div class="w-168 flex items-center gap-3 justify-end bg-[#F9FAFB] border-t border-[#E5E7EB] px-6 py-4">
           <p class="flex-1 text-sm text-[#101828] leading-5">0件選択中</p>
           <div class="flex items-center gap-3">
             <button class="inline-flex items-center justify-center rounded-md border border-[#E5E7EB] bg-white hover:bg-[#F9FAFB] active:bg-[#F3F4F6] text-sm font-semibold text-[#101828] px-4 py-2.5 transition-colors">キャンセル</button>
@@ -167,7 +202,7 @@
       <!-- Without count -->
       <div class="space-y-1">
         <span class="text-[10px] text-gray-400">Without Count</span>
-        <div class="w-[672px] flex items-center gap-3 justify-end bg-[#F9FAFB] border-t border-[#E5E7EB] px-6 py-4">
+        <div class="w-168 flex items-center gap-3 justify-end bg-[#F9FAFB] border-t border-[#E5E7EB] px-6 py-4">
           <div class="flex items-center gap-3">
             <button class="inline-flex items-center justify-center rounded-md border border-[#E5E7EB] bg-white hover:bg-[#F9FAFB] active:bg-[#F3F4F6] text-sm font-semibold text-[#101828] px-4 py-2.5 transition-colors">キャンセル</button>
             <button class="inline-flex items-center justify-center rounded-md bg-[#615fff] hover:bg-[#4f39f6] active:bg-[#432dd7] text-sm font-semibold text-white px-4 py-2.5 transition-colors">承認</button>
@@ -181,7 +216,7 @@
   <section>
     <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Modal Dialog</h3>
     <p class="text-xs text-gray-400 mb-3">Props: Title (Text), Contents (Slot)</p>
-    <div id="demo-dialog" class="w-[400px] rounded-xl bg-white border border-[#E5E7EB]" style="box-shadow: 0 8px 32px -8px rgba(0,0,0,0.16);">
+    <div id="demo-dialog" class="w-100 rounded-xl bg-white border border-[#E5E7EB] shadow-modal">
       <div class="flex flex-col gap-2 p-6">
         <p class="text-lg font-semibold text-[#101828] leading-7">Dialog Title</p>
         <p class="text-sm text-[#4A5565] leading-5">Are you sure you want to proceed? This action cannot be undone.</p>
@@ -203,7 +238,7 @@
   <section>
     <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">ItemSelect Row</h3>
     <p class="text-xs text-gray-400 mb-3">Props: State (default / hover)</p>
-    <div class="w-[672px]">
+    <div class="w-168">
       <!-- Default -->
       <div class="flex items-center px-4 border-b border-[#E5E7EB]">
         <div class="w-8 shrink-0 flex items-center justify-center">
@@ -235,7 +270,7 @@
   <section>
     <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">MemberSelect Row</h3>
     <p class="text-xs text-gray-400 mb-3">Props: State (default / hover)</p>
-    <div class="w-[672px]">
+    <div class="w-168">
       <!-- Default -->
       <div class="flex items-center px-4 border-b border-[#E5E7EB]">
         <div class="flex-1 px-2 py-4"><span class="text-sm text-[#101828] leading-5">酒井 亮太</span></div>
@@ -257,7 +292,7 @@
     <div class="space-y-1 mb-8">
       <p class="text-xs font-semibold text-gray-500">アイテム選択モーダル</p>
       <p class="text-xs text-gray-400 mb-2">Modal / Table + ItemSelect Row</p>
-      <div id="demo-itemselect" class="w-[672px] h-[600px] flex flex-col bg-white border border-[#E5E7EB] rounded-xl overflow-hidden" style="box-shadow: 0 8px 32px -8px rgba(0,0,0,0.16);">
+      <div id="demo-itemselect" class="w-168 h-150 flex flex-col bg-white border border-[#E5E7EB] rounded-xl overflow-hidden shadow-modal">
         <!-- FixArea -->
         <div class="shrink-0">
           <div class="pt-6 pb-3 px-6">
@@ -322,7 +357,7 @@
     <div class="space-y-1">
       <p class="text-xs font-semibold text-gray-500">メンバー選択モーダル</p>
       <p class="text-xs text-gray-400 mb-2">Modal / Table + MemberSelect Row</p>
-      <div id="demo-memberselect" class="w-[672px] h-[500px] flex flex-col bg-white border border-[#E5E7EB] rounded-xl overflow-hidden" style="box-shadow: 0 8px 32px -8px rgba(0,0,0,0.16);">
+      <div id="demo-memberselect" class="w-168 h-125 flex flex-col bg-white border border-[#E5E7EB] rounded-xl overflow-hidden shadow-modal">
         <div class="shrink-0">
           <div class="pt-6 pb-3 px-6">
             <p class="text-base font-bold text-[#101828] leading-6">1次承認者を選択</p>
@@ -417,7 +452,7 @@
         <div x-show="openDialog"
           x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
           x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
-          class="w-[400px] rounded-xl bg-white border border-[#E5E7EB]" style="box-shadow: 0 8px 32px -8px rgba(0,0,0,0.16);" @click.stop>
+          class="w-100 rounded-xl bg-white border border-[#E5E7EB] shadow-modal" @click.stop>
           <div class="flex flex-col gap-2 p-6">
             <p class="text-lg font-semibold text-[#101828] leading-7">Dialog Title</p>
             <p class="text-sm text-[#4A5565] leading-5">Are you sure you want to proceed? This action cannot be undone.</p>
@@ -441,7 +476,7 @@
         <div x-show="openItemSelect"
           x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
           x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
-          class="w-[672px] max-h-full flex flex-col bg-white border border-[#E5E7EB] rounded-xl overflow-hidden" style="box-shadow: 0 8px 32px -8px rgba(0,0,0,0.16);" @click.stop>
+          class="w-168 max-h-full flex flex-col bg-white border border-[#E5E7EB] rounded-xl overflow-hidden shadow-modal" @click.stop>
           <div class="shrink-0">
             <div class="pt-6 pb-3 px-6"><p class="text-base font-bold text-[#101828] leading-6">アイテムをまとめて選択</p></div>
             <div class="flex flex-col gap-2 px-6 pb-3">
@@ -495,7 +530,7 @@
         <div x-show="openMemberSelect"
           x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
           x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
-          class="w-[672px] max-h-full flex flex-col bg-white border border-[#E5E7EB] rounded-xl overflow-hidden" style="box-shadow: 0 8px 32px -8px rgba(0,0,0,0.16);" @click.stop>
+          class="w-168 max-h-full flex flex-col bg-white border border-[#E5E7EB] rounded-xl overflow-hidden shadow-modal" @click.stop>
           <div class="shrink-0">
             <div class="pt-6 pb-3 px-6"><p class="text-base font-bold text-[#101828] leading-6">1次承認者を選択</p></div>
             <div class="flex items-center px-4 border-b border-[#E5E7EB] h-10">

@@ -3,28 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            btn: {
-              primary: { default: '#615fff', hover: '#4f39f6', active: '#432dd7' },
-              secondary: { default: '#e0e7ff', hover: '#c6d2ff', active: '#a3b3ff' },
-              alert: { default: '#fb2c36', hover: '#e7000b', active: '#c10007' },
-              tertiary: { default: '#ffffff', hover: '#f9fafb', active: '#f3f4f6' },
-              disabled: '#e5e7eb',
-            },
-            'btn-text': {
-              secondary: { default: '#432dd7', hover: '#193cb8', active: '#1c398e' },
-              tertiary: '#101828',
-            }
-          }
-        }
-      }
-    }
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<style type="text/tailwindcss">
+  @theme {
+    /* shizai-pro Rails app/assets/tailwind/application.css と同一のトークン定義 */
+    --color-badge-gray: #4A5565;
+    --color-badge-red: #E7000B;
+    --color-badge-orange: #F54A00;
+    --color-badge-amber: #E17100;
+    --color-badge-blue: #155dfc;
+    --color-badge-teal: #009689;
+    --color-badge-violet: #7F22FE;
+
+    --color-toast-success: #009689;
+    --color-toast-warning: #FD9A00;
+    --color-toast-error: #FB2C36;
+    --color-toast-info: #6A7282;
+
+    --color-btn-primary: #615fff;
+    --color-btn-primary-hover: #4f39f6;
+    --color-btn-primary-active: #432dd7;
+    --color-btn-secondary: #e0e7ff;
+    --color-btn-secondary-hover: #c6d2ff;
+    --color-btn-secondary-active: #a3b3ff;
+    --color-btn-alert: #FB2C36;
+    --color-btn-alert-hover: #E7000B;
+    --color-btn-alert-active: #C10007;
+    --color-btn-tertiary-hover: #f9fafb;
+    --color-btn-tertiary-active: #f3f4f6;
+    --color-btn-text-secondary: #372aac;
+    --color-btn-text-secondary-hover: #312c85;
+    --color-btn-text-secondary-active: #2e2670;
+    --color-btn-text-tertiary: #101828;
+
+    --shadow-modal: 0 8px 32px -8px rgba(0, 0, 0, 0.16);
+  }
+</style>
 <style>#back-link { display: inline-flex; } .in-iframe #back-link { display: none; } .in-iframe body { padding: 0 !important; } .in-iframe.demo-only body { background: #f8f8fa !important; padding: 36px 32px 32px !important; } .in-iframe.demo-only #demo-section { padding-bottom: 96px; }</style>
 <script>if (window !== window.top) { document.documentElement.classList.add("in-iframe"); var view = new URLSearchParams(location.search).get("view"); if (view === "demo") document.documentElement.classList.add("demo-only"); document.addEventListener("DOMContentLoaded", function() { var el = document.getElementById("back-link"); if (el) el.remove(); var demo = document.getElementById("demo-section"); if (view === "demo" && demo) { document.body.appendChild(demo); Array.from(document.body.children).forEach(function(c) { if (c === demo || c.tagName === "SCRIPT" || c.hasAttribute("data-demo-keep")) return; c.remove(); }); } else if (view === "preview" && demo) { demo.remove(); } }); }</script>
 <script>
@@ -54,7 +68,7 @@
       <p class="text-xs font-normal text-gray-400 tracking-wider mb-4">Color Variants</p>
       <div class="flex flex-wrap items-center gap-4">
         <div class="text-center space-y-1.5">
-          <button class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-white rounded-md bg-btn-primary-default hover:bg-btn-primary-hover active:bg-btn-primary-active transition-colors">
+          <button class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-white rounded-md bg-btn-primary hover:bg-btn-primary-hover active:bg-btn-primary-active transition-colors">
             <svg class="w-4 h-4"><use href="icons.svg#icon-circle-plus"/></svg>
             MenuButton
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
@@ -62,7 +76,7 @@
           <p class="text-[10px] text-gray-400">Primary</p>
         </div>
         <div class="text-center space-y-1.5">
-          <button class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold rounded-md bg-btn-secondary-default text-btn-text-secondary-default hover:bg-btn-secondary-hover hover:text-btn-text-secondary-hover active:bg-btn-secondary-active active:text-btn-text-secondary-active transition-colors">
+          <button class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold rounded-md bg-btn-secondary text-btn-text-secondary hover:bg-btn-secondary-hover hover:text-btn-text-secondary-hover active:bg-btn-secondary-active active:text-btn-text-secondary-active transition-colors">
             <svg class="w-4 h-4"><use href="icons.svg#icon-circle-plus"/></svg>
             MenuButton
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
@@ -70,7 +84,7 @@
           <p class="text-[10px] text-gray-400">Secondary</p>
         </div>
         <div class="text-center space-y-1.5">
-          <button class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold rounded-md ring-1 ring-inset ring-[#e5e7eb] bg-btn-tertiary-default text-btn-text-tertiary hover:bg-btn-tertiary-hover active:bg-btn-tertiary-active transition-colors">
+          <button class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold rounded-md ring-1 ring-inset ring-[#e5e7eb] bg-white text-btn-text-tertiary hover:bg-btn-tertiary-hover active:bg-btn-tertiary-active transition-colors">
             <svg class="w-4 h-4"><use href="icons.svg#icon-circle-plus"/></svg>
             MenuButton
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
@@ -85,7 +99,7 @@
       <p class="text-xs font-normal text-gray-400 tracking-wider mb-4">Sizes</p>
       <div class="flex flex-wrap items-end gap-4">
         <div class="text-center space-y-1.5">
-          <button class="inline-flex items-center gap-1 px-2 py-1 text-xs font-semibold rounded-md bg-btn-secondary-default text-btn-text-secondary-default hover:bg-btn-secondary-hover hover:text-btn-text-secondary-hover active:bg-btn-secondary-active active:text-btn-text-secondary-active transition-colors">
+          <button class="inline-flex items-center gap-1 px-2 py-1 text-xs font-semibold rounded-md bg-btn-secondary text-btn-text-secondary hover:bg-btn-secondary-hover hover:text-btn-text-secondary-hover active:bg-btn-secondary-active active:text-btn-text-secondary-active transition-colors">
             <svg class="w-3 h-3"><use href="icons.svg#icon-circle-plus"/></svg>
             MenuButton
             <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
@@ -93,7 +107,7 @@
           <p class="text-[10px] text-gray-400">xs</p>
         </div>
         <div class="text-center space-y-1.5">
-          <button class="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-semibold rounded-md bg-btn-secondary-default text-btn-text-secondary-default hover:bg-btn-secondary-hover hover:text-btn-text-secondary-hover active:bg-btn-secondary-active active:text-btn-text-secondary-active transition-colors">
+          <button class="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-semibold rounded-md bg-btn-secondary text-btn-text-secondary hover:bg-btn-secondary-hover hover:text-btn-text-secondary-hover active:bg-btn-secondary-active active:text-btn-text-secondary-active transition-colors">
             <svg class="w-3.5 h-3.5"><use href="icons.svg#icon-circle-plus"/></svg>
             MenuButton
             <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
@@ -101,7 +115,7 @@
           <p class="text-[10px] text-gray-400">sm</p>
         </div>
         <div class="text-center space-y-1.5">
-          <button class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold rounded-md bg-btn-secondary-default text-btn-text-secondary-default hover:bg-btn-secondary-hover hover:text-btn-text-secondary-hover active:bg-btn-secondary-active active:text-btn-text-secondary-active transition-colors">
+          <button class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold rounded-md bg-btn-secondary text-btn-text-secondary hover:bg-btn-secondary-hover hover:text-btn-text-secondary-hover active:bg-btn-secondary-active active:text-btn-text-secondary-active transition-colors">
             <svg class="w-4 h-4"><use href="icons.svg#icon-circle-plus"/></svg>
             MenuButton
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
@@ -109,7 +123,7 @@
           <p class="text-[10px] text-gray-400">md</p>
         </div>
         <div class="text-center space-y-1.5">
-          <button class="inline-flex items-center gap-2 px-6 py-3 text-base font-semibold rounded-md bg-btn-secondary-default text-btn-text-secondary-default hover:bg-btn-secondary-hover hover:text-btn-text-secondary-hover active:bg-btn-secondary-active active:text-btn-text-secondary-active transition-colors">
+          <button class="inline-flex items-center gap-2 px-6 py-3 text-base font-semibold rounded-md bg-btn-secondary text-btn-text-secondary hover:bg-btn-secondary-hover hover:text-btn-text-secondary-hover active:bg-btn-secondary-active active:text-btn-text-secondary-active transition-colors">
             <svg class="w-5 h-5"><use href="icons.svg#icon-circle-plus"/></svg>
             MenuButton
             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
@@ -125,7 +139,7 @@
       <div class="flex flex-wrap items-center gap-3">
         <!-- Default -->
         <div class="text-center space-y-1.5">
-          <button class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold rounded-md bg-btn-secondary-default text-btn-text-secondary-default transition-colors">
+          <button class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold rounded-md bg-btn-secondary text-btn-text-secondary transition-colors">
             <svg class="w-4 h-4"><use href="icons.svg#icon-circle-plus"/></svg>
             MenuButton
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
@@ -152,7 +166,7 @@
         </div>
         <!-- Disabled -->
         <div class="text-center space-y-1.5">
-          <button disabled class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-white rounded-md bg-btn-disabled cursor-not-allowed">
+          <button disabled class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-white rounded-md bg-gray-200 cursor-not-allowed">
             <svg class="w-4 h-4"><use href="icons.svg#icon-circle-plus"/></svg>
             MenuButton
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
@@ -167,13 +181,13 @@
       <p class="text-xs font-normal text-gray-400 tracking-wider mb-4">Icon Options</p>
       <div class="flex flex-wrap items-center gap-3">
         <!-- With Left Icon -->
-        <button class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold rounded-md bg-btn-secondary-default text-btn-text-secondary-default hover:bg-btn-secondary-hover hover:text-btn-text-secondary-hover active:bg-btn-secondary-active active:text-btn-text-secondary-active transition-colors">
+        <button class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold rounded-md bg-btn-secondary text-btn-text-secondary hover:bg-btn-secondary-hover hover:text-btn-text-secondary-hover active:bg-btn-secondary-active active:text-btn-text-secondary-active transition-colors">
           <svg class="w-4 h-4"><use href="icons.svg#icon-circle-plus"/></svg>
           MenuButton
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
         </button>
         <!-- Without Left Icon -->
-        <button class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold rounded-md bg-btn-secondary-default text-btn-text-secondary-default hover:bg-btn-secondary-hover hover:text-btn-text-secondary-hover active:bg-btn-secondary-active active:text-btn-text-secondary-active transition-colors">
+        <button class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold rounded-md bg-btn-secondary text-btn-text-secondary hover:bg-btn-secondary-hover hover:text-btn-text-secondary-hover active:bg-btn-secondary-active active:text-btn-text-secondary-active transition-colors">
           MenuButton
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
         </button>
@@ -185,7 +199,7 @@
       <div class="flex flex-wrap items-start gap-6">
         <!-- Secondary with menu toggle (発注書作成: CSVで入力) -->
         <div class="relative inline-flex flex-col" data-menu-wrapper>
-          <button onclick="toggleMenu(this)" class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold rounded-md bg-btn-secondary-default text-btn-text-secondary-default hover:bg-btn-secondary-hover hover:text-btn-text-secondary-hover active:bg-btn-secondary-active active:text-btn-text-secondary-active transition-colors">
+          <button onclick="toggleMenu(this)" class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold rounded-md bg-btn-secondary text-btn-text-secondary hover:bg-btn-secondary-hover hover:text-btn-text-secondary-hover active:bg-btn-secondary-active active:text-btn-text-secondary-active transition-colors">
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><line x1="3" x2="21" y1="9" y2="9"/><line x1="3" x2="21" y1="15" y2="15"/><line x1="9" x2="9" y1="9" y2="21"/><line x1="15" x2="15" y1="9" y2="21"/></svg>
             CSVで入力
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
@@ -203,7 +217,7 @@
         </div>
         <!-- Tertiary with menu toggle (発注一覧: CSVダウンロード) -->
         <div class="relative inline-flex flex-col" data-menu-wrapper>
-          <button onclick="toggleMenu(this)" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-semibold rounded-md ring-1 ring-inset ring-[#e5e7eb] bg-btn-tertiary-default text-btn-text-tertiary hover:bg-btn-tertiary-hover active:bg-btn-tertiary-active transition-colors">
+          <button onclick="toggleMenu(this)" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-semibold rounded-md ring-1 ring-inset ring-[#e5e7eb] bg-white text-btn-text-tertiary hover:bg-btn-tertiary-hover active:bg-btn-tertiary-active transition-colors">
             <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
             CSVダウンロード
             <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>

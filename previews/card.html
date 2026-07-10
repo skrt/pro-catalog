@@ -3,7 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<style type="text/tailwindcss">
+  @theme {
+    /* shizai-pro Rails app/assets/tailwind/application.css と同一のトークン定義 */
+    --color-badge-gray: #4A5565;
+    --color-badge-red: #E7000B;
+    --color-badge-orange: #F54A00;
+    --color-badge-amber: #E17100;
+    --color-badge-blue: #155dfc;
+    --color-badge-teal: #009689;
+    --color-badge-violet: #7F22FE;
+
+    --color-toast-success: #009689;
+    --color-toast-warning: #FD9A00;
+    --color-toast-error: #FB2C36;
+    --color-toast-info: #6A7282;
+
+    --color-btn-primary: #615fff;
+    --color-btn-primary-hover: #4f39f6;
+    --color-btn-primary-active: #432dd7;
+    --color-btn-secondary: #e0e7ff;
+    --color-btn-secondary-hover: #c6d2ff;
+    --color-btn-secondary-active: #a3b3ff;
+    --color-btn-alert: #FB2C36;
+    --color-btn-alert-hover: #E7000B;
+    --color-btn-alert-active: #C10007;
+    --color-btn-tertiary-hover: #f9fafb;
+    --color-btn-tertiary-active: #f3f4f6;
+    --color-btn-text-secondary: #372aac;
+    --color-btn-text-secondary-hover: #312c85;
+    --color-btn-text-secondary-active: #2e2670;
+    --color-btn-text-tertiary: #101828;
+
+    --shadow-modal: 0 8px 32px -8px rgba(0, 0, 0, 0.16);
+  }
+</style>
 <style>#back-link { display: inline-flex; } .in-iframe #back-link { display: none; } .in-iframe body { padding: 0 !important; } .in-iframe.demo-only body { background: #f8f8fa !important; padding: 36px 32px 32px !important; }</style>
 <script>if (window !== window.top) { document.documentElement.classList.add("in-iframe"); var view = new URLSearchParams(location.search).get("view"); if (view === "demo") document.documentElement.classList.add("demo-only"); document.addEventListener("DOMContentLoaded", function() { var el = document.getElementById("back-link"); if (el) el.remove(); var demo = document.getElementById("demo-section"); if (view === "demo" && demo) { document.body.appendChild(demo); Array.from(document.body.children).forEach(function(c) { if (c === demo || c.tagName === "SCRIPT" || c.hasAttribute("data-demo-keep")) return; c.remove(); }); } else if (view === "preview" && demo) { demo.remove(); } }); }</script>
 </head>
@@ -17,14 +52,14 @@
 
     <!-- Default -->
     <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-0">Default</h3>
-    <div class="w-[448px] flex flex-col gap-2 bg-gray-50 rounded-lg p-6">
+    <div class="w-112 flex flex-col gap-2 bg-gray-50 rounded-lg p-6">
       <p class="text-base font-bold text-gray-900 leading-6">カードタイトル</p>
       <p class="text-base font-normal text-gray-900 leading-6">コンテンツをここに配置</p>
     </div>
 
     <!-- With Button -->
     <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-0">With Button</h3>
-    <div class="w-[448px] flex flex-col gap-2 bg-gray-50 rounded-lg p-6">
+    <div class="w-112 flex flex-col gap-2 bg-gray-50 rounded-lg p-6">
       <div class="flex items-start gap-2">
         <p class="flex-1 text-base font-bold text-gray-900 leading-6">カードタイトル</p>
         <button type="button" class="inline-flex items-center gap-1 px-2 py-1 bg-indigo-100 text-indigo-700 text-xs font-semibold leading-4 rounded-md hover:bg-indigo-200 transition-colors">
@@ -37,13 +72,13 @@
 
     <!-- With Rich Content -->
     <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-0">With Rich Content</h3>
-    <div class="w-[448px] flex flex-col gap-2 bg-gray-50 rounded-lg p-6">
+    <div class="w-112 flex flex-col gap-2 bg-gray-50 rounded-lg p-6">
       <p class="text-base font-bold text-gray-900 leading-6">サポートアクセス</p>
       <div class="flex flex-col gap-4">
         <p class="text-base font-normal text-gray-900 leading-6">一時的にサポートアカウントのアクセスを許可できます</p>
         <div class="flex items-center gap-2">
-          <div class="w-10 h-[22px] bg-gray-300 rounded-full p-0.5 flex items-center justify-start">
-            <div class="w-[18px] h-[18px] bg-white rounded-full shadow-sm"></div>
+          <div class="w-10 h-5.5 bg-gray-300 rounded-full p-0.5 flex items-center justify-start">
+            <div class="w-4.5 h-4.5 bg-white rounded-full shadow-sm"></div>
           </div>
           <span class="text-base font-normal text-gray-400 leading-6">未許可</span>
         </div>

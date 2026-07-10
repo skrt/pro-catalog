@@ -3,21 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            flow: {
-              green: '#009689',
-              red: '#e7000b',
-            }
-          }
-        }
-      }
-    }
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<style type="text/tailwindcss">
+  @theme {
+    /* shizai-pro Rails app/assets/tailwind/application.css と同一のトークン定義 */
+    --color-badge-gray: #4A5565;
+    --color-badge-red: #E7000B;
+    --color-badge-orange: #F54A00;
+    --color-badge-amber: #E17100;
+    --color-badge-blue: #155dfc;
+    --color-badge-teal: #009689;
+    --color-badge-violet: #7F22FE;
+
+    --color-toast-success: #009689;
+    --color-toast-warning: #FD9A00;
+    --color-toast-error: #FB2C36;
+    --color-toast-info: #6A7282;
+
+    --color-btn-primary: #615fff;
+    --color-btn-primary-hover: #4f39f6;
+    --color-btn-primary-active: #432dd7;
+    --color-btn-secondary: #e0e7ff;
+    --color-btn-secondary-hover: #c6d2ff;
+    --color-btn-secondary-active: #a3b3ff;
+    --color-btn-alert: #FB2C36;
+    --color-btn-alert-hover: #E7000B;
+    --color-btn-alert-active: #C10007;
+    --color-btn-tertiary-hover: #f9fafb;
+    --color-btn-tertiary-active: #f3f4f6;
+    --color-btn-text-secondary: #372aac;
+    --color-btn-text-secondary-hover: #312c85;
+    --color-btn-text-secondary-active: #2e2670;
+    --color-btn-text-tertiary: #101828;
+
+    --shadow-modal: 0 8px 32px -8px rgba(0, 0, 0, 0.16);
+  }
+</style>
   <style>#back-link { display: inline-flex; } .in-iframe #back-link { display: none; } .in-iframe body { padding: 0 !important; } .in-iframe.demo-only body { background: #f8f8fa !important; padding: 36px 32px 32px !important; }</style>
   <script>if (window !== window.top) { document.documentElement.classList.add("in-iframe"); var view = new URLSearchParams(location.search).get("view"); if (view === "demo") document.documentElement.classList.add("demo-only"); document.addEventListener("DOMContentLoaded", function() { var el = document.getElementById("back-link"); if (el) el.remove(); var demo = document.getElementById("demo-section"); if (view === "demo" && demo) { document.body.appendChild(demo); Array.from(document.body.children).forEach(function(c) { if (c === demo || c.tagName === "SCRIPT" || c.hasAttribute("data-demo-keep")) return; c.remove(); }); } else if (view === "preview" && demo) { demo.remove(); } }); }</script>
 </head>
@@ -40,7 +61,7 @@
       <!-- Unconfirmed -->
       <div class="flex flex-col gap-1">
         <span class="text-[10px] text-gray-400">Unconfirmed</span>
-        <div class="w-[160px] bg-white border border-gray-200 rounded-lg p-3 flex flex-col gap-2 overflow-clip">
+        <div class="w-40 bg-white border border-gray-200 rounded-lg p-3 flex flex-col gap-2 overflow-clip">
           <div class="flex items-center gap-2">
             <span class="text-sm font-normal text-gray-600 leading-5 shrink-0">1次承認</span>
             <div class="flex items-center gap-1">
@@ -58,12 +79,12 @@
       <!-- Done -->
       <div class="flex flex-col gap-1">
         <span class="text-[10px] text-gray-400">Done</span>
-        <div class="w-[160px] bg-white border border-flow-green rounded-lg p-3 flex flex-col gap-2 overflow-clip">
+        <div class="w-40 bg-white border border-teal-600 rounded-lg p-3 flex flex-col gap-2 overflow-clip">
           <div class="flex items-center gap-2">
             <span class="text-sm font-normal text-gray-600 leading-5 shrink-0">1次承認</span>
             <div class="flex items-center gap-1">
-              <svg class="w-4 h-4 text-flow-green shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-              <span class="text-sm font-normal text-flow-green leading-5 whitespace-nowrap">承認済み</span>
+              <svg class="w-4 h-4 text-teal-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+              <span class="text-sm font-normal text-teal-600 leading-5 whitespace-nowrap">承認済み</span>
             </div>
           </div>
           <div class="flex flex-col gap-0.5">
@@ -76,12 +97,12 @@
       <!-- Reject -->
       <div class="flex flex-col gap-1">
         <span class="text-[10px] text-gray-400">Reject</span>
-        <div class="w-[160px] bg-white border border-flow-red rounded-lg p-3 flex flex-col gap-2 overflow-clip">
+        <div class="w-40 bg-white border border-red-600 rounded-lg p-3 flex flex-col gap-2 overflow-clip">
           <div class="flex items-center gap-2">
             <span class="text-sm font-normal text-gray-600 leading-5 shrink-0">1次承認</span>
             <div class="flex items-center gap-1">
-              <svg class="w-4 h-4 text-flow-red shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11"/></svg>
-              <span class="text-sm font-normal text-flow-red leading-5 whitespace-nowrap">差し戻し</span>
+              <svg class="w-4 h-4 text-red-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11"/></svg>
+              <span class="text-sm font-normal text-red-600 leading-5 whitespace-nowrap">差し戻し</span>
             </div>
           </div>
           <div class="flex flex-col gap-0.5">
@@ -108,7 +129,7 @@
         <span class="text-[10px] text-gray-400 mb-2 block">Default</span>
         <div class="flex items-start">
           <div class="flex items-center shrink-0">
-            <div class="w-[160px] bg-white border border-gray-200 rounded-lg p-3 flex flex-col gap-2 overflow-clip">
+            <div class="w-40 bg-white border border-gray-200 rounded-lg p-3 flex flex-col gap-2 overflow-clip">
               <div class="flex items-center gap-2">
                 <span class="text-sm text-gray-600 leading-5 shrink-0">申請</span>
                 <div class="flex items-center gap-1">
@@ -124,7 +145,7 @@
             <div class="w-2 h-px bg-gray-200 shrink-0"></div>
           </div>
           <div class="flex items-center shrink-0">
-            <div class="w-[160px] bg-white border border-gray-200 rounded-lg p-3 flex flex-col gap-2 overflow-clip">
+            <div class="w-40 bg-white border border-gray-200 rounded-lg p-3 flex flex-col gap-2 overflow-clip">
               <div class="flex items-center gap-2">
                 <span class="text-sm text-gray-600 leading-5 shrink-0">1次承認</span>
                 <div class="flex items-center gap-1">
@@ -139,7 +160,7 @@
             </div>
             <div class="w-2 h-px bg-gray-200 shrink-0"></div>
           </div>
-          <div class="w-[160px] bg-white border border-gray-200 rounded-lg p-3 flex flex-col gap-2 overflow-clip shrink-0">
+          <div class="w-40 bg-white border border-gray-200 rounded-lg p-3 flex flex-col gap-2 overflow-clip shrink-0">
             <div class="flex items-center gap-2">
               <span class="text-sm text-gray-600 leading-5 shrink-0">2次承認</span>
               <div class="flex items-center gap-1">
@@ -160,12 +181,12 @@
         <span class="text-[10px] text-gray-400 mb-2 block">Partial</span>
         <div class="flex items-start">
           <div class="flex items-center shrink-0">
-            <div class="w-[160px] bg-white border border-flow-green rounded-lg p-3 flex flex-col gap-2 overflow-clip">
+            <div class="w-40 bg-white border border-teal-600 rounded-lg p-3 flex flex-col gap-2 overflow-clip">
               <div class="flex items-center gap-2">
                 <span class="text-sm text-gray-600 leading-5 shrink-0">申請</span>
                 <div class="flex items-center gap-1">
-                  <svg class="w-4 h-4 text-flow-green shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-                  <span class="text-sm text-flow-green leading-5 whitespace-nowrap">承認済み</span>
+                  <svg class="w-4 h-4 text-teal-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                  <span class="text-sm text-teal-600 leading-5 whitespace-nowrap">承認済み</span>
                 </div>
               </div>
               <div class="flex flex-col gap-0.5">
@@ -173,10 +194,10 @@
                 <span class="text-xs text-gray-400 leading-4">2023/12/31 15:59</span>
               </div>
             </div>
-            <div class="w-2 h-px bg-flow-green shrink-0"></div>
+            <div class="w-2 h-px bg-teal-600 shrink-0"></div>
           </div>
           <div class="flex items-center shrink-0">
-            <div class="w-[160px] bg-white border border-gray-200 rounded-lg p-3 flex flex-col gap-2 overflow-clip">
+            <div class="w-40 bg-white border border-gray-200 rounded-lg p-3 flex flex-col gap-2 overflow-clip">
               <div class="flex items-center gap-2">
                 <span class="text-sm text-gray-600 leading-5 shrink-0">1次承認</span>
                 <div class="flex items-center gap-1">
@@ -191,7 +212,7 @@
             </div>
             <div class="w-2 h-px bg-gray-200 shrink-0"></div>
           </div>
-          <div class="w-[160px] bg-white border border-gray-200 rounded-lg p-3 flex flex-col gap-2 overflow-clip shrink-0">
+          <div class="w-40 bg-white border border-gray-200 rounded-lg p-3 flex flex-col gap-2 overflow-clip shrink-0">
             <div class="flex items-center gap-2">
               <span class="text-sm text-gray-600 leading-5 shrink-0">2次承認</span>
               <div class="flex items-center gap-1">
@@ -212,12 +233,12 @@
         <span class="text-[10px] text-gray-400 mb-2 block">Approval</span>
         <div class="flex items-start">
           <div class="flex items-center shrink-0">
-            <div class="w-[160px] bg-white border border-flow-green rounded-lg p-3 flex flex-col gap-2 overflow-clip">
+            <div class="w-40 bg-white border border-teal-600 rounded-lg p-3 flex flex-col gap-2 overflow-clip">
               <div class="flex items-center gap-2">
                 <span class="text-sm text-gray-600 leading-5 shrink-0">申請</span>
                 <div class="flex items-center gap-1">
-                  <svg class="w-4 h-4 text-flow-green shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-                  <span class="text-sm text-flow-green leading-5 whitespace-nowrap">承認済み</span>
+                  <svg class="w-4 h-4 text-teal-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                  <span class="text-sm text-teal-600 leading-5 whitespace-nowrap">承認済み</span>
                 </div>
               </div>
               <div class="flex flex-col gap-0.5">
@@ -225,15 +246,15 @@
                 <span class="text-xs text-gray-400 leading-4">2023/12/31 15:59</span>
               </div>
             </div>
-            <div class="w-2 h-px bg-flow-green shrink-0"></div>
+            <div class="w-2 h-px bg-teal-600 shrink-0"></div>
           </div>
           <div class="flex items-center shrink-0">
-            <div class="w-[160px] bg-white border border-flow-green rounded-lg p-3 flex flex-col gap-2 overflow-clip">
+            <div class="w-40 bg-white border border-teal-600 rounded-lg p-3 flex flex-col gap-2 overflow-clip">
               <div class="flex items-center gap-2">
                 <span class="text-sm text-gray-600 leading-5 shrink-0">1次承認</span>
                 <div class="flex items-center gap-1">
-                  <svg class="w-4 h-4 text-flow-green shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-                  <span class="text-sm text-flow-green leading-5 whitespace-nowrap">承認済み</span>
+                  <svg class="w-4 h-4 text-teal-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                  <span class="text-sm text-teal-600 leading-5 whitespace-nowrap">承認済み</span>
                 </div>
               </div>
               <div class="flex flex-col gap-0.5">
@@ -241,14 +262,14 @@
                 <span class="text-xs text-gray-400 leading-4">2023/12/31 15:59</span>
               </div>
             </div>
-            <div class="w-2 h-px bg-flow-green shrink-0"></div>
+            <div class="w-2 h-px bg-teal-600 shrink-0"></div>
           </div>
-          <div class="w-[160px] bg-white border border-flow-green rounded-lg p-3 flex flex-col gap-2 overflow-clip shrink-0">
+          <div class="w-40 bg-white border border-teal-600 rounded-lg p-3 flex flex-col gap-2 overflow-clip shrink-0">
             <div class="flex items-center gap-2">
               <span class="text-sm text-gray-600 leading-5 shrink-0">2次承認</span>
               <div class="flex items-center gap-1">
-                <svg class="w-4 h-4 text-flow-green shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-                <span class="text-sm text-flow-green leading-5 whitespace-nowrap">承認済み</span>
+                <svg class="w-4 h-4 text-teal-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                <span class="text-sm text-teal-600 leading-5 whitespace-nowrap">承認済み</span>
               </div>
             </div>
             <div class="flex flex-col gap-0.5">
@@ -264,12 +285,12 @@
         <span class="text-[10px] text-gray-400 mb-2 block">Reject</span>
         <div class="flex items-start">
           <div class="flex items-center shrink-0">
-            <div class="w-[160px] bg-white border border-flow-green rounded-lg p-3 flex flex-col gap-2 overflow-clip">
+            <div class="w-40 bg-white border border-teal-600 rounded-lg p-3 flex flex-col gap-2 overflow-clip">
               <div class="flex items-center gap-2">
                 <span class="text-sm text-gray-600 leading-5 shrink-0">申請</span>
                 <div class="flex items-center gap-1">
-                  <svg class="w-4 h-4 text-flow-green shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-                  <span class="text-sm text-flow-green leading-5 whitespace-nowrap">承認済み</span>
+                  <svg class="w-4 h-4 text-teal-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                  <span class="text-sm text-teal-600 leading-5 whitespace-nowrap">承認済み</span>
                 </div>
               </div>
               <div class="flex flex-col gap-0.5">
@@ -277,15 +298,15 @@
                 <span class="text-xs text-gray-400 leading-4">2023/12/31 15:59</span>
               </div>
             </div>
-            <div class="w-2 h-px bg-flow-green shrink-0"></div>
+            <div class="w-2 h-px bg-teal-600 shrink-0"></div>
           </div>
           <div class="flex items-center shrink-0">
-            <div class="w-[160px] bg-white border border-flow-red rounded-lg p-3 flex flex-col gap-2 overflow-clip">
+            <div class="w-40 bg-white border border-red-600 rounded-lg p-3 flex flex-col gap-2 overflow-clip">
               <div class="flex items-center gap-2">
                 <span class="text-sm text-gray-600 leading-5 shrink-0">1次承認</span>
                 <div class="flex items-center gap-1">
-                  <svg class="w-4 h-4 text-flow-red shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11"/></svg>
-                  <span class="text-sm text-flow-red leading-5 whitespace-nowrap">差し戻し</span>
+                  <svg class="w-4 h-4 text-red-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11"/></svg>
+                  <span class="text-sm text-red-600 leading-5 whitespace-nowrap">差し戻し</span>
                 </div>
               </div>
               <div class="flex flex-col gap-0.5">
@@ -295,7 +316,7 @@
             </div>
             <div class="w-2 h-px bg-gray-200 shrink-0"></div>
           </div>
-          <div class="w-[160px] bg-white border border-gray-200 rounded-lg p-3 flex flex-col gap-2 overflow-clip shrink-0">
+          <div class="w-40 bg-white border border-gray-200 rounded-lg p-3 flex flex-col gap-2 overflow-clip shrink-0">
             <div class="flex items-center gap-2">
               <span class="text-sm text-gray-600 leading-5 shrink-0">2次承認</span>
               <div class="flex items-center gap-1">
@@ -327,7 +348,7 @@
       <div>
         <span class="text-[10px] text-gray-400 mb-2 block">Skip</span>
         <div class="flex items-start">
-          <div class="w-[160px] bg-white border border-gray-200 rounded-lg p-3 flex flex-col gap-2 overflow-clip shrink-0">
+          <div class="w-40 bg-white border border-gray-200 rounded-lg p-3 flex flex-col gap-2 overflow-clip shrink-0">
             <div class="flex items-center gap-2">
               <span class="text-sm text-gray-600 leading-5 shrink-0">申請</span>
               <div class="flex items-center gap-1">
@@ -348,7 +369,7 @@
         <span class="text-[10px] text-gray-400 mb-2 block">And-Default</span>
         <div class="flex items-start">
           <div class="flex items-center shrink-0">
-            <div class="w-[160px] bg-white border border-gray-200 rounded-lg p-3 flex flex-col gap-2 overflow-clip">
+            <div class="w-40 bg-white border border-gray-200 rounded-lg p-3 flex flex-col gap-2 overflow-clip">
               <div class="flex items-center gap-2">
                 <span class="text-sm text-gray-600 leading-5 shrink-0">申請</span>
                 <div class="flex items-center gap-1">
@@ -364,7 +385,7 @@
             <div class="w-2 h-px bg-gray-200 shrink-0"></div>
           </div>
           <div class="flex items-center shrink-0">
-            <div class="w-[160px] bg-white border border-gray-200 rounded-lg p-3 flex flex-col gap-2 overflow-clip">
+            <div class="w-40 bg-white border border-gray-200 rounded-lg p-3 flex flex-col gap-2 overflow-clip">
               <div class="flex items-center gap-2">
                 <span class="text-sm text-gray-600 leading-5 shrink-0">1次承認</span>
                 <div class="flex items-center gap-1">
@@ -379,7 +400,7 @@
             </div>
             <div class="w-2 h-px bg-gray-200 shrink-0"></div>
           </div>
-          <div class="w-[160px] bg-white border border-gray-200 rounded-lg p-3 flex flex-col gap-2 overflow-clip shrink-0">
+          <div class="w-40 bg-white border border-gray-200 rounded-lg p-3 flex flex-col gap-2 overflow-clip shrink-0">
             <div class="flex items-center gap-2">
               <span class="text-sm text-gray-600 leading-5 shrink-0">2次承認</span>
               <div class="flex items-center gap-1">
@@ -400,12 +421,12 @@
         <span class="text-[10px] text-gray-400 mb-2 block">And-Approval</span>
         <div class="flex items-start">
           <div class="flex items-center shrink-0">
-            <div class="w-[160px] bg-white border border-flow-green rounded-lg p-3 flex flex-col gap-2 overflow-clip">
+            <div class="w-40 bg-white border border-teal-600 rounded-lg p-3 flex flex-col gap-2 overflow-clip">
               <div class="flex items-center gap-2">
                 <span class="text-sm text-gray-600 leading-5 shrink-0">申請</span>
                 <div class="flex items-center gap-1">
-                  <svg class="w-4 h-4 text-flow-green shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-                  <span class="text-sm text-flow-green leading-5 whitespace-nowrap">承認済み</span>
+                  <svg class="w-4 h-4 text-teal-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                  <span class="text-sm text-teal-600 leading-5 whitespace-nowrap">承認済み</span>
                 </div>
               </div>
               <div class="flex flex-col gap-0.5">
@@ -413,15 +434,15 @@
                 <span class="text-xs text-gray-400 leading-4">2023/12/31 15:59</span>
               </div>
             </div>
-            <div class="w-2 h-px bg-flow-green shrink-0"></div>
+            <div class="w-2 h-px bg-teal-600 shrink-0"></div>
           </div>
           <div class="flex items-center shrink-0">
-            <div class="w-[160px] bg-white border border-flow-green rounded-lg p-3 flex flex-col gap-2 overflow-clip">
+            <div class="w-40 bg-white border border-teal-600 rounded-lg p-3 flex flex-col gap-2 overflow-clip">
               <div class="flex items-center gap-2">
                 <span class="text-sm text-gray-600 leading-5 shrink-0">1次承認</span>
                 <div class="flex items-center gap-1">
-                  <svg class="w-4 h-4 text-flow-green shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-                  <span class="text-sm text-flow-green leading-5 whitespace-nowrap">承認済み</span>
+                  <svg class="w-4 h-4 text-teal-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                  <span class="text-sm text-teal-600 leading-5 whitespace-nowrap">承認済み</span>
                 </div>
               </div>
               <div class="flex flex-col gap-0.5">
@@ -429,14 +450,14 @@
                 <span class="text-xs text-gray-400 leading-4">2023/12/31 15:59</span>
               </div>
             </div>
-            <div class="w-2 h-px bg-flow-green shrink-0"></div>
+            <div class="w-2 h-px bg-teal-600 shrink-0"></div>
           </div>
-          <div class="w-[160px] bg-white border border-flow-green rounded-lg p-3 flex flex-col gap-2 overflow-clip shrink-0">
+          <div class="w-40 bg-white border border-teal-600 rounded-lg p-3 flex flex-col gap-2 overflow-clip shrink-0">
             <div class="flex items-center gap-2">
               <span class="text-sm text-gray-600 leading-5 shrink-0">2次承認</span>
               <div class="flex items-center gap-1">
-                <svg class="w-4 h-4 text-flow-green shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-                <span class="text-sm text-flow-green leading-5 whitespace-nowrap">承認済み</span>
+                <svg class="w-4 h-4 text-teal-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                <span class="text-sm text-teal-600 leading-5 whitespace-nowrap">承認済み</span>
               </div>
             </div>
             <div class="flex flex-col gap-0.5">
@@ -452,12 +473,12 @@
         <span class="text-[10px] text-gray-400 mb-2 block">And-Reject</span>
         <div class="flex items-start">
           <div class="flex items-center shrink-0">
-            <div class="w-[160px] bg-white border border-flow-green rounded-lg p-3 flex flex-col gap-2 overflow-clip">
+            <div class="w-40 bg-white border border-teal-600 rounded-lg p-3 flex flex-col gap-2 overflow-clip">
               <div class="flex items-center gap-2">
                 <span class="text-sm text-gray-600 leading-5 shrink-0">申請</span>
                 <div class="flex items-center gap-1">
-                  <svg class="w-4 h-4 text-flow-green shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-                  <span class="text-sm text-flow-green leading-5 whitespace-nowrap">承認済み</span>
+                  <svg class="w-4 h-4 text-teal-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                  <span class="text-sm text-teal-600 leading-5 whitespace-nowrap">承認済み</span>
                 </div>
               </div>
               <div class="flex flex-col gap-0.5">
@@ -465,15 +486,15 @@
                 <span class="text-xs text-gray-400 leading-4">2023/12/31 15:59</span>
               </div>
             </div>
-            <div class="w-2 h-px bg-flow-green shrink-0"></div>
+            <div class="w-2 h-px bg-teal-600 shrink-0"></div>
           </div>
           <div class="flex items-center shrink-0">
-            <div class="w-[160px] bg-white border border-flow-red rounded-lg p-3 flex flex-col gap-2 overflow-clip">
+            <div class="w-40 bg-white border border-red-600 rounded-lg p-3 flex flex-col gap-2 overflow-clip">
               <div class="flex items-center gap-2">
                 <span class="text-sm text-gray-600 leading-5 shrink-0">1次承認</span>
                 <div class="flex items-center gap-1">
-                  <svg class="w-4 h-4 text-flow-red shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11"/></svg>
-                  <span class="text-sm text-flow-red leading-5 whitespace-nowrap">差し戻し</span>
+                  <svg class="w-4 h-4 text-red-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11"/></svg>
+                  <span class="text-sm text-red-600 leading-5 whitespace-nowrap">差し戻し</span>
                 </div>
               </div>
               <div class="flex flex-col gap-0.5">
@@ -483,7 +504,7 @@
             </div>
             <div class="w-2 h-px bg-gray-200 shrink-0"></div>
           </div>
-          <div class="w-[160px] bg-white border border-gray-200 rounded-lg p-3 flex flex-col gap-2 overflow-clip shrink-0">
+          <div class="w-40 bg-white border border-gray-200 rounded-lg p-3 flex flex-col gap-2 overflow-clip shrink-0">
             <div class="flex items-center gap-2">
               <span class="text-sm text-gray-600 leading-5 shrink-0">2次承認</span>
               <div class="flex items-center gap-1">

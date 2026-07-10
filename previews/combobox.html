@@ -3,7 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<style type="text/tailwindcss">
+  @theme {
+    /* shizai-pro Rails app/assets/tailwind/application.css と同一のトークン定義 */
+    --color-badge-gray: #4A5565;
+    --color-badge-red: #E7000B;
+    --color-badge-orange: #F54A00;
+    --color-badge-amber: #E17100;
+    --color-badge-blue: #155dfc;
+    --color-badge-teal: #009689;
+    --color-badge-violet: #7F22FE;
+
+    --color-toast-success: #009689;
+    --color-toast-warning: #FD9A00;
+    --color-toast-error: #FB2C36;
+    --color-toast-info: #6A7282;
+
+    --color-btn-primary: #615fff;
+    --color-btn-primary-hover: #4f39f6;
+    --color-btn-primary-active: #432dd7;
+    --color-btn-secondary: #e0e7ff;
+    --color-btn-secondary-hover: #c6d2ff;
+    --color-btn-secondary-active: #a3b3ff;
+    --color-btn-alert: #FB2C36;
+    --color-btn-alert-hover: #E7000B;
+    --color-btn-alert-active: #C10007;
+    --color-btn-tertiary-hover: #f9fafb;
+    --color-btn-tertiary-active: #f3f4f6;
+    --color-btn-text-secondary: #372aac;
+    --color-btn-text-secondary-hover: #312c85;
+    --color-btn-text-secondary-active: #2e2670;
+    --color-btn-text-tertiary: #101828;
+
+    --shadow-modal: 0 8px 32px -8px rgba(0, 0, 0, 0.16);
+  }
+</style>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 <style>#back-link { display: inline-flex; } .in-iframe #back-link { display: none; } .in-iframe body { padding: 0 !important; } .in-iframe.demo-only body { background: #f8f8fa !important; padding: 36px 32px 32px !important; } .in-iframe.demo-only #demo-section { padding-bottom: 240px; }</style>
 <script>if (window !== window.top) { document.documentElement.classList.add("in-iframe"); var view = new URLSearchParams(location.search).get("view"); if (view === "demo") document.documentElement.classList.add("demo-only"); document.addEventListener("DOMContentLoaded", function() { var el = document.getElementById("back-link"); if (el) el.remove(); var demo = document.getElementById("demo-section"); if (view === "demo" && demo) { document.body.appendChild(demo); Array.from(document.body.children).forEach(function(c) { if (c === demo || c.tagName === "SCRIPT" || c.hasAttribute("data-demo-keep")) return; c.remove(); }); } else if (view === "preview" && demo) { demo.remove(); } }); }</script>
@@ -165,7 +200,7 @@
   <!-- DEFAULT MENU — Default State -->
   <section>
     <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Menu — Default</h3>
-    <div class="w-[320px] py-1 bg-white border border-gray-200 rounded-md shadow-lg max-h-[240px] overflow-clip">
+    <div class="w-80 py-1 bg-white border border-gray-200 rounded-md shadow-lg max-h-60 overflow-clip">
       <div class="px-3 py-2 text-xs text-gray-400">検索結果：10件</div>
       <div class="px-3 py-2 text-sm leading-5 text-gray-900 hover:bg-gray-50 cursor-pointer">にいやま株式会社</div>
       <div class="px-3 py-2 text-sm leading-5 text-gray-900 hover:bg-gray-50 cursor-pointer">株式会社shizai</div>
@@ -183,7 +218,7 @@
   <!-- DEFAULT MENU — Empty State -->
   <section>
     <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Menu — Empty</h3>
-    <div class="w-[320px] py-1 bg-white border border-gray-200 rounded-md shadow-lg max-h-[240px] overflow-clip">
+    <div class="w-80 py-1 bg-white border border-gray-200 rounded-md shadow-lg max-h-60 overflow-clip">
       <div class="px-3 py-2 text-xs text-gray-400">検索結果：0件</div>
       <div class="px-3 py-2 text-sm leading-5 text-gray-400">該当する結果がありません</div>
     </div>
@@ -192,7 +227,7 @@
   <!-- DEFAULT MENU — Loading State -->
   <section>
     <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Menu — Loading</h3>
-    <div class="w-[320px] py-1 bg-white border border-gray-200 rounded-md shadow-lg max-h-[240px] overflow-clip">
+    <div class="w-80 py-1 bg-white border border-gray-200 rounded-md shadow-lg max-h-60 overflow-clip">
       <div class="px-3 py-2 text-xs text-gray-400 flex items-center gap-1">検索結果：5件 <svg class="w-3 h-3 animate-spin text-gray-400" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" opacity="0.25"/><path d="M12 2a10 10 0 0 1 10 10" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></div>
       <div class="px-3 py-2 text-sm leading-5 text-gray-900 hover:bg-gray-50 cursor-pointer">にいやま株式会社</div>
       <div class="px-3 py-2 text-sm leading-5 text-gray-900 hover:bg-gray-50 cursor-pointer">株式会社shizai</div>
@@ -205,13 +240,13 @@
   <!-- ITEM SELECT MENU — Default State -->
   <section>
     <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Menu — ItemSelect</h3>
-    <div class="w-[576px] py-1 bg-white border border-gray-200 rounded-md shadow-lg max-h-[420px] overflow-clip flex flex-col">
+    <div class="w-144 py-1 bg-white border border-gray-200 rounded-md shadow-lg max-h-105 overflow-clip flex flex-col">
       <div class="px-3 py-2 text-xs text-gray-400">検索結果：2,096件</div>
       <!-- Header -->
       <div class="flex items-start">
         <div class="flex-1 bg-gray-50 px-3 py-2 text-xs font-semibold text-gray-600">アイテム名</div>
-        <div class="w-[120px] shrink-0 bg-gray-50 px-3 py-2 text-xs font-semibold text-gray-600">カラー</div>
-        <div class="w-[120px] shrink-0 bg-gray-50 px-3 py-2 text-xs font-semibold text-gray-600">サイズ</div>
+        <div class="w-30 shrink-0 bg-gray-50 px-3 py-2 text-xs font-semibold text-gray-600">カラー</div>
+        <div class="w-30 shrink-0 bg-gray-50 px-3 py-2 text-xs font-semibold text-gray-600">サイズ</div>
       </div>
       <!-- Options -->
       <div class="flex-1 overflow-y-auto">
@@ -220,24 +255,24 @@
             <span class="text-sm text-gray-900 leading-5">BAKUNE RECOVERY WEAR Dry Long Pants Regular ダークカーキ（XL）_23SS_直営専用</span>
             <span class="text-xs text-gray-400 leading-4">S-00-PT-019-NVY-XL</span>
           </div>
-          <div class="w-[120px] shrink-0 px-3 py-2 text-sm leading-5 text-gray-900">NAVY</div>
-          <div class="w-[120px] shrink-0 px-3 py-2 text-sm leading-5 text-gray-900">XL</div>
+          <div class="w-30 shrink-0 px-3 py-2 text-sm leading-5 text-gray-900">NAVY</div>
+          <div class="w-30 shrink-0 px-3 py-2 text-sm leading-5 text-gray-900">XL</div>
         </div>
         <div class="flex items-center hover:bg-gray-50 cursor-pointer">
           <div class="flex-1 flex flex-col px-3 py-2">
             <span class="text-sm text-gray-900 leading-5">サイドタックワイドパンツ</span>
             <span class="text-xs text-gray-400 leading-4">S-00-PT-033-GRN-M</span>
           </div>
-          <div class="w-[120px] shrink-0 px-3 py-2 text-sm leading-5 text-gray-900">ミスティカルフォレストグリーン</div>
-          <div class="w-[120px] shrink-0 px-3 py-2 text-sm leading-5 text-gray-900">XL</div>
+          <div class="w-30 shrink-0 px-3 py-2 text-sm leading-5 text-gray-900">ミスティカルフォレストグリーン</div>
+          <div class="w-30 shrink-0 px-3 py-2 text-sm leading-5 text-gray-900">XL</div>
         </div>
         <div class="flex items-center hover:bg-gray-50 cursor-pointer">
           <div class="flex-1 flex flex-col px-3 py-2">
             <span class="text-sm text-gray-900 leading-5">オーガニックコットン Tシャツ</span>
             <span class="text-xs text-gray-400 leading-4">S-00-TS-042-WHT-M</span>
           </div>
-          <div class="w-[120px] shrink-0 px-3 py-2 text-sm leading-5 text-gray-900">ホワイト</div>
-          <div class="w-[120px] shrink-0 px-3 py-2 text-sm leading-5 text-gray-900">M</div>
+          <div class="w-30 shrink-0 px-3 py-2 text-sm leading-5 text-gray-900">ホワイト</div>
+          <div class="w-30 shrink-0 px-3 py-2 text-sm leading-5 text-gray-900">M</div>
         </div>
       </div>
     </div>
@@ -246,12 +281,12 @@
   <!-- ITEM SELECT MENU — Empty State -->
   <section>
     <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Menu — ItemSelect Empty</h3>
-    <div class="w-[576px] py-1 bg-white border border-gray-200 rounded-md shadow-lg max-h-[420px] overflow-clip">
+    <div class="w-144 py-1 bg-white border border-gray-200 rounded-md shadow-lg max-h-105 overflow-clip">
       <div class="px-3 py-2 text-xs text-gray-400">検索結果：0件</div>
       <div class="flex items-start">
         <div class="flex-1 bg-gray-50 px-3 py-2 text-xs font-semibold text-gray-600">アイテム名</div>
-        <div class="w-[120px] shrink-0 bg-gray-50 px-3 py-2 text-xs font-semibold text-gray-600">カラー</div>
-        <div class="w-[120px] shrink-0 bg-gray-50 px-3 py-2 text-xs font-semibold text-gray-600">サイズ</div>
+        <div class="w-30 shrink-0 bg-gray-50 px-3 py-2 text-xs font-semibold text-gray-600">カラー</div>
+        <div class="w-30 shrink-0 bg-gray-50 px-3 py-2 text-xs font-semibold text-gray-600">サイズ</div>
       </div>
       <div class="px-3 py-2 text-sm leading-5 text-gray-400">該当する結果がありません</div>
     </div>
@@ -260,7 +295,7 @@
   <!-- PRICE LIST MENU -->
   <section>
     <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Menu — PriceTable</h3>
-    <div class="w-[248px] bg-white border border-gray-200 rounded-md shadow-lg overflow-clip">
+    <div class="w-62 bg-white border border-gray-200 rounded-md shadow-lg overflow-clip">
       <!-- Header -->
       <div class="flex items-start">
         <div class="flex-1 bg-gray-50 px-3 py-2 text-xs font-semibold text-gray-600 text-right">数量</div>

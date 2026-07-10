@@ -944,8 +944,8 @@
             {
               "variant": "container",
               "tokens": {
-                "width": "w-[320px]",
-                "maxHeight": "max-h-[240px] overflow-y-auto",
+                "width": "w-80",
+                "maxHeight": "max-h-60 overflow-y-auto",
                 "paddingY": "py-1 (4px top/bottom)",
                 "background": "bg-white",
                 "border": "border border-gray-200",
@@ -1085,7 +1085,7 @@
               "tokens": {
                 "padding": "px-2 py-1 (8px 4px)",
                 "fontSize": "text-xs (12px)",
-                "minHeight": "min-h-[60px]"
+                "minHeight": "min-h-15"
               }
             },
             {
@@ -1093,7 +1093,7 @@
               "tokens": {
                 "padding": "px-3 py-1.5 (12px 6px)",
                 "fontSize": "text-sm (14px)",
-                "minHeight": "min-h-[72px]"
+                "minHeight": "min-h-18"
               }
             },
             {
@@ -1101,7 +1101,7 @@
               "tokens": {
                 "padding": "px-3 py-2 (12px 8px)",
                 "fontSize": "text-sm (14px)",
-                "minHeight": "min-h-[80px]"
+                "minHeight": "min-h-20"
               }
             },
             {
@@ -1109,7 +1109,7 @@
               "tokens": {
                 "padding": "px-4 py-3 (16px 12px)",
                 "fontSize": "text-base (16px)",
-                "minHeight": "min-h-[96px]"
+                "minHeight": "min-h-24"
               }
             }
           ]
@@ -1601,7 +1601,7 @@
             {
               "variant": "selected",
               "tokens": {
-                "border": "border-indigo-500 (#615FFF), border-[4px]",
+                "border": "border-indigo-500 (#615FFF), border-4",
                 "background": "bg-white (#FFFFFF)",
                 "text": "text-gray-900 (#101828)"
               }
@@ -1617,7 +1617,7 @@
             {
               "variant": "selected-disabled",
               "tokens": {
-                "border": "border-gray-400 (#99A1AF), border-[4px]",
+                "border": "border-gray-400 (#99A1AF), border-4",
                 "background": "bg-white (#FFFFFF)",
                 "text": "text-gray-400 (#99A1AF)"
               }
@@ -2282,7 +2282,7 @@
                 "closeSize": "w-4 h-4 (16px)",
                 "titleFont": "text-sm font-medium (14px 500)",
                 "descFont": "text-sm font-normal (14px 400)",
-                "width": "w-[360px]"
+                "width": "w-90"
               }
             }
           ]
@@ -2509,7 +2509,7 @@
             {
               "variant": "all",
               "tokens": {
-                "width": "w-[400px]",
+                "width": "w-100",
                 "background": "bg-white (#FFFFFF)",
                 "border": "border-gray-200 (#E5E7EB) (1px)",
                 "borderRadius": "rounded-xl (12px)",
@@ -2654,7 +2654,7 @@
             {
               "variant": "all",
               "tokens": {
-                "width": "w-[512px]",
+                "width": "w-128",
                 "height": "h-full (viewport)",
                 "background": "bg-white (#FFFFFF)",
                 "borderLeft": "border-gray-200 (#E5E7EB) (1px)"
@@ -2965,7 +2965,7 @@
                 "gap": "gap-2 (8px)",
                 "labelFont": "text-base font-normal (16px 400)",
                 "labelColor": "text-gray-600 (#4A5565)",
-                "labelWidth": "w-[120px] FIXED",
+                "labelWidth": "w-30 FIXED",
                 "valueFont": "text-base font-normal (16px 400)"
               }
             }
@@ -3179,7 +3179,7 @@
             {
               "variant": "select",
               "tokens": {
-                "width": "w-[120px]",
+                "width": "w-30",
                 "padding": "px-3 py-1.5",
                 "child": "Select component (Size=xs)",
                 "selectBg": "bg-white",
@@ -3193,7 +3193,7 @@
             {
               "variant": "multiline text",
               "tokens": {
-                "width": "w-[200px]",
+                "width": "w-50",
                 "padding": "p-3",
                 "fontSize": "text-sm",
                 "fontWeight": "font-normal",
@@ -3205,7 +3205,7 @@
             {
               "variant": "multiline number",
               "tokens": {
-                "width": "w-[120px]",
+                "width": "w-30",
                 "padding": "p-3",
                 "fontSize": "text-sm",
                 "fontWeight": "font-normal",
@@ -3218,7 +3218,7 @@
             {
               "variant": "date icon",
               "tokens": {
-                "width": "w-[180px]",
+                "width": "w-45",
                 "padding": "px-3 py-2.5",
                 "gap": "gap-1",
                 "fontSize": "text-sm",
@@ -3258,7 +3258,7 @@
               "tokens": {
                 "layout": "flex flex-col",
                 "background": "bg-gray-50",
-                "paddingLeft": "pl-[72px]",
+                "paddingLeft": "pl-18",
                 "width": "w-full (inherits parent table width)"
               }
             }
@@ -3270,7 +3270,7 @@
             {
               "variant": "text",
               "tokens": {
-                "height": "h-[40px]",
+                "height": "h-10",
                 "padding": "px-3 py-2",
                 "fontSize": "text-xs",
                 "fontWeight": "font-semibold",
@@ -3281,7 +3281,7 @@
             {
               "variant": "number",
               "tokens": {
-                "height": "h-[40px]",
+                "height": "h-10",
                 "padding": "px-3 py-2",
                 "fontSize": "text-xs",
                 "fontWeight": "font-semibold",
@@ -3297,7 +3297,7 @@
             {
               "variant": "text",
               "tokens": {
-                "height": "h-[40px]",
+                "height": "h-10",
                 "padding": "px-3 py-2.5",
                 "fontSize": "text-sm",
                 "fontWeight": "font-normal",
@@ -3308,7 +3308,7 @@
             {
               "variant": "link",
               "tokens": {
-                "height": "h-[40px]",
+                "height": "h-10",
                 "padding": "px-3 py-2.5",
                 "fontSize": "text-sm",
                 "fontWeight": "font-normal",
@@ -3319,7 +3319,7 @@
             {
               "variant": "number",
               "tokens": {
-                "height": "h-[40px]",
+                "height": "h-10",
                 "padding": "px-3 py-2.5",
                 "fontSize": "text-sm",
                 "fontWeight": "font-normal",
@@ -3456,7 +3456,7 @@
               "variant": "all",
               "tokens": {
                 "width": "w-20 (80px)",
-                "height": "h-[25px]",
+                "height": "h-6.25",
                 "color": "text-[#0F1424]"
               }
             }
@@ -3584,7 +3584,7 @@
               "variant": "all",
               "tokens": {
                 "layout": "VERTICAL",
-                "width": "w-[480px] FIXED"
+                "width": "w-120 FIXED"
               }
             }
           ]
@@ -3631,7 +3631,7 @@
                 "titleFont": "text-base/bold (16px 700)",
                 "titleColor": "text/primary (#101828)",
                 "layout": "VERTICAL",
-                "width": "w-[448px] FIXED"
+                "width": "w-112 FIXED"
               }
             }
           ]
@@ -4255,7 +4255,7 @@
             {
               "variant": "Base",
               "tokens": {
-                "width": "w-[160px]",
+                "width": "w-40",
                 "padding": "p-3 (12px)",
                 "gap": "gap-2 (8px)",
                 "borderRadius": "rounded-lg (8px)",

@@ -3,24 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<style type="text/tailwindcss">
+  @theme {
+    /* shizai-pro Rails app/assets/tailwind/application.css と同一のトークン定義 */
+    --color-badge-gray: #4A5565;
+    --color-badge-red: #E7000B;
+    --color-badge-orange: #F54A00;
+    --color-badge-amber: #E17100;
+    --color-badge-blue: #155dfc;
+    --color-badge-teal: #009689;
+    --color-badge-violet: #7F22FE;
+
+    --color-toast-success: #009689;
+    --color-toast-warning: #FD9A00;
+    --color-toast-error: #FB2C36;
+    --color-toast-info: #6A7282;
+
+    --color-btn-primary: #615fff;
+    --color-btn-primary-hover: #4f39f6;
+    --color-btn-primary-active: #432dd7;
+    --color-btn-secondary: #e0e7ff;
+    --color-btn-secondary-hover: #c6d2ff;
+    --color-btn-secondary-active: #a3b3ff;
+    --color-btn-alert: #FB2C36;
+    --color-btn-alert-hover: #E7000B;
+    --color-btn-alert-active: #C10007;
+    --color-btn-tertiary-hover: #f9fafb;
+    --color-btn-tertiary-active: #f3f4f6;
+    --color-btn-text-secondary: #372aac;
+    --color-btn-text-secondary-hover: #312c85;
+    --color-btn-text-secondary-active: #2e2670;
+    --color-btn-text-tertiary: #101828;
+
+    --shadow-modal: 0 8px 32px -8px rgba(0, 0, 0, 0.16);
+  }
+</style>
 <style>#back-link { display: inline-flex; } .in-iframe #back-link { display: none; } .in-iframe body { padding: 0 !important; } .in-iframe.demo-only body { background: #f8f8fa !important; padding: 36px 32px 32px !important; }</style>
 <script>if (window !== window.top) { document.documentElement.classList.add("in-iframe"); var view = new URLSearchParams(location.search).get("view"); if (view === "demo") document.documentElement.classList.add("demo-only"); document.addEventListener("DOMContentLoaded", function() { var el = document.getElementById("back-link"); if (el) el.remove(); var demo = document.getElementById("demo-section"); if (view === "demo" && demo) { document.body.appendChild(demo); Array.from(document.body.children).forEach(function(c) { if (c === demo || c.tagName === "SCRIPT" || c.hasAttribute("data-demo-keep")) return; c.remove(); }); } else if (view === "preview" && demo) { demo.remove(); } }); }</script>
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        'gray-primary': '#101828',
-        'gray-secondary': '#4A5565',
-        'gray-border': '#E5E7EB',
-        'gray-divider': '#F3F4F6',
-        'gray-bg': '#F9FAFB',
-      }
-    }
-  }
-}
-</script>
 <style>
   .po-card { width: 768px; border: 1px solid #E5E7EB; border-radius: 6px; background: #fff; padding: 32px 24px; }
   .detail-line { width: 2px; background: #E5E7EB; border-radius: 1px; flex-shrink: 0; }
@@ -48,56 +68,56 @@ tailwind.config = {
 
       <!-- Header: 発注書 + 日付・番号 -->
       <div class="flex justify-between items-end">
-        <span class="text-2xl font-bold text-gray-primary">発注書</span>
-        <div class="flex gap-4 text-sm text-gray-primary">
+        <span class="text-2xl font-bold text-gray-900">発注書</span>
+        <div class="flex gap-4 text-sm text-gray-900">
           <span>2022/12/22(金)</span>
           <span>20220228-001</span>
         </div>
       </div>
 
       <!-- Divider -->
-      <div class="w-full h-0.5 bg-gray-divider"></div>
+      <div class="w-full h-0.5 bg-gray-100"></div>
 
       <!-- Info Section: 宛名 + 自社情報 -->
       <div class="flex justify-between items-start">
         <!-- 宛名 (Left) -->
         <div class="flex flex-col gap-2" style="width:360px;">
           <div class="flex gap-1">
-            <span class="text-xl font-bold text-gray-primary">株式会社shizai</span>
-            <span class="text-xl font-bold text-gray-primary">御中</span>
+            <span class="text-xl font-bold text-gray-900">株式会社shizai</span>
+            <span class="text-xl font-bold text-gray-900">御中</span>
           </div>
-          <span class="text-sm text-gray-primary">下記のとおり発注いたします</span>
+          <span class="text-sm text-gray-900">下記のとおり発注いたします</span>
           <div class="flex flex-col gap-1">
             <div class="flex items-baseline gap-2">
-              <span class="text-base text-gray-primary">合計金額</span>
-              <span class="text-2xl font-bold text-gray-primary">407,000</span>
-              <span class="text-base text-gray-primary">円</span>
+              <span class="text-base text-gray-900">合計金額</span>
+              <span class="text-2xl font-bold text-gray-900">407,000</span>
+              <span class="text-base text-gray-900">円</span>
             </div>
-            <div class="w-full h-px bg-gray-border"></div>
+            <div class="w-full h-px bg-gray-200"></div>
           </div>
         </div>
         <!-- 自社情報 (Right) -->
         <div class="flex flex-col gap-2" style="width:296px;">
-          <span class="text-base font-bold text-gray-primary">株式会社Test</span>
+          <span class="text-base font-bold text-gray-900">株式会社Test</span>
           <div class="flex flex-col gap-1">
             <div class="flex items-center gap-1">
-              <svg class="w-4 h-4 text-gray-secondary flex-shrink-0"><use href="icons.svg#icon-phone"/></svg>
-              <span class="text-sm text-gray-secondary">090-1234-5678</span>
+              <svg class="w-4 h-4 text-gray-600 flex-shrink-0"><use href="icons.svg#icon-phone"/></svg>
+              <span class="text-sm text-gray-600">090-1234-5678</span>
             </div>
             <div class="flex items-center gap-1">
-              <svg class="w-4 h-4 text-gray-secondary flex-shrink-0"><use href="icons.svg#icon-mail"/></svg>
-              <span class="text-sm text-gray-secondary">mail@mail.com</span>
+              <svg class="w-4 h-4 text-gray-600 flex-shrink-0"><use href="icons.svg#icon-mail"/></svg>
+              <span class="text-sm text-gray-600">mail@mail.com</span>
             </div>
             <div class="flex items-start gap-1">
-              <svg class="w-4 h-4 text-gray-secondary flex-shrink-0 mt-0.5"><use href="icons.svg#icon-map-pinned"/></svg>
-              <span class="text-sm text-gray-secondary">〒123-1234 東京都新宿区歌舞伎町1丁目1番地〇〇ビル4F</span>
+              <svg class="w-4 h-4 text-gray-600 flex-shrink-0 mt-0.5"><use href="icons.svg#icon-map-pinned"/></svg>
+              <span class="text-sm text-gray-600">〒123-1234 東京都新宿区歌舞伎町1丁目1番地〇〇ビル4F</span>
             </div>
           </div>
         </div>
       </div>
 
       <!-- 件名 -->
-      <div class="text-base font-bold text-gray-primary">件名は最大で70文字まで入力が可能です</div>
+      <div class="text-base font-bold text-gray-900">件名は最大で70文字まで入力が可能です</div>
 
       <!-- Table -->
       <table class="w-full border-collapse" style="table-layout:fixed;">
@@ -123,14 +143,14 @@ tailwind.config = {
           <!-- アイテム行1 -->
           <tr>
             <td class="table-row-cell">
-              <div class="text-gray-primary">アイテム名</div>
+              <div class="text-gray-900">アイテム名</div>
               <div class="flex gap-2 mt-1">
                 <div class="detail-line self-stretch"></div>
                 <div class="flex gap-2 text-xs">
-                  <div class="flex flex-col gap-1 text-gray-secondary">
+                  <div class="flex flex-col gap-1 text-gray-600">
                     <span>ID</span><span>型番</span><span>カラー</span><span>サイズ</span><span>入荷予定コード</span><span>ロット番号</span><span>出荷期限日</span>
                   </div>
-                  <div class="flex flex-col gap-1 text-gray-primary">
+                  <div class="flex flex-col gap-1 text-gray-900">
                     <span>1234567890123</span><span>KATABAN</span><span>BLACK</span><span>S</span><span>2960017146833</span><span>AA1234-AS-12345</span><span>2025/01/31(金)</span>
                   </div>
                 </div>
@@ -145,14 +165,14 @@ tailwind.config = {
           <!-- アイテム行2 -->
           <tr>
             <td class="table-row-cell">
-              <div class="text-gray-primary">アイテム名</div>
+              <div class="text-gray-900">アイテム名</div>
               <div class="flex gap-2 mt-1">
                 <div class="detail-line self-stretch"></div>
                 <div class="flex gap-2 text-xs">
-                  <div class="flex flex-col gap-1 text-gray-secondary">
+                  <div class="flex flex-col gap-1 text-gray-600">
                     <span>ID</span><span>型番</span><span>カラー</span><span>サイズ</span><span>入荷予定コード</span><span>ロット番号</span><span>出荷期限日</span><span>メモ</span>
                   </div>
-                  <div class="flex flex-col gap-1 text-gray-primary">
+                  <div class="flex flex-col gap-1 text-gray-900">
                     <span>1234567890123</span><span>KATABAN</span><span>BLACK</span><span>S</span><span>2960017146833</span><span>AA1234-AS-12345</span><span>2025/01/31(金)</span><span>メモです</span>
                   </div>
                 </div>
@@ -166,7 +186,7 @@ tailwind.config = {
           </tr>
           <!-- 費用行 -->
           <tr>
-            <td class="table-row-cell text-gray-primary">費用名</td>
+            <td class="table-row-cell text-gray-900">費用名</td>
             <td class="table-row-cell text-left">2022/12/22(金)</td>
             <td class="table-row-cell text-left">2023/1/31(金)</td>
             <td class="table-row-cell text-right">1</td>
@@ -183,38 +203,38 @@ tailwind.config = {
           <!-- 納品先 -->
           <div class="flex flex-col gap-1">
             <div class="flex gap-2">
-              <span class="text-sm font-bold text-gray-primary">納品先</span>
-              <span class="text-sm font-bold text-gray-primary">shizai倉庫</span>
+              <span class="text-sm font-bold text-gray-900">納品先</span>
+              <span class="text-sm font-bold text-gray-900">shizai倉庫</span>
             </div>
             <div class="flex items-center gap-1">
-              <svg class="w-4 h-4 text-gray-secondary flex-shrink-0"><use href="icons.svg#icon-phone"/></svg>
-              <span class="text-sm text-gray-secondary">090-1234-5678</span>
+              <svg class="w-4 h-4 text-gray-600 flex-shrink-0"><use href="icons.svg#icon-phone"/></svg>
+              <span class="text-sm text-gray-600">090-1234-5678</span>
             </div>
             <div class="flex items-start gap-1">
-              <svg class="w-4 h-4 text-gray-secondary flex-shrink-0 mt-0.5"><use href="icons.svg#icon-map-pinned"/></svg>
-              <span class="text-sm text-gray-secondary">〒123-1234 東京都新宿区歌舞伎町1丁目1番地〇〇ビル4F</span>
+              <svg class="w-4 h-4 text-gray-600 flex-shrink-0 mt-0.5"><use href="icons.svg#icon-map-pinned"/></svg>
+              <span class="text-sm text-gray-600">〒123-1234 東京都新宿区歌舞伎町1丁目1番地〇〇ビル4F</span>
             </div>
           </div>
           <!-- 補足 -->
           <div class="flex flex-col gap-1">
-            <span class="text-sm font-bold text-gray-primary">補足</span>
-            <span class="text-sm text-gray-primary">テキストが入る場合はここに記載がテキストが入る場合はここに記載がテキストが入る場合はここに記載がテキストが入る場合はここに記載がテキストが入る場合はここに記載がテキストが入る場合はここに記載が</span>
+            <span class="text-sm font-bold text-gray-900">補足</span>
+            <span class="text-sm text-gray-900">テキストが入る場合はここに記載がテキストが入る場合はここに記載がテキストが入る場合はここに記載がテキストが入る場合はここに記載がテキストが入る場合はここに記載がテキストが入る場合はここに記載が</span>
           </div>
         </div>
         <!-- Calc (Right) -->
         <div class="flex flex-col gap-2 text-sm" style="width:240px;">
           <div class="flex justify-between">
-            <span class="text-gray-primary">小計</span>
-            <span class="text-gray-primary">370,000</span>
+            <span class="text-gray-900">小計</span>
+            <span class="text-gray-900">370,000</span>
           </div>
           <div class="flex flex-col gap-2">
             <div class="flex justify-between">
-              <span class="text-gray-primary">消費税</span>
-              <span class="text-gray-primary">36,000</span>
+              <span class="text-gray-900">消費税</span>
+              <span class="text-gray-900">36,000</span>
             </div>
             <div class="flex gap-2">
               <div class="detail-line flex-shrink-0"></div>
-              <div class="flex-1 flex flex-col gap-1 text-xs text-gray-secondary">
+              <div class="flex-1 flex flex-col gap-1 text-xs text-gray-600">
                 <div class="flex justify-between"><span>10%対象(240,000)</span><span>28,000</span></div>
                 <div class="flex justify-between"><span>軽減8%対象(100,000)</span><span>8,000</span></div>
                 <div class="flex justify-between"><span>対象外(50,000)</span><span>0</span></div>
@@ -222,8 +242,8 @@ tailwind.config = {
             </div>
           </div>
           <div class="flex justify-between">
-            <span class="font-bold text-gray-primary">合計金額</span>
-            <span class="font-bold text-gray-primary">406,000</span>
+            <span class="font-bold text-gray-900">合計金額</span>
+            <span class="font-bold text-gray-900">406,000</span>
           </div>
         </div>
       </div>
@@ -237,54 +257,54 @@ tailwind.config = {
 
       <!-- Header -->
       <div class="flex justify-between items-end">
-        <span class="text-2xl font-bold text-gray-primary">発注書</span>
-        <div class="flex gap-4 text-sm text-gray-primary">
+        <span class="text-2xl font-bold text-gray-900">発注書</span>
+        <div class="flex gap-4 text-sm text-gray-900">
           <span>2022/12/22(金)</span>
           <span>20220228-001</span>
         </div>
       </div>
 
       <!-- Divider -->
-      <div class="w-full h-0.5 bg-gray-divider"></div>
+      <div class="w-full h-0.5 bg-gray-100"></div>
 
       <!-- Info Section -->
       <div class="flex justify-between items-start">
         <div class="flex flex-col gap-2" style="width:360px;">
           <div class="flex gap-1">
-            <span class="text-xl font-bold text-gray-primary">株式会社shizai</span>
-            <span class="text-xl font-bold text-gray-primary">御中</span>
+            <span class="text-xl font-bold text-gray-900">株式会社shizai</span>
+            <span class="text-xl font-bold text-gray-900">御中</span>
           </div>
-          <span class="text-sm text-gray-primary">下記のとおり発注いたします</span>
+          <span class="text-sm text-gray-900">下記のとおり発注いたします</span>
           <div class="flex flex-col gap-1">
             <div class="flex items-baseline gap-2">
-              <span class="text-base text-gray-primary">合計金額</span>
-              <span class="text-2xl font-bold text-gray-primary">407,000</span>
-              <span class="text-base text-gray-primary">円</span>
+              <span class="text-base text-gray-900">合計金額</span>
+              <span class="text-2xl font-bold text-gray-900">407,000</span>
+              <span class="text-base text-gray-900">円</span>
             </div>
-            <div class="w-full h-px bg-gray-border"></div>
+            <div class="w-full h-px bg-gray-200"></div>
           </div>
         </div>
         <div class="flex flex-col gap-2" style="width:296px;">
-          <span class="text-base font-bold text-gray-primary">株式会社Test</span>
+          <span class="text-base font-bold text-gray-900">株式会社Test</span>
           <div class="flex flex-col gap-1">
             <div class="flex items-center gap-1">
-              <svg class="w-4 h-4 text-gray-secondary flex-shrink-0"><use href="icons.svg#icon-phone"/></svg>
-              <span class="text-sm text-gray-secondary">090-1234-5678</span>
+              <svg class="w-4 h-4 text-gray-600 flex-shrink-0"><use href="icons.svg#icon-phone"/></svg>
+              <span class="text-sm text-gray-600">090-1234-5678</span>
             </div>
             <div class="flex items-center gap-1">
-              <svg class="w-4 h-4 text-gray-secondary flex-shrink-0"><use href="icons.svg#icon-mail"/></svg>
-              <span class="text-sm text-gray-secondary">mail@mail.com</span>
+              <svg class="w-4 h-4 text-gray-600 flex-shrink-0"><use href="icons.svg#icon-mail"/></svg>
+              <span class="text-sm text-gray-600">mail@mail.com</span>
             </div>
             <div class="flex items-start gap-1">
-              <svg class="w-4 h-4 text-gray-secondary flex-shrink-0 mt-0.5"><use href="icons.svg#icon-map-pinned"/></svg>
-              <span class="text-sm text-gray-secondary">〒123-1234 東京都新宿区歌舞伎町1丁目1番地〇〇ビル4F</span>
+              <svg class="w-4 h-4 text-gray-600 flex-shrink-0 mt-0.5"><use href="icons.svg#icon-map-pinned"/></svg>
+              <span class="text-sm text-gray-600">〒123-1234 東京都新宿区歌舞伎町1丁目1番地〇〇ビル4F</span>
             </div>
           </div>
         </div>
       </div>
 
       <!-- 件名 -->
-      <div class="text-base font-bold text-gray-primary">件名は最大で70文字まで入力が可能です</div>
+      <div class="text-base font-bold text-gray-900">件名は最大で70文字まで入力が可能です</div>
 
       <!-- Table -->
       <table class="w-full border-collapse" style="table-layout:fixed;">
@@ -310,14 +330,14 @@ tailwind.config = {
           <!-- アイテム行1 (分納あり) -->
           <tr>
             <td class="table-row-cell">
-              <div class="text-gray-primary">アイテム名</div>
+              <div class="text-gray-900">アイテム名</div>
               <div class="flex gap-2 mt-1">
                 <div class="detail-line self-stretch"></div>
                 <div class="flex gap-2 text-xs">
-                  <div class="flex flex-col gap-1 text-gray-secondary">
+                  <div class="flex flex-col gap-1 text-gray-600">
                     <span>ID</span><span>型番</span><span>カラー</span><span>サイズ</span>
                   </div>
-                  <div class="flex flex-col gap-1 text-gray-primary">
+                  <div class="flex flex-col gap-1 text-gray-900">
                     <span>1234567890123</span><span>KATABAN</span><span>BLACK</span><span>S</span>
                   </div>
                 </div>
@@ -332,14 +352,14 @@ tailwind.config = {
           <!-- 分納1回目 -->
           <tr class="bunno-row">
             <td class="table-row-cell">
-              <div class="text-gray-primary">分納1回目</div>
+              <div class="text-gray-900">分納1回目</div>
               <div class="flex gap-2 mt-1">
                 <div class="detail-line self-stretch"></div>
                 <div class="flex gap-2 text-xs">
-                  <div class="flex flex-col gap-1 text-gray-secondary">
+                  <div class="flex flex-col gap-1 text-gray-600">
                     <span>入荷予定コード</span><span>ロット番号</span><span>出荷期限日</span><span>メモ</span>
                   </div>
-                  <div class="flex flex-col gap-1 text-gray-primary">
+                  <div class="flex flex-col gap-1 text-gray-900">
                     <span>2960017146833</span><span>AA1234-AS-12345</span><span>2025/01/31(金)</span><span>メモです</span>
                   </div>
                 </div>
@@ -354,14 +374,14 @@ tailwind.config = {
           <!-- 分納2回目 -->
           <tr class="bunno-row">
             <td class="table-row-cell">
-              <div class="text-gray-primary">分納2回目</div>
+              <div class="text-gray-900">分納2回目</div>
               <div class="flex gap-2 mt-1">
                 <div class="detail-line self-stretch"></div>
                 <div class="flex gap-2 text-xs">
-                  <div class="flex flex-col gap-1 text-gray-secondary">
+                  <div class="flex flex-col gap-1 text-gray-600">
                     <span>入荷予定コード</span><span>ロット番号</span><span>出荷期限日</span><span>メモ</span>
                   </div>
-                  <div class="flex flex-col gap-1 text-gray-primary">
+                  <div class="flex flex-col gap-1 text-gray-900">
                     <span>2960017146833</span><span>AA1234-AS-12345</span><span>2025/01/31(金)</span><span>メモです</span>
                   </div>
                 </div>
@@ -376,14 +396,14 @@ tailwind.config = {
           <!-- アイテム行2 -->
           <tr>
             <td class="table-row-cell">
-              <div class="text-gray-primary">アイテム名</div>
+              <div class="text-gray-900">アイテム名</div>
               <div class="flex gap-2 mt-1">
                 <div class="detail-line self-stretch"></div>
                 <div class="flex gap-2 text-xs">
-                  <div class="flex flex-col gap-1 text-gray-secondary">
+                  <div class="flex flex-col gap-1 text-gray-600">
                     <span>ID</span><span>型番</span><span>カラー</span><span>サイズ</span><span>入荷予定コード</span><span>ロット番号</span><span>出荷期限日</span><span>メモ</span>
                   </div>
-                  <div class="flex flex-col gap-1 text-gray-primary">
+                  <div class="flex flex-col gap-1 text-gray-900">
                     <span>1234567890123</span><span>KATABAN</span><span>BLACK</span><span>S</span><span>2960017146833</span><span>AA1234-AS-12345</span><span>2025/01/31(金)</span><span>メモです</span>
                   </div>
                 </div>
@@ -397,7 +417,7 @@ tailwind.config = {
           </tr>
           <!-- 費用行 -->
           <tr>
-            <td class="table-row-cell text-gray-primary">費用名</td>
+            <td class="table-row-cell text-gray-900">費用名</td>
             <td class="table-row-cell text-left">2022/12/22(金)</td>
             <td class="table-row-cell text-left">2023/1/31(金)</td>
             <td class="table-row-cell text-right">1</td>
@@ -412,36 +432,36 @@ tailwind.config = {
         <div class="flex flex-col gap-4 flex-1">
           <div class="flex flex-col gap-1">
             <div class="flex gap-2">
-              <span class="text-sm font-bold text-gray-primary">納品先</span>
-              <span class="text-sm font-bold text-gray-primary">shizai倉庫</span>
+              <span class="text-sm font-bold text-gray-900">納品先</span>
+              <span class="text-sm font-bold text-gray-900">shizai倉庫</span>
             </div>
             <div class="flex items-center gap-1">
-              <svg class="w-4 h-4 text-gray-secondary flex-shrink-0"><use href="icons.svg#icon-phone"/></svg>
-              <span class="text-sm text-gray-secondary">090-1234-5678</span>
+              <svg class="w-4 h-4 text-gray-600 flex-shrink-0"><use href="icons.svg#icon-phone"/></svg>
+              <span class="text-sm text-gray-600">090-1234-5678</span>
             </div>
             <div class="flex items-start gap-1">
-              <svg class="w-4 h-4 text-gray-secondary flex-shrink-0 mt-0.5"><use href="icons.svg#icon-map-pinned"/></svg>
-              <span class="text-sm text-gray-secondary">〒123-1234 東京都新宿区歌舞伎町1丁目1番地〇〇ビル4F</span>
+              <svg class="w-4 h-4 text-gray-600 flex-shrink-0 mt-0.5"><use href="icons.svg#icon-map-pinned"/></svg>
+              <span class="text-sm text-gray-600">〒123-1234 東京都新宿区歌舞伎町1丁目1番地〇〇ビル4F</span>
             </div>
           </div>
           <div class="flex flex-col gap-1">
-            <span class="text-sm font-bold text-gray-primary">補足</span>
-            <span class="text-sm text-gray-primary">テキストが入る場合はここに記載がテキストが入る場合はここに記載がテキストが入る場合はここに記載がテキストが入る場合はここに記載がテキストが入る場合はここに記載がテキストが入る場合はここに記載が</span>
+            <span class="text-sm font-bold text-gray-900">補足</span>
+            <span class="text-sm text-gray-900">テキストが入る場合はここに記載がテキストが入る場合はここに記載がテキストが入る場合はここに記載がテキストが入る場合はここに記載がテキストが入る場合はここに記載がテキストが入る場合はここに記載が</span>
           </div>
         </div>
         <div class="flex flex-col gap-2 text-sm" style="width:240px;">
           <div class="flex justify-between">
-            <span class="text-gray-primary">小計</span>
-            <span class="text-gray-primary">370,000</span>
+            <span class="text-gray-900">小計</span>
+            <span class="text-gray-900">370,000</span>
           </div>
           <div class="flex flex-col gap-2">
             <div class="flex justify-between">
-              <span class="text-gray-primary">消費税</span>
-              <span class="text-gray-primary">36,000</span>
+              <span class="text-gray-900">消費税</span>
+              <span class="text-gray-900">36,000</span>
             </div>
             <div class="flex gap-2">
               <div class="detail-line flex-shrink-0"></div>
-              <div class="flex-1 flex flex-col gap-1 text-xs text-gray-secondary">
+              <div class="flex-1 flex flex-col gap-1 text-xs text-gray-600">
                 <div class="flex justify-between"><span>10%対象(240,000)</span><span>28,000</span></div>
                 <div class="flex justify-between"><span>軽減8%対象(100,000)</span><span>8,000</span></div>
                 <div class="flex justify-between"><span>対象外(50,000)</span><span>0</span></div>
@@ -449,8 +469,8 @@ tailwind.config = {
             </div>
           </div>
           <div class="flex justify-between">
-            <span class="font-bold text-gray-primary">合計金額</span>
-            <span class="font-bold text-gray-primary">406,000</span>
+            <span class="font-bold text-gray-900">合計金額</span>
+            <span class="font-bold text-gray-900">406,000</span>
           </div>
         </div>
       </div>

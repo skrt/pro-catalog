@@ -3,7 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<style type="text/tailwindcss">
+  @theme {
+    /* shizai-pro Rails app/assets/tailwind/application.css と同一のトークン定義 */
+    --color-badge-gray: #4A5565;
+    --color-badge-red: #E7000B;
+    --color-badge-orange: #F54A00;
+    --color-badge-amber: #E17100;
+    --color-badge-blue: #155dfc;
+    --color-badge-teal: #009689;
+    --color-badge-violet: #7F22FE;
+
+    --color-toast-success: #009689;
+    --color-toast-warning: #FD9A00;
+    --color-toast-error: #FB2C36;
+    --color-toast-info: #6A7282;
+
+    --color-btn-primary: #615fff;
+    --color-btn-primary-hover: #4f39f6;
+    --color-btn-primary-active: #432dd7;
+    --color-btn-secondary: #e0e7ff;
+    --color-btn-secondary-hover: #c6d2ff;
+    --color-btn-secondary-active: #a3b3ff;
+    --color-btn-alert: #FB2C36;
+    --color-btn-alert-hover: #E7000B;
+    --color-btn-alert-active: #C10007;
+    --color-btn-tertiary-hover: #f9fafb;
+    --color-btn-tertiary-active: #f3f4f6;
+    --color-btn-text-secondary: #372aac;
+    --color-btn-text-secondary-hover: #312c85;
+    --color-btn-text-secondary-active: #2e2670;
+    --color-btn-text-tertiary: #101828;
+
+    --shadow-modal: 0 8px 32px -8px rgba(0, 0, 0, 0.16);
+  }
+</style>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <style>
     [x-cloak] { display: none !important; }
@@ -38,7 +73,7 @@
   <!-- ===== DRAWER / Default（添付なし・送信disabled） ===== -->
   <section>
     <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Default</h3>
-    <div class="w-[512px] h-[720px] flex flex-col bg-white border-l border-[#E5E7EB]">
+    <div class="w-128 h-180 flex flex-col bg-white border-l border-[#E5E7EB]">
       <!-- Upper Area -->
       <div class="flex flex-col gap-3 p-6 shrink-0">
         <!-- Title Row -->
@@ -49,7 +84,7 @@
           </button>
         </div>
         <!-- Textarea -->
-        <textarea class="w-full h-[70px] px-3 py-1.5 text-sm border border-[#E5E7EB] rounded-md placeholder-[#99A1AF] text-[#101828] outline-none bg-white focus:border-[#615fff] focus:ring-1 focus:ring-[#615fff] resize-y" placeholder="入力された内容をメールで仕入先に送ります"></textarea>
+        <textarea class="w-full h-17.5 px-3 py-1.5 text-sm border border-[#E5E7EB] rounded-md placeholder-[#99A1AF] text-[#101828] outline-none bg-white focus:border-[#615fff] focus:ring-1 focus:ring-[#615fff] resize-y" placeholder="入力された内容をメールで仕入先に送ります"></textarea>
         <!-- Actions -->
         <div class="flex flex-col gap-2">
           <div class="flex items-center justify-between">
@@ -120,7 +155,7 @@
   <!-- ===== DRAWER / 添付データあり ===== -->
   <section>
     <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">添付データあり</h3>
-    <div class="w-[512px] h-[720px] flex flex-col bg-white border-l border-[#E5E7EB]">
+    <div class="w-128 h-180 flex flex-col bg-white border-l border-[#E5E7EB]">
       <!-- Upper Area -->
       <div class="flex flex-col gap-3 p-6 shrink-0">
         <div class="flex items-center justify-between">
@@ -129,7 +164,7 @@
             <svg class="w-3.5 h-3.5 text-[#101828]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
           </button>
         </div>
-        <textarea class="w-full h-[70px] px-3 py-1.5 text-sm border border-[#E5E7EB] rounded-md placeholder-[#99A1AF] text-[#101828] outline-none bg-white focus:border-[#615fff] focus:ring-1 focus:ring-[#615fff] resize-y" placeholder="入力された内容をメールで仕入先に送ります"></textarea>
+        <textarea class="w-full h-17.5 px-3 py-1.5 text-sm border border-[#E5E7EB] rounded-md placeholder-[#99A1AF] text-[#101828] outline-none bg-white focus:border-[#615fff] focus:ring-1 focus:ring-[#615fff] resize-y" placeholder="入力された内容をメールで仕入先に送ります"></textarea>
         <!-- Attachments (Upper Area) -->
         <div class="flex flex-col">
           <div class="flex items-start gap-2">
@@ -239,7 +274,7 @@
   <!-- ===== DRAWER / エラー：添付データ上限 ===== -->
   <section>
     <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">エラー：添付データ上限</h3>
-    <div class="w-[512px] h-[720px] flex flex-col bg-white border-l border-[#E5E7EB]">
+    <div class="w-128 h-180 flex flex-col bg-white border-l border-[#E5E7EB]">
       <!-- Upper Area -->
       <div class="flex flex-col gap-3 p-6 shrink-0">
         <div class="flex items-center justify-between">
@@ -248,7 +283,7 @@
             <svg class="w-3.5 h-3.5 text-[#101828]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
           </button>
         </div>
-        <textarea class="w-full h-[70px] px-3 py-1.5 text-sm border border-[#E5E7EB] rounded-md placeholder-[#99A1AF] text-[#101828] outline-none bg-white focus:border-[#615fff] focus:ring-1 focus:ring-[#615fff] resize-y" placeholder="入力された内容をメールで仕入先に送ります"></textarea>
+        <textarea class="w-full h-17.5 px-3 py-1.5 text-sm border border-[#E5E7EB] rounded-md placeholder-[#99A1AF] text-[#101828] outline-none bg-white focus:border-[#615fff] focus:ring-1 focus:ring-[#615fff] resize-y" placeholder="入力された内容をメールで仕入先に送ります"></textarea>
         <!-- Attachments -->
         <div class="flex flex-col">
           <div class="flex items-start gap-2">
@@ -317,7 +352,7 @@
   <!-- ===== DRAWER MESSAGE (Individual) ===== -->
   <section>
     <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Message</h3>
-    <div class="w-[464px] space-y-6">
+    <div class="w-116 space-y-6">
       <!-- Receive (from supplier) -->
       <div class="space-y-1">
         <span class="text-[10px] text-gray-400">Receive (Supplier)</span>
@@ -421,7 +456,7 @@
       }
     }
   }">
-    <div class="flex h-[600px] border border-[#E5E7EB] rounded-lg overflow-hidden relative">
+    <div class="flex h-150 border border-[#E5E7EB] rounded-lg overflow-hidden relative">
       <!-- Left: Main Content Area -->
       <div class="flex-1 min-w-0 p-6 overflow-y-auto bg-gray-50">
         <div class="flex items-center justify-between mb-4">
@@ -435,9 +470,9 @@
         </div>
         <template x-for="i in 12" :key="i">
           <div class="flex items-center h-10 border-b border-[#E5E7EB] bg-white px-3 text-sm text-gray-600">
-            <span class="w-[140px] shrink-0" x-text="'20260216-' + String(i).padStart(3, '0')"></span>
+            <span class="w-35 shrink-0" x-text="'20260216-' + String(i).padStart(3, '0')"></span>
             <span class="flex-1">サンプル発注</span>
-            <span class="w-[100px] shrink-0 text-right">66,000</span>
+            <span class="w-25 shrink-0 text-right">66,000</span>
           </div>
         </template>
       </div>
@@ -445,7 +480,7 @@
       <div
         class="shrink-0 overflow-hidden border-l border-[#E5E7EB] transition-all duration-300"
         :style="open ? 'width: 400px' : 'width: 0; border-left-width: 0'">
-        <div class="w-[400px] h-full flex flex-col bg-white">
+        <div class="w-100 h-full flex flex-col bg-white">
           <!-- Upper Area -->
           <div class="flex flex-col gap-3 p-6 shrink-0">
             <div class="flex items-center justify-between">
@@ -454,7 +489,7 @@
                 <svg class="w-3.5 h-3.5 text-[#101828]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
               </button>
             </div>
-            <textarea x-model="msgText" class="w-full h-[70px] px-3 py-1.5 text-sm border border-[#E5E7EB] rounded-md placeholder-[#99A1AF] text-[#101828] outline-none bg-white focus:border-[#615fff] focus:ring-1 focus:ring-[#615fff] resize-y" placeholder="入力された内容をメールで仕入先に送ります"></textarea>
+            <textarea x-model="msgText" class="w-full h-17.5 px-3 py-1.5 text-sm border border-[#E5E7EB] rounded-md placeholder-[#99A1AF] text-[#101828] outline-none bg-white focus:border-[#615fff] focus:ring-1 focus:ring-[#615fff] resize-y" placeholder="入力された内容をメールで仕入先に送ります"></textarea>
             <div class="flex items-center justify-between">
               <button class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-[#101828] bg-white border border-[#E5E7EB] rounded-md hover:bg-[#F9FAFB] active:bg-[#F3F4F6] transition-colors">
                 <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
@@ -521,14 +556,14 @@
                x-transition:leave="transition ease-in duration-200"
                x-transition:leave-start="translate-y-0 opacity-100"
                x-transition:leave-end="translate-y-4 opacity-0"
-               class="w-[360px] rounded-md bg-[#009689] flex items-start gap-3" style="padding: 12px 16px;">
-            <div class="flex-shrink-0 mt-[3px]">
+               class="w-90 rounded-md bg-[#009689] flex items-start gap-3" style="padding: 12px 16px;">
+            <div class="flex-shrink-0 mt-0.75">
               <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
             </div>
             <div class="flex-1 flex flex-col gap-1">
               <p class="text-sm font-semibold text-white leading-5" x-text="t.msg"></p>
             </div>
-            <button @click="dismissToast(t.id)" class="flex-shrink-0 mt-[3px] cursor-pointer">
+            <button @click="dismissToast(t.id)" class="flex-shrink-0 mt-0.75 cursor-pointer">
               <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
             </button>
           </div>
