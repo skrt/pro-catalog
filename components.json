@@ -1993,14 +1993,14 @@
             {
               "variant": "selected",
               "tokens": {
-                "background": "bg-[#3D62D3]",
+                "background": "bg-indigo-500 (#615FFF)",
                 "text": "text-white (#FFFFFF)"
               }
             },
             {
               "variant": "range",
               "tokens": {
-                "background": "bg-[#ECEFF9]",
+                "background": "bg-indigo-50 (#EEF2FF)",
                 "text": "text-gray-500 (#6A7282)"
               }
             },
@@ -4093,7 +4093,7 @@
         {
           "name": "Color",
           "type": "enum",
-          "default": "Blue",
+          "default": "Indigo",
           "values": [
             "Slate",
             "Gray",
