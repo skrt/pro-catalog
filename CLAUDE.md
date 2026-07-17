@@ -18,10 +18,17 @@ shizai pro の Component Catalog。静的 HTML + Tailwind CSS v4 browser CDN（`
 - コンポーネント追加時: preview + components.json エントリ（usage 必須。demo は `#demo-section` + `hasDemo: true` をペアで）+
   shizai-pro/CLAUDE.md のコンポーネント一覧更新をセットで行う
 - `@theme` トークンは shizai-pro の `app/assets/tailwind/application.css` と同一に保つ
+- usage/spec の Do/Can't の情報源: shizai-pro の CLAUDE.md・figma/CLAUDE.md（コンポーネント別ルール）・figma/.claude/skills/。
+  使用実態は shizai-pro ビューの参照コメント（`Catalog: xxx.html — md/tertiary` 形式）を grep 集計して確認する
+  （コメント漏れがあるのでマークアップ直接の grep も併用）
+- demo（hasDemo）は Alpine.js 3 CDN 製、Rails 実装は Stimulus。コンポーネント挙動を変えるときは両方に反映する
+- spec は実装より先行してよい（カタログが正）。未実装の仕様を書いたら実装タスクをセットで起こす
+- props の default は Figma の variant 順で推奨値ではない。推奨サイズ・色は usage の表に書く
 
 ## コマンド
 
 - `bash scripts/check-demo-sync.sh` — demo と States の同期チェック（preview 編集後に実行）
+- `jq empty components.json` — components.json 編集後の構文チェック
 - 反映確認: `curl -s "https://skrt.github.io/pro-catalog/<path>?cb=$(date +%s)" | grep <変更内容>`
 
 ## 落とし穴
