@@ -50,13 +50,18 @@
   </a>
 
   <!-- INTERACTIVE DEMO -->
-  <section id="demo-section" x-data="{ open: false, selected: '', options: ['北海道', '東京都', '大阪府', '福岡県', '沖縄県'] }">
+  <section id="demo-section" x-data="{ open: false, selected: '', hi: -1, options: ['北海道', '東京都', '大阪府', '福岡県', '沖縄県'] }">
     <div class="w-80 space-y-2">
       <label class="block text-sm font-normal text-gray-900">都道府県 <span class="text-red-500">*</span></label>
       <div class="relative">
         <div
-          @click="open = !open"
+          tabindex="0"
+          @click="open = !open; if (open) hi = options.indexOf(selected)"
           @click.away="open = false"
+          @keydown.arrow-down.prevent="if (!open) { open = true; hi = options.indexOf(selected) } else { hi = (hi + 1) % options.length }"
+          @keydown.arrow-up.prevent="if (open) hi = (hi - 1 + options.length) % options.length"
+          @keydown.enter.prevent="if (open && hi >= 0) { selected = options[hi]; open = false }"
+          @keydown.escape="if (open) { open = false; hi = -1 }"
           class="flex items-center h-8 px-3 py-1.5 gap-1.5 rounded-md bg-white cursor-pointer transition-colors"
           :class="open ? 'border border-indigo-500 ring-1 ring-indigo-500' : 'border border-gray-200'"
         >
@@ -65,18 +70,18 @@
         </div>
         <!-- SelectMenu dropdown -->
         <div x-show="open" x-transition class="absolute top-full left-0 w-80 mt-1 max-h-60 overflow-y-auto py-1 bg-white border border-gray-200 rounded-md shadow-lg z-10">
-          <template x-for="option in options" :key="option">
+          <template x-for="(option, i) in options" :key="option">
             <div
               @click="selected = option; open = false"
               class="flex items-center px-3 py-2 cursor-pointer hover:bg-gray-50"
-              :class="selected === option && 'bg-indigo-50'"
+              :class="(open && hi >= 0 ? hi === i : selected === option) && 'bg-indigo-50'"
             >
               <span class="text-sm leading-5 font-normal text-gray-900 whitespace-nowrap" x-text="option"></span>
             </div>
           </template>
         </div>
       </div>
-      <p class="text-xs text-gray-500">クリックして選択してみてください</p>
+      <p class="text-xs text-gray-500">クリックまたは ↓↑ / Enter / Esc で操作してみてください</p>
     </div>
   </section>
 

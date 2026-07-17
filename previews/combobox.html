@@ -54,6 +54,7 @@
     query: '',
     selected: '',
     focused: false,
+    hi: -1,
     allOptions: ['にいやま株式会社', '株式会社shizai', '株式会社サプライヤー', 'K.K株式会社', '株式会社ABC'],
     get filtered() {
       if (!this.query) return this.allOptions;
@@ -74,6 +75,11 @@
             x-model="query"
             @focus="focused = true; if (selected) { query = selected; selected = '' }"
             @blur="setTimeout(() => { focused = false; if (!selected && !query) query = '' }, 150)"
+            @input="hi = -1"
+            @keydown.arrow-down.prevent="if (!focused) { focused = true } else if (filtered.length) hi = (hi + 1) % filtered.length"
+            @keydown.arrow-up.prevent="if (focused && filtered.length) hi = (hi - 1 + filtered.length) % filtered.length"
+            @keydown.enter.prevent="if (focused && hi >= 0 && filtered[hi]) { selected = filtered[hi]; query = selected; focused = false; hi = -1 }"
+            @keydown.escape="if (focused) { query = selected; focused = false; hi = -1 }"
             class="flex-1 text-sm text-gray-900 placeholder-gray-400 outline-none bg-transparent"
           />
           <svg
@@ -91,17 +97,18 @@
           class="absolute top-full left-0 w-full mt-1 bg-white border border-gray-200 rounded-md py-1 shadow-lg z-10"
         >
           <div class="px-3 py-2 text-xs leading-4 text-gray-400" x-text="'検索結果：' + filtered.length + '件'"></div>
-          <template x-for="option in filtered" :key="option">
+          <template x-for="(option, i) in filtered" :key="option">
             <div
-              @mousedown.prevent="selected = option; query = option; focused = false"
+              @mousedown.prevent="selected = option; query = option; focused = false; hi = -1"
               class="px-3 py-2 text-sm leading-5 text-gray-900 cursor-pointer hover:bg-gray-50"
+              :class="hi === i && 'bg-indigo-50'"
               x-text="option"
             ></div>
           </template>
           <div x-show="filtered.length === 0" class="px-3 py-2 text-sm leading-5 text-gray-400">該当なし</div>
         </div>
       </div>
-      <p class="text-xs text-gray-500">クリックして検索してみてください（例：「株式」）</p>
+      <p class="text-xs text-gray-500">クリックして検索してみてください（例：「株式」）。↓↑ / Enter / Esc でも操作できます</p>
     </div>
   </section>
 
