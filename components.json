@@ -367,6 +367,38 @@
         "when": [
           "スペースが限られた場所にアイコンのみの操作ボタンを置くときに使用します。"
         ],
+        "tables": [
+          {
+            "title": "Color",
+            "items": [
+              {
+                "label": "tertiary",
+                "desc": "標準。戻る・編集・削除・複製・行内操作など通常の操作はこちら"
+              },
+              {
+                "label": "secondary",
+                "desc": "行内で目立たせたい導線（発注一覧のメッセージボタンなど）。Attention バッジと組み合わせることが多い"
+              }
+            ]
+          },
+          {
+            "title": "Size",
+            "items": [
+              {
+                "label": "md",
+                "desc": "画面上部の操作（戻る・編集・削除・複製）。フォーム要素と横並びにする場合の標準"
+              },
+              {
+                "label": "sm",
+                "desc": "テーブル・明細行内の操作（削除 x・複製 copy・展開トグル）、カレンダーの前後ナビ"
+              },
+              {
+                "label": "xs",
+                "desc": "行高 24px に収めるコンパクトな行内操作（メッセージ・メンバー一覧の削除など）"
+              }
+            ]
+          }
+        ],
         "rules": [
           "アイコンだけで意味が伝わらない操作には Tooltip を併用する",
           "未読・要対応の通知は Attention バッジで示す",
@@ -389,7 +421,7 @@
             "md",
             "lg"
           ],
-          "description": "ボタンのサイズ。xs: 24px / sm: 32px / md: 40px / lg: 48px"
+          "description": "ボタンのサイズ。xs: 24px / sm: 32px / md: 40px / lg: 48px。default の xs は Figma の variant 順で推奨値ではない。使い分けは usage の Size 表を参照"
         },
         {
           "name": "Color",
@@ -399,7 +431,7 @@
             "secondary",
             "tertiary"
           ],
-          "description": "secondary: 淡青背景 / tertiary: 白背景ボーダー"
+          "description": "secondary: 淡青背景 / tertiary: 白背景ボーダー。default の secondary は Figma の variant 順で、標準は tertiary（使い分けは usage の Color 表を参照）"
         },
         {
           "name": "State",
