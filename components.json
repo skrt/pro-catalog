@@ -3093,11 +3093,11 @@
       ]
     },
     {
-      "id": "detail-row",
-      "name": "DetailRow",
+      "id": "overview",
+      "name": "Overview",
       "description": "詳細行。ラベルと値のペア表示に使用。",
       "category": "data-display",
-      "preview": "previews/detail-row.html",
+      "preview": "previews/overview.html",
       "figmaUrl": "https://www.figma.com/design/tnxuN8LS2uMJEw2lYnvx69/shizai-pro?node-id=1646-8409",
       "usage": {
         "when": [
@@ -3247,7 +3247,7 @@
           "値が無いセルは「-」（text-gray-400）を表示する（Cell Type text / number / link の Empty state）"
         ],
         "vs": [
-          "DetailRow: 1レコードのラベルと値のペア表示"
+          "Overview: 1レコードのラベルと値のペア表示"
         ]
       },
       "props": [
