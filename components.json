@@ -3852,7 +3852,8 @@
       "figmaUrl": "https://www.figma.com/design/tnxuN8LS2uMJEw2lYnvx69/shizai-pro?node-id=2066-18617",
       "usage": {
         "when": [
-          "関連する情報や設定項目をグループ化して表示するときに使用します。タイトルとコンテンツ Slot で構成します。"
+          "関連する情報や設定項目をグループ化して表示するときに使用します。タイトルとコンテンツ Slot で構成します。",
+          "設定画面のように、カードヘッダー（タイトル＋補足）で見出しを表現し Slot は設定値のプレビューのみを置く使い方では、ヘッダー右のアクションボタンは Size=md / Color=Primary を配置します（コンポーネント既定の xs/Secondary ではなく）。Switch だけのカード（BCC・サポートアクセス等）はヘッダーにボタンを置かず、Slot に Switch 行のみを置きます。"
         ]
       },
       "props": [
