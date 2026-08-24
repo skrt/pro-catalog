@@ -404,7 +404,8 @@
           "未読・要対応の通知は Attention バッジで示す",
           "詳細・作成・編集画面の戻るボタンは tertiary / md / arrow-left で統一する",
           "フォーム要素と横並びにする場合はサイズ（高さ）を合わせる（Input が md なら IconButton も md）",
-          "明細行の削除は x アイコンを使う（trash-2 は書類等オブジェクトの削除ボタン用）"
+          "明細行の削除は x アイコンを使う（trash-2 は書類等オブジェクトの削除ボタン用）",
+          "Drawer やパネルを開いている対象がどれか分かるようにする場合は selected（border-indigo-500）を出す。box-border なのでボタンの外寸は変わらず、行の高さもずれない"
         ],
         "vs": [
           "Button: ラベルを置くスペースがあるなら常にこちら"
@@ -441,9 +442,10 @@
             "default",
             "hover",
             "active",
-            "disabled"
+            "disabled",
+            "selected"
           ],
-          "description": "インタラクション状態"
+          "description": "インタラクション状態。selected は hover/active のような一時的な状態ではなく、対象を選択している間ずっと表示し続ける状態（border 1px / indigo-500）"
         },
         {
           "name": "Attention",
