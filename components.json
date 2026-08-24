@@ -2998,7 +2998,8 @@
           "ステータスや区分を色付きラベルで表示するときに使用します。色は7色から選び、ラベルテキストは使用時に自由に設定します。"
         ],
         "rules": [
-          "同じ意味には画面をまたいで同じ色を使う"
+          "同じ意味には画面をまたいで同じ色を使う",
+          "ラベルは折り返さない（whitespace-nowrap）。テーブル等の固定幅カラムに置く場合は、最長ラベルが1行で収まる幅を確保する（例:「一部納品済み」= 90px なのでカラムは96px以上）"
         ]
       },
       "props": [
@@ -3085,7 +3086,8 @@
                 "fontWeight": "font-medium (500)",
                 "borderRadius": "rounded-full (9999px)",
                 "borderWidth": "border (1px)",
-                "background": "bg-white (#FFFFFF)"
+                "background": "bg-white (#FFFFFF)",
+                "whiteSpace": "whitespace-nowrap（ラベルは折り返さない）"
               }
             }
           ]
