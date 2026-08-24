@@ -445,7 +445,7 @@
             "disabled",
             "selected"
           ],
-          "description": "インタラクション状態。selected は hover/active のような一時的な状態ではなく、対象を選択している間ずっと表示し続ける状態（border 1px / indigo-500）"
+          "description": "インタラクション状態。selected は hover/active のような一時的な状態ではなく、対象を選択している間ずっと表示し続ける状態（border 2px / indigo-500）"
         },
         {
           "name": "Attention",
