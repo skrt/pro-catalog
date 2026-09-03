@@ -5,8 +5,12 @@ shizai pro の Component Catalog。静的 HTML + Tailwind CSS v4 browser CDN（`
 
 ## 構成
 
+**カタログの構造仕様（7セクションの固定順・点灯条件・配置判断マップ・不変則・追加手順・top-script）の正は共通スキル `~/.claude/skills/catalog-structure/SKILL.md`**（2026-09-03 に lube-catalog と共通化・claude-base へ昇格）。preview / components.json を追加・編集する前に読む。構造を変える時はそちらを編集し、ビューアの変更は lube-catalog の index.html にも入れる（同型実装）。ここには pro 固有の差分だけ残す:
+
 - `components.json` — 唯一のデータソース。index.html が実行時に読んで描画（ビルド工程なし）
-- `previews/*.html` — Variants 本体と（demo があるものは）`#demo-section`
+- `previews/*.html` — Variants 本体と、demo があるものは `#demo-section`（`hasDemo: true`）、利用パターンがあるものは `#examples-section`（`hasExamples: true`・2026-09-03 に badge / modal / approval-tracker で採用。旧「Usage Patterns」小見出しを Variants から分離）
+- `category` は6種: `actions / data-display / feedback / forms / layout / design-tokens`（lube は navigation ありの7種）
+- フラグ（`hasDemo` / `hasExamples`）は true のものだけ持つ運用（false を明示していない）。旧スキーマの `notes` キーは 2026-09-03 に削除済み＝復活させない（内容は usage.vs / description / preview に置く）
 - `llms.txt` — AI エージェント向けインデックス（役割・読み方・誤解しやすい規約）。公開 URL: https://skrt.github.io/pro-catalog/llms.txt 。**規約・トークン・spec キーを変えたらここも更新する**（lube-catalog と対称・2026-09-03 移植）
 - spec のレンダラー対応キー: `states` / `behavior` / `keyboard`
 
@@ -16,7 +20,7 @@ shizai pro の Component Catalog。静的 HTML + Tailwind CSS v4 browser CDN（`
   shizai-pro の screens.yml には画面固有の仕様のみ書く（lube 方式）
 - バリデーション文言は Validator ページ（previews/validator.html）が正。トーンは「〜しましょう」
 - ボタンラベルは名詞形（「保存」「発注」）。「〜する」は付けない
-- コンポーネント追加時: preview + components.json エントリ（usage 必須。demo は `#demo-section` + `hasDemo: true` をペアで）+
+- コンポーネント追加時: 共通スキル `catalog-structure` の手順 0〜3 に従う（usage 必須。demo は `#demo-section` + `hasDemo: true`、利用例は `#examples-section` + `hasExamples: true` をペアで）+
   shizai-pro/CLAUDE.md のコンポーネント一覧更新をセットで行う
 - `@theme` トークンは shizai-pro の `app/assets/tailwind/application.css` と同一に保つ
 - usage/spec の Do/Can't の情報源: shizai-pro の CLAUDE.md・figma/CLAUDE.md（コンポーネント別ルール）・figma/.claude/skills/。

@@ -53,7 +53,7 @@
 </style>
 <script>
   var _inIframe = window !== window.top;
-  if (_inIframe) { document.documentElement.classList.add("in-iframe"); var _view = new URLSearchParams(location.search).get("view"); if (_view === "demo") document.documentElement.classList.add("demo-only"); document.addEventListener("DOMContentLoaded", function() { var el = document.getElementById("back-link"); if (el) el.remove(); var demo = document.getElementById("demo-section"); if (_view === "demo" && demo) { document.body.appendChild(demo); Array.from(document.body.children).forEach(function(c) { if (c === demo || c.tagName === "SCRIPT" || c.hasAttribute("data-demo-keep")) return; c.remove(); }); } else if (_view === "preview" && demo) { demo.remove(); } }); }
+  if (_inIframe) { document.documentElement.classList.add("in-iframe"); var _view = new URLSearchParams(location.search).get("view"); if (_view === "demo") document.documentElement.classList.add("demo-only"); document.addEventListener("DOMContentLoaded", function() { var el = document.getElementById("back-link"); if (el) el.remove(); var demo = document.getElementById("demo-section"); var examples = document.getElementById("examples-section"); if (_view === "demo" && demo) { document.body.appendChild(demo); Array.from(document.body.children).forEach(function(c) { if (c === demo || c.tagName === "SCRIPT" || c.hasAttribute("data-demo-keep")) return; c.remove(); }); } else if (_view === "examples" && examples) { document.body.appendChild(examples); Array.from(document.body.children).forEach(function(c) { if (c === examples || c.tagName === "SCRIPT") return; c.remove(); }); } else if (_view === "preview") { if (demo) demo.remove(); if (examples) examples.remove(); } }); }
 
   // --- Demo overlay: open demo in a child iframe layered on top of parent ---
   function _showDemoInParent(name) {
@@ -284,9 +284,8 @@
     </div>
   </section>
 
-  <!-- ===== Usage Patterns ===== -->
-  <section>
-    <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Usage Patterns</h3>
+  <!-- ===== Examples（利用パターン・ビューアの EXAMPLES セクション） ===== -->
+  <section id="examples-section">
 
     <!-- Item Select -->
     <div class="space-y-1 mb-8">

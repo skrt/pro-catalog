@@ -340,7 +340,6 @@
           "description": "左アイコンの表示（Right Iconのchevron-downは常時表示）"
         }
       ],
-      "notes": "Buttonとの違い: (1) 右側にchevron-downが固定で付く (2) クリックでドロップダウンメニューを表示。メニュー部分はring-1 ring-inset ring-gray-200 rounded-md shadow-lg、各項目はpx-3 py-2 text-sm text-gray-700 hover:bg-gray-50",
       "spec": {
         "states": [
           {
@@ -2692,6 +2691,7 @@
         ]
       },
       "hasDemo": true,
+      "hasExamples": true,
       "props": [
         {
           "name": "Modal Dialog",
@@ -3004,6 +3004,7 @@
           "ラベルは折り返さない（whitespace-nowrap）。テーブル等の固定幅カラムに置く場合は、最長ラベルが1行で収まる幅を確保する（例:「一部納品済み」= 90px なのでカラムは96px以上）"
         ]
       },
+      "hasExamples": true,
       "props": [
         {
           "name": "Color",
@@ -4552,6 +4553,7 @@
           "最後のステップは右側のコネクタ線を非表示にする"
         ]
       },
+      "hasExamples": true,
       "props": [
         {
           "name": "State",

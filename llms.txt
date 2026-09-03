@@ -21,7 +21,7 @@ shizai pro には3つの参照先がある。役割分担:
   - `props`: コンポーネントのプロパティ（enum / boolean、default 付き。default は Figma の variant 順で**推奨値ではない**。推奨は usage の表）
   - `tokens`: スタイル値。**実装にコピペ可能な Tailwind クラス形式**
   - `spec`: 実装仕様（`states`: 状態遷移／`behavior`: 遷移で表現できない挙動／`keyboard`: キーボード操作）
-- `previews/*.html` — 各コンポーネントの Variants 本体と、demo があるものは `#demo-section`（`hasDemo: true`）。クラス列はそのままコピペ可能。demo は Alpine.js 3、Rails 実装は Stimulus
+- `previews/*.html` — 各コンポーネントの Variants 本体と、demo があるものは `#demo-section`（`hasDemo: true`）、利用パターンがあるものは `#examples-section`（`hasExamples: true`・ビューアの EXAMPLES セクション）。クラス列はそのままコピペ可能。demo は Alpine.js 3、Rails 実装は Stimulus
 - `index.html` — カタログビューア（components.json を実行時に読んで描画・ビルド工程なし）。公開: https://skrt.github.io/pro-catalog/ （1ページ1コンポーネント・`#/component-id`）
 - `scripts/check-demo-sync.sh` — States と Demo のトークン同期チェック
 - `CLAUDE.md` — カタログ自体を編集する AI 向けの作業規約（参照だけなら読まなくてよい）
