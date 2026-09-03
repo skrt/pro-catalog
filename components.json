@@ -3256,7 +3256,8 @@
           "下部に必ず Pagination を配置する（gap 0 で直結）。省略できるのは Empty 状態のときのみ",
           "行選択チェックボックスの一括操作はページ内のみ（ページを跨いだ選択はできない）",
           "0件時は「まだ○○がありません」の1行を表示し、Pagination を省略する（メイン一覧は text-gray-900、詳細画面内の関連一覧は text-gray-600）",
-          "値が無いセルは「-」（text-gray-400）を表示する（Cell Type text / number / link の Empty state）"
+          "値が無いセルは「-」（text-gray-400）を表示する（Cell Type text / number / link の Empty state）",
+          "リンク先のマスタが削除済みの link セルは、末尾に「（削除済み）」を付けてリンクにせず通常テキスト（text-gray-900）で表示する（例: 発注一覧・納品一覧の品名。2026-09-03 ユーザー確定）"
         ],
         "vs": [
           "Overview: 1レコードのラベルと値のペア表示"
