@@ -5,7 +5,7 @@ shizai pro の Component Catalog。静的 HTML + Tailwind CSS v4 browser CDN（`
 
 ## 構成
 
-**カタログの構造仕様（7セクションの固定順・点灯条件・配置判断マップ・不変則・追加手順・top-script）の正は共通スキル `~/.claude/skills/catalog-structure/SKILL.md`**（2026-09-03 に lube-catalog と共通化・claude-base へ昇格）。preview / components.json を追加・編集する前に読む。構造を変える時はそちらを編集し、ビューアの変更は lube-catalog の index.html にも入れる（同型実装）。ここには pro 固有の差分だけ残す:
+**カタログの構造仕様（7セクションの固定順・点灯条件・配置判断マップ・preview / spec の記述規約・不変則・追加手順・top-script）の正は共通スキル `~/.claude/skills/catalog-structure/SKILL.md`**（2026-09-03 に lube-catalog と共通化・claude-base へ昇格）。preview / components.json を追加・編集する前に読む。構造を変える時はそちらを編集し、ビューアの変更は lube-catalog の index.html にも入れる（同型実装）。ここには pro 固有の差分だけ残す:
 
 - `components.json` — 唯一のデータソース。index.html が実行時に読んで描画（ビルド工程なし）
 - `previews/*.html` — Variants 本体と、demo があるものは `#demo-section`（`hasDemo: true`）、利用パターンがあるものは `#examples-section`（`hasExamples: true`・2026-09-03 に badge / modal / approval-tracker で採用。旧「Usage Patterns」小見出しを Variants から分離）
@@ -13,6 +13,7 @@ shizai pro の Component Catalog。静的 HTML + Tailwind CSS v4 browser CDN（`
 - フラグ（`hasDemo` / `hasExamples`）は true のものだけ持つ運用（false を明示していない）。旧スキーマの `notes` キーは 2026-09-03 に削除済み＝復活させない（内容は usage.vs / description / preview に置く）
 - `llms.txt` — AI エージェント向けインデックス（役割・読み方・誤解しやすい規約）。公開 URL: https://skrt.github.io/pro-catalog/llms.txt 。**規約・トークン・spec キーを変えたらここも更新する**（lube-catalog と対称・2026-09-03 移植）
 - spec のレンダラー対応キー: `states` / `behavior` / `keyboard`
+- **`tokens` の category は部位軸（`Table / Header`・`Message / Send`・`Upper Area` 等）を含む**＝lube の「役割軸で分ける」規約とは違う。共通スキルの記述規約でも昇格対象外にしてある（2026-09-03 クロスレビュー #22）
 
 ## ルール
 
