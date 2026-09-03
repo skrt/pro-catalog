@@ -1,0 +1,45 @@
+# pro-catalog
+
+> shizai pro（発注・資材管理 SaaS）のコンポーネントカタログ。デザイン（Figma）とプロダクト実装（Rails）の間に立つ「実装仕様の正」。
+> このファイルは AI エージェント向けのインデックス。実装・参照時はまずここを読み、必要な箇所だけ辿ること。
+> （lube-catalog の llms.txt と対称の構成。2026-09-03 クロスレビューで移植）
+
+## このカタログの役割
+
+shizai pro には3つの参照先がある。役割分担:
+
+- **Figma**: デザインの原本（ビジュアルの正）。デザイナーが管理
+- **shizai-pro**（別リポ）: Rails 実装。画面ごとの挙動仕様は `config/prototype/screens.yml`、層の案内は `AGENTS.md`
+- **pro-catalog**（このリポ）: **コンポーネント実装仕様の正**。エンジニア・AI はここだけ見れば、Figma を開かずにコンポーネントを実装できる状態を目指している
+
+カタログと Figma が食い違う場合は、原則カタログが新しい（Figma 側変更は伝言板経由でカタログに追随する運用）。食い違いを見つけたら実装で勝手に解釈せず報告すること。
+
+## ファイル構成と読み方
+
+- `components.json` — **全コンポーネントの構造化定義。実装時の一次情報**（35 コンポーネント・6 カテゴリ: actions / data-display / feedback / forms / layout / design-tokens）
+  - `usage`: いつ使うか（`when`）・使わないとき（`avoid`）・ルール（`rules`）・推奨サイズ等の表（`tables`）・似たコンポーネントとの使い分け（`vs`）。**コンポーネント選定は必ずここを読んでから**
+  - `props`: コンポーネントのプロパティ（enum / boolean、default 付き。default は Figma の variant 順で**推奨値ではない**。推奨は usage の表）
+  - `tokens`: スタイル値。**実装にコピペ可能な Tailwind クラス形式**
+  - `spec`: 実装仕様（`states`: 状態遷移／`behavior`: 遷移で表現できない挙動／`keyboard`: キーボード操作）
+- `previews/*.html` — 各コンポーネントの Variants 本体と、demo があるものは `#demo-section`（`hasDemo: true`）。クラス列はそのままコピペ可能。demo は Alpine.js 3、Rails 実装は Stimulus
+- `index.html` — カタログビューア（components.json を実行時に読んで描画・ビルド工程なし）。公開: https://skrt.github.io/pro-catalog/ （1ページ1コンポーネント・`#/component-id`）
+- `scripts/check-demo-sync.sh` — States と Demo のトークン同期チェック
+- `CLAUDE.md` — カタログ自体を編集する AI 向けの作業規約（参照だけなら読まなくてよい）
+
+## 重要な規約（誤解しやすい順）
+
+1. **カラーは Tailwind 標準パレット ＋ `@theme` セマンティックトークンのみ**。ハードコード hex（`bg-[#…]`）は書かない。セマンティックトークン: `badge-{gray,red,orange,amber,blue,teal,violet}` ／ `toast-{success,warning,error,info}` ／ `btn-{primary,secondary,danger}`（＋`-hover` / `-active`）・`btn-text-secondary`・`btn-tertiary-hover` ／ `shadow-modal`。定義は各 preview の `<style type="text/tailwindcss">` の `@theme` と Rails の `app/assets/tailwind/application.css`（同一に保つ）
+2. **任意値 `[Npx]` 禁止**: Tailwind 標準の数値クラス（4px 刻み・小数可 `mt-0.75`）を使う。`text-[11px]` 等のフォントサイズ任意値も禁止
+3. **角丸は `rounded-md`（6px）が基調**。Card 系は `rounded-lg`、小さな要素（Checkbox の Box 等）は `rounded-sm`
+4. **フォーム系のフォーカスは `focus:border-indigo-500` ＋ `focus:ring-1`**（preview の States セクションが正。推測で書かない）
+5. **Button は primary / secondary / tertiary / danger × xs / sm / md / lg**。Primary は原則1画面1つ。disabled のスタイルは必ず preview の States を読む（推測と実際がずれやすい）
+6. **バリデーション文言は `previews/validator.html` が正**（14 文言・トーンは「〜しましょう」）。独自の文言を増やさない
+7. **ボタンラベルは名詞形**（「保存」「発注」）。「〜する」は付けない
+8. **アイコンは Lucide**（`previews/icons.svg` スプライト）、フォントは `ui-sans-serif, system-ui, sans-serif`（Google Fonts 不使用）
+9. **z-index（Rails 画面側の序列）**: Nav `z-50` > 月ナビ `z-40` > フィルター `z-30` > テーブルヘッダー `z-20` / `z-10`。Modal のオーバーレイは `z-50`
+
+## デザイントークン
+
+- カラー: `previews/colors.html`（Tailwind v4 標準パレット参照）
+- タイポグラフィ: `previews/typography.html`
+- バリデーション文言: `previews/validator.html`

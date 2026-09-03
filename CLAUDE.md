@@ -7,6 +7,7 @@ shizai pro の Component Catalog。静的 HTML + Tailwind CSS v4 browser CDN（`
 
 - `components.json` — 唯一のデータソース。index.html が実行時に読んで描画（ビルド工程なし）
 - `previews/*.html` — Variants 本体と（demo があるものは）`#demo-section`
+- `llms.txt` — AI エージェント向けインデックス（役割・読み方・誤解しやすい規約）。公開 URL: https://skrt.github.io/pro-catalog/llms.txt 。**規約・トークン・spec キーを変えたらここも更新する**（lube-catalog と対称・2026-09-03 移植）
 - spec のレンダラー対応キー: `states` / `behavior` / `keyboard`
 
 ## ルール
