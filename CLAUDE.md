@@ -36,6 +36,15 @@ shizai pro の Component Catalog。静的 HTML + Tailwind CSS v4 browser CDN（`
 - `jq empty components.json` — components.json 編集後の構文チェック
 - 反映確認: `curl -s "https://skrt.github.io/pro-catalog/<path>?cb=$(date +%s)" | grep <変更内容>`
 
+## Alpine デモ実装の定石（クロスレビュー #20・lube から移植 2026-09-03）
+
+demo（`hasDemo`）は Alpine.js 3 CDN 製。lube 側で事故になった罠のうち、フレームワークに依存せず pro-catalog でも踏むものだけを持ち込んでいる。
+
+- **色・枠線を `:class` だけに持たせない＝初期描画の FOUC になる**。Alpine は `defer` で読み込むため、ブート前は `:class` が未評価＝枠線なしの状態が一瞬見える。対策はこのリポの定石に寄せる: **デモの x-data 要素に `x-cloak` を付け、`<style>[x-cloak] { display: none !important; }</style>` を Alpine の script 直後に置く**（checkbox / radio-group / modal / drawer / colors が元からこの形。2026-09-03 に select / combobox / number-input / input / text-area / datepicker も揃えた）
+  - 静的 class と `:class` に同じ色ユーティリティを共存させる回避は**しない**（同詳細度＝CSS 定義順依存で不確実）
+- **ページ読込時の初期化処理で `el.focus()` しない**（スクリプト起点のフォーカスは `:focus-visible` 扱いになり ring が出る）。クリック起点のフォーカス移動なら出ないので、`@click` 内の `$refs.x.focus()` は問題ない
+- **`x-for` の中に `x-data` を持つ要素（カード等）を並べる時は `:key` にインデックスを使わない**（削除時にネストしたコンポーネントの状態が隣の要素へズレる）。行データに固有 id を振って `:key="item.id"` にする。ループ内に `x-data` が無い場合は `:key="i"` でよい（checkbox / datepicker が該当）
+
 ## 落とし穴
 
 - CDN 環境ではコンパイル済みユーティリティが plain `<style>` より先に注入される。
