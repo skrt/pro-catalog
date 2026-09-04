@@ -4066,6 +4066,10 @@
       "usage": {
         "when": [
           "添付ファイルのファイル名・サイズを表示するときに使用します。削除ボタン付きで、sm / xs の2サイズがあります。"
+        ],
+        "rules": [
+          "サイズの単位は大きさで切り替える: 1KB未満は「B」、1MB未満は「KB」（3桁区切り・整数）、1MB以上は「MB」（小数第1位まで）。1,024KB以上をKBのまま書かない（例: ○「2.2MB」×「2,222KB」）",
+          "上限超過のエラー文言はValidatorのfeature/attachmentが正。上限は箇所ごとに異なる（発注書の送信10MB / 仕入先へのメッセージ20MB / 添付が1件のみの社内メモ32MB）"
         ]
       },
       "props": [
@@ -4082,7 +4086,7 @@
         {
           "name": "File Name",
           "type": "string",
-          "default": "sample-XXXXX.png (2,222KB)",
+          "default": "sample-XXXXX.png (2.2MB)",
           "description": "ファイル名とサイズ"
         }
       ],
