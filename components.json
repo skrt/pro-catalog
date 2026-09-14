@@ -1004,7 +1004,8 @@
               "tokens": {
                 "border": "border-gray-200 (#E5E7EB)",
                 "background": "bg-white (#FFFFFF)",
-                "chevron": "text-gray-400 (#99A1AF)"
+                "chevron": "text-gray-400 (#99A1AF)",
+                "placeholder": "text-gray-900 (#101828・選択値と同色。グレーにしない)"
               }
             },
             {
