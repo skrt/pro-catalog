@@ -76,7 +76,7 @@
               },
               {
                 "label": "削除",
-                "desc": "画面に常設する削除ボタンは tertiary + trash-2（danger は確認モーダルの最終確認CTAで使う）。明細行の削除は IconButton の x"
+                "desc": "画面に常設する削除ボタンは tertiary + trash（danger は確認モーダルの最終確認CTAで使う）。明細行の削除は IconButton の x"
               }
             ]
           },
@@ -403,7 +403,7 @@
           "未読・要対応の通知は Attention バッジで示す",
           "詳細・作成・編集画面の戻るボタンは tertiary / md / arrow-left で統一する",
           "フォーム要素と横並びにする場合はサイズ（高さ）を合わせる（Input が md なら IconButton も md）",
-          "明細行の削除は x アイコンを使う（trash-2 は書類等オブジェクトの削除ボタン用）",
+          "明細行の削除は x アイコンを使う（trash は書類等オブジェクトの削除ボタン用）",
           "Drawer やパネルを開いている対象がどれか分かるようにする場合は selected（border-indigo-500）を出す。box-border なのでボタンの外寸は変わらず、行の高さもずれない"
         ],
         "vs": [
