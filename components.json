@@ -4849,7 +4849,8 @@
                 "border": "border-gray-200 (#e5e7eb)",
                 "borderRadius": "rounded-md (6px)",
                 "iconSize": "w-3.5 h-3.5 (14px)",
-                "iconColor": "gray-700"
+                "iconColor": "gray-900（disabled 時は white・地は bg-gray-200）",
+                "icon": "arrow-left / arrow-right（chevron ではない・Lucide）"
               }
             }
           ]
