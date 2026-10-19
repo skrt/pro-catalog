@@ -2135,6 +2135,7 @@
                 "background": "bg-white (#FFFFFF)",
                 "border": "border-gray-200 (#E5E7EB)",
                 "borderRadius": "rounded-lg (8px)",
+                "gap": "gap-1 (4px) 縦＝ヘッダー→曜日→各行／セル横は gap-x-0.5 (2px)",
                 "shadow": "shadow-md (0 4px 16px rgba(0,0,0,0.08))"
               }
             },
@@ -2149,7 +2150,10 @@
               "tokens": {
                 "size": "h-9 w-9 (36px)",
                 "fontSize": "text-xs (12px)",
-                "borderRadius": "rounded-full (9999px)"
+                "borderRadius": "rounded-full (9999px)",
+                "text": "text-gray-900 (#101828)",
+                "sunday": "text-red-600 (#E7000B)",
+                "saturday": "text-blue-600 (#155DFC)"
               }
             },
             {
@@ -2163,20 +2167,21 @@
               "variant": "range",
               "tokens": {
                 "background": "bg-indigo-50 (#EEF2FF)",
-                "text": "text-gray-500 (#6A7282)"
+                "text": "曜日色のまま（平日 gray-900・日曜 red-600・土曜 blue-600）",
+                "borderRadius": "なし（角丸は start / end のみ）"
               }
             },
             {
               "variant": "outside month",
               "tokens": {
-                "text": "text-gray-400 (#99A1AF)"
+                "text": "text-gray-400 (#99A1AF)（土日でも曜日色にしない）"
               }
             },
             {
               "variant": "today",
               "tokens": {
-                "text": "text-indigo-500 (#615FFF)",
-                "background": "なし（テキスト色のみ）"
+                "fontWeight": "font-bold",
+                "text": "曜日色のまま（色では区別しない）"
               }
             }
           ]
@@ -2191,7 +2196,7 @@
                 "leftIcon": "calendar (12px)",
                 "placeholder": "yyyy/mm/dd",
                 "rangePlaceholder": "yyyy/mm/dd - yyyy/mm/dd",
-                "weekdayLabels": "月 火 水 木 金 土 日"
+                "weekdayLabels": "日 月 火 水 木 金 土（日曜始まり・日 red-600・土 blue-600・他 gray-400）"
               }
             }
           ]
@@ -2221,8 +2226,12 @@
             "detail": "前月・翌月ボタンで表示月を切り替える"
           },
           {
+            "action": "週の始まり",
+            "detail": "日曜始まり。曜日ヘッダーと日付は日曜を red-600・土曜を blue-600 で表示する（前後月の日付は曜日に関係なく gray-400）"
+          },
+          {
             "action": "当日表示",
-            "detail": "今日の日付をハイライトする"
+            "detail": "今日の日付を太字（font-bold）で表示する。文字色は変えない"
           },
           {
             "action": "期間選択",
