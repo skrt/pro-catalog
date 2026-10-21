@@ -2136,7 +2136,7 @@
                 "border": "border-gray-200 (#E5E7EB)",
                 "borderRadius": "rounded-lg (8px)",
                 "gap": "gap-1 (4px) 縦＝ヘッダー→曜日→各行／セル横は gap-x-0.5 (2px)",
-                "shadow": "shadow-md (0 4px 16px rgba(0,0,0,0.08))"
+                "shadow": "shadow-lg（Figma 効果スタイル shadow/lg・2026-10-20 ユーザー判断で他ドロップダウンと統一）"
               }
             },
             {

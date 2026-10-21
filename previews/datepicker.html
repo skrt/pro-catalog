@@ -228,6 +228,7 @@
     },
     prevMonth() { if (this.month === 0) { this.month = 11; this.year--; } else { this.month--; } },
     nextMonth() { if (this.month === 11) { this.month = 0; this.year++; } else { this.month++; } },
+    isToday(d) { return this.toNum(d) === new Date().getFullYear() * 10000 + (new Date().getMonth() + 1) * 100 + new Date().getDate() },
     formatDate(n) { if (!n) return ''; const y = Math.floor(n/10000); const m = Math.floor((n%10000)/100); const d = n%100; return y+'/'+String(m).padStart(2,'0')+'/'+String(d).padStart(2,'0'); },
     get displayText() {
       if (!this.startDate && !this.endDate) return '';
@@ -273,6 +274,7 @@
                   'text-white bg-indigo-500 rounded-full': cell.cur && (isStart(cell.d) || isEnd(cell.d)),
                   [dayColor(cell.d) + ' bg-indigo-50']: cell.cur && !isStart(cell.d) && !isEnd(cell.d) && inRange(cell.d),
                   [dayColor(cell.d) + ' rounded-full hover:bg-gray-100']: cell.cur && !isStart(cell.d) && !isEnd(cell.d) && !inRange(cell.d),
+                  'font-bold': cell.cur && isToday(cell.d),
                 }"
                 x-text="cell.d"
               ></div>
@@ -492,7 +494,7 @@
     </section>
 
     <!-- ===== CALENDAR — RANGE ===== -->
-    <!-- Selected range: start/end=bg-indigo-500 circle, in-range=bg-indigo-50（文字色は曜日色のまま・radius なし） -->
+    <!-- Selected range: start/end=bg-indigo-500 circle, in-range=bg-indigo-50（文字色は曜日色のまま・radius なし）。今日(18)は Single と同じく font-bold -->
     <section>
       <h3 class="text-xs font-normal text-gray-400 tracking-wider mb-4">Calendar — Range</h3>
       <div class="inline-flex flex-col gap-1 border border-gray-200 rounded-lg p-3 bg-white shadow-lg" style="width:288px">
@@ -536,7 +538,7 @@
           <div class="h-9 flex items-center justify-center text-xs text-white bg-indigo-500 rounded-full cursor-pointer">15</div>
           <div class="h-9 flex items-center justify-center text-xs text-gray-900 bg-indigo-50 cursor-pointer">16</div>
           <div class="h-9 flex items-center justify-center text-xs text-gray-900 bg-indigo-50 cursor-pointer">17</div>
-          <div class="h-9 flex items-center justify-center text-xs text-gray-900 bg-indigo-50 cursor-pointer">18</div>
+          <div class="h-9 flex items-center justify-center text-xs text-gray-900 bg-indigo-50 cursor-pointer font-bold">18</div>
           <div class="h-9 flex items-center justify-center text-xs text-blue-600 bg-indigo-50 cursor-pointer">19</div>
           <!-- Row 4 -->
           <div class="h-9 flex items-center justify-center text-xs text-red-600 bg-indigo-50 cursor-pointer">20</div>
