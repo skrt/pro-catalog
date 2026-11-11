@@ -20,6 +20,7 @@ shizai pro の Component Catalog。静的 HTML + Tailwind CSS v4 browser CDN（`
 - コンポーネント挙動仕様はここ（components.json の spec / tokens）が正。
   shizai-pro の screens.yml には画面固有の仕様のみ書く（lube 方式）
 - バリデーション文言は Validator ページ（previews/validator.html）が正。トーンは「〜しましょう」
+- 語尾の使い分け（2026-11-11 ユーザー確定）: お客様が画面の操作で自分で解決できる → 「〜しましょう」／shizai 側に頼む・待ってもらうなど自分では解決できない → 「〜ください」（「ご連絡ください」「お問い合わせください」「お試しください」の依頼形だけ。操作の指示に「〜してください」は使わない）
 - ボタンラベルは名詞形（「保存」「発注」）。「〜する」は付けない
 - コンポーネント追加時: 共通スキル `catalog-structure` の手順 0〜3 に従う（usage 必須。demo は `#demo-section` + `hasDemo: true`、利用例は `#examples-section` + `hasExamples: true` をペアで）+
   shizai-pro/CLAUDE.md のコンポーネント一覧更新をセットで行う
