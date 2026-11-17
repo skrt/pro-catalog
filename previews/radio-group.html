@@ -44,7 +44,7 @@
     [x-cloak] { display: none !important; }
   </style>
 <style>#back-link { display: inline-flex; } .in-iframe #back-link { display: none; } .in-iframe body { padding: 0 !important; } .in-iframe.demo-only body { background: #f8f8fa !important; padding: 36px 32px 32px !important; }</style>
-<script>if (window !== window.top) { document.documentElement.classList.add("in-iframe"); var view = new URLSearchParams(location.search).get("view"); if (view === "demo") document.documentElement.classList.add("demo-only"); document.addEventListener("DOMContentLoaded", function() { var el = document.getElementById("back-link"); if (el) el.remove(); var demo = document.getElementById("demo-section"); if (view === "demo" && demo) { document.body.appendChild(demo); Array.from(document.body.children).forEach(function(c) { if (c === demo || c.tagName === "SCRIPT" || c.hasAttribute("data-demo-keep")) return; c.remove(); }); } else if (view === "preview" && demo) { demo.remove(); } }); }</script>
+<script>if (window !== window.top) { document.documentElement.classList.add("in-iframe"); var view = new URLSearchParams(location.search).get("view"); if (view === "demo") document.documentElement.classList.add("demo-only"); document.addEventListener("DOMContentLoaded", function() { var el = document.getElementById("back-link"); if (el) el.remove(); var demo = document.getElementById("demo-section"); var examples = document.getElementById("examples-section"); if (view === "demo" && demo) { document.body.appendChild(demo); Array.from(document.body.children).forEach(function(c) { if (c === demo || c.tagName === "SCRIPT" || c.hasAttribute("data-demo-keep")) return; c.remove(); }); } else if (view === "examples" && examples) { document.body.appendChild(examples); Array.from(document.body.children).forEach(function(c) { if (c === examples || c.tagName === "SCRIPT") return; c.remove(); }); } else if (view === "preview") { if (demo) demo.remove(); if (examples) examples.remove(); } }); }</script>
 </head>
 <body class="bg-white p-6 space-y-10">
   <a href="../" class="inline-flex items-center gap-1 text-sm text-gray-400 hover:text-gray-600 mb-4" id="back-link">
@@ -243,6 +243,52 @@
         </button>
       </div>
     </div>
+  </section>
+
+  <!-- ===== Examples（利用パターン・ビューアの EXAMPLES セクション） ===== -->
+  <section id="examples-section">
+
+    <!-- 選択肢に入力欄を内包する（設定 / リマインド通知の設定変更モーダル。Figma 11137:17846 / 11140:18327） -->
+    <div class="space-y-1 mb-8" x-data="{ mode: 'on' }" x-cloak>
+      <p class="text-xs font-semibold text-gray-500">選択肢に入力欄を内包する（字下げ＋縦線）</p>
+      <p class="text-xs text-gray-400 mb-2">Radio md ×2 / 「送る」の中身は ml-1.75 border-l-2 border-gray-200 pl-4。他方を選ぶと中身は同じ位置のまま disabled（文字 gray-400）。shizai-pro: settings/show.html.erb（reminder_mode_controller）</p>
+      <div class="w-100 rounded-xl bg-white border border-gray-200 shadow-modal">
+        <div class="flex flex-col gap-3 p-6">
+          <p class="text-lg font-semibold text-gray-900 leading-7">リマインド通知の設定変更</p>
+          <div class="flex flex-col gap-2">
+            <div class="flex flex-col gap-1">
+              <label class="inline-flex items-center gap-2 cursor-pointer" @click="mode = 'on'">
+                <span class="w-4 h-4 rounded-full transition-all" :class="mode === 'on' ? 'border-4 border-indigo-500 bg-white' : 'border border-gray-200 bg-white'"></span>
+                <span class="text-base text-gray-900">送る</span>
+              </label>
+              <div class="ml-1.75 border-l-2 border-gray-200 pl-4 flex flex-col gap-3">
+                <div class="flex flex-col gap-1">
+                  <div class="flex items-center gap-1">
+                    <span class="text-base font-normal" :class="mode === 'on' ? 'text-gray-900' : 'text-gray-400'">希望納品日の</span>
+                    <input type="number" value="1" min="1" max="30" :disabled="mode !== 'on'" class="w-11 h-8 px-3 py-1.5 text-sm text-right border border-gray-200 rounded-md outline-none" :class="mode === 'on' ? 'bg-white text-gray-900' : 'bg-gray-50 text-gray-400 cursor-not-allowed'">
+                    <span class="text-base font-normal" :class="mode === 'on' ? 'text-gray-900' : 'text-gray-400'">日前に送る</span>
+                  </div>
+                  <p class="text-xs font-normal text-gray-400">※ 最大30日前まで設定できます</p>
+                </div>
+                <label class="flex items-center gap-2" :class="mode === 'on' ? 'cursor-pointer' : 'cursor-not-allowed'">
+                  <span class="w-4 h-4 rounded-sm border border-gray-200" :class="mode === 'on' ? 'bg-white' : 'bg-gray-50'"></span>
+                  <span class="text-base font-normal" :class="mode === 'on' ? 'text-gray-900' : 'text-gray-400'">土日祝日もカウントする</span>
+                </label>
+              </div>
+            </div>
+            <label class="inline-flex items-center gap-2 cursor-pointer" @click="mode = 'off'">
+              <span class="w-4 h-4 rounded-full transition-all" :class="mode === 'off' ? 'border-4 border-indigo-500 bg-white' : 'border border-gray-200 bg-white'"></span>
+              <span class="text-base text-gray-900">送らない</span>
+            </label>
+          </div>
+        </div>
+        <div class="flex justify-end items-center gap-3 bg-gray-50 rounded-b-xl px-6 py-4">
+          <button type="button" class="inline-flex items-center justify-center rounded-md ring-1 ring-inset ring-gray-200 bg-white text-sm font-semibold text-gray-900 px-4 py-2.5">キャンセル</button>
+          <button type="button" class="inline-flex items-center justify-center rounded-md bg-btn-primary text-sm font-semibold text-white px-4 py-2.5">変更</button>
+        </div>
+      </div>
+    </div>
+
   </section>
 
 </body>
