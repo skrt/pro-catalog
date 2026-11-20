@@ -1221,7 +1221,7 @@
               "tokens": {
                 "padding": "px-3 py-1.5 (12px 6px)",
                 "fontSize": "text-sm (14px)",
-                "minHeight": "min-h-18"
+                "minHeight": "min-h-20"
               }
             },
             {
