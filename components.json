@@ -2504,7 +2504,7 @@
           {
             "transition": "表示",
             "trigger": "操作の完了",
-            "effect": "画面右下（fixed bottom-4 right-4）に下からスライドインして表示される"
+            "effect": "画面右下（fixed bottom-4 right-4）に下からスライドインして表示される。Footer がある画面では Footer の上辺から 16 の位置に出す（Footer 72 + border 1 + 16 = 下から 89）。Drawer が出ている画面は Footer が左カラムだけなので右下 16 のまま"
           },
           {
             "transition": "消去（自動）",
