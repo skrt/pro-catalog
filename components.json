@@ -679,7 +679,7 @@
               "variant": "focus",
               "tokens": {
                 "border": "border-indigo-500 (#615FFF)",
-                "borderWidth": "border-2"
+                "borderWidth": "border (1px) + ring-1（見た目は 2px・寸法は変わらない）"
               }
             },
             {
@@ -1387,7 +1387,7 @@
               "variant": "focus",
               "tokens": {
                 "border": "border-indigo-500 (#615FFF)",
-                "borderWidth": "border-2",
+                "borderWidth": "border (1px) + ring-1（見た目は 2px・寸法は変わらない）",
                 "rightIcon": "circle-x (gray-500 #6A7282) visible",
                 "dropdown": "visible"
               }
@@ -2108,7 +2108,7 @@
               "variant": "focus",
               "tokens": {
                 "border": "border-indigo-500 (#615FFF)",
-                "borderWidth": "border-2 (2px)"
+                "borderWidth": "border (1px) + ring-1（見た目は 2px・寸法は変わらない）"
               }
             },
             {
